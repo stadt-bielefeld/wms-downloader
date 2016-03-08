@@ -1,7 +1,7 @@
 {
   "name": "wms-downloader",
   "version": "0.0.1",
-  "description": "Allows download of web map services (WMS) as tiles.",
+  "description": "It allows downloading of Web Map Services (WMS).",
   "main": "index.js",
   "directories": {
     "example": "examples",

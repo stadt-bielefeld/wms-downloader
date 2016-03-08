@@ -5,7 +5,7 @@
 ### 01 NodeJS and NPM
 
 Windows: 
-Use node installer from https://nodejs.org/
+Use the installer from https://nodejs.org/
 
 Ubuntu / Debian:
 ```sh
@@ -15,7 +15,7 @@ sudo apt-get install nodejs npm
 ### 02 GraphicsMagick
 
 Windows: 
-Use GraphicsMagick installer from http://www.graphicsmagick.org/
+Use the installer from http://www.graphicsmagick.org/
 
 Ubuntu / Debian:
 ```sh
@@ -57,7 +57,7 @@ var taskOptions = {
 		"maxSizePx" : 2500,
 		"gutterPx" : 250,
 		"resolutions" : [ {
-			"id" : "if_of_resolution_10",
+			"id" : "id_of_resolution_10",
 			"groundResolution" : 10
 		} ]
 	},
@@ -130,8 +130,9 @@ var taskOptions = {
 		"maxSizePx" : 2500,
 		"gutterPx" : 250,
 		"resolutions" : [ {
-			"id" : "if_of_resolution_10",
-			"groundResolution" : 10
+			"id" : "id_of_resolution_10",
+			"scale": 25000,
+            "dpi": 72
 		} ]
 	},
 	"wms" : [ {
