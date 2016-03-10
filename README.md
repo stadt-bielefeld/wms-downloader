@@ -168,7 +168,7 @@ downloader.download(taskOptions, function(err) {
 ## Supported formats
 
   - image/png
-  - image/png; mode=8bit"
+  - image/png; mode=8bit
   - image/jpeg
   - image/gif
   - image/tiff
