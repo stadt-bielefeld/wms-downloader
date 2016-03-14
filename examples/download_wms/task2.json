@@ -3,7 +3,7 @@
     "id": "id_of_my_first_download",
     "title": "My first WMS download.",
     "format": "image/png",
-    "workspace": "D:/data/workspace",
+    "workspace": "./tiles",
     "area": {
       "bbox": {
         "xmin": 455000,

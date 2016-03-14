@@ -43,7 +43,7 @@ var taskOptions = {
 		"id" : "id_of_my_first_download",
 		"title" : "My first WMS download.",
 		"format" : "image/png",
-		"workspace" : "D:/data/workspace",
+		"workspace" : "./tiles",
 		"area" : {
 			"bbox" : {
 				"xmin" : 455000,
@@ -116,7 +116,7 @@ var taskOptions = {
 		"id" : "id_of_my_first_download",
 		"title" : "My first WMS download.",
 		"format" : "image/png",
-		"workspace" : "D:/data/workspace",
+		"workspace" : "./tiles",
 		"area" : {
 			"bbox" : {
 				"xmin" : 455000,
@@ -168,7 +168,6 @@ downloader.download(taskOptions, function(err) {
 ## Supported formats
 
   - image/png
-  - image/png; mode=8bit
   - image/jpeg
   - image/gif
   - image/tiff
