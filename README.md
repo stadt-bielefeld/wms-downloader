@@ -87,7 +87,7 @@ downloader.init();
 var progressInterval = setInterval(function() {
 	var progress = downloader.getProgress(taskOptions.task.id);
 	console.log('Progress: ' + progress.percent + '%, Waiting time: ' + progress.waitingTime + ' sec');
-}, 5000);
+}, 1000);
 
 // Start download
 downloader.download(taskOptions, function(err) {
@@ -175,7 +175,7 @@ downloader.init(configOptions);
 var progressInterval = setInterval(function() {
 	var progress = downloader.getProgress(taskOptions.task.id);
 	console.log('Progress: ' + progress.percent + '%, Waiting time: ' + progress.waitingTime + ' sec');
-}, 5000);
+}, 1000);
 
 // Start download
 downloader.download(taskOptions, function(err) {
