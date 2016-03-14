@@ -2,6 +2,11 @@ var fs = require('fs');
 var gm = require('gm');
 
 /**
+ * Object with progress information of all tasks.
+ */
+var progress = {};
+
+/**
  * Object to check the task.json
  */
 var input = require(__dirname + '/input.js');
@@ -66,11 +71,22 @@ function init(options) {
  */
 function download(options, callback) {
 
+	progress[options.task.id] = {
+		"tiles" : getCountOfTiles(options),
+		"tilesCompleted" : 0,
+		"startDate" : new Date(),
+		"lastTileDate": null,
+		"percent": 0,
+		"waitingTime": 0
+	}
+
 	try {
 		input.checkOptions(options);
 
 		// console.log('Task ' + options.task.id + ' was started.');
 		handleTask(options, function(err) {
+			delete progress[options.task.id];
+
 			if (err) {
 				callback(err);
 			} else {
@@ -78,7 +94,9 @@ function download(options, callback) {
 				callback(null);
 			}
 		});
+
 	} catch (err) {
+		delete progress[options.task.id];
 		callback(err);
 	}
 
@@ -423,6 +441,8 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, callback) {
 								} else {
 									// No errors
 									// World file was written
+									progress[options.task.id].tilesCompleted++;
+									progress[options.task.id].lastTileDate = new Date();
 
 									// NEXT TILE
 									// Raise x tile index
@@ -648,7 +668,63 @@ function createWorldFile(x0, y0, res) {
 	return ret;
 }
 
+function getProgress(taskId) {
+
+	if (progress[taskId]) {
+		progress[taskId].percent = Math.round(((progress[taskId].tilesCompleted * 100.0) / progress[taskId].tiles) * 100) / 100.0;
+
+		if (progress[taskId].percent !== 0) {
+
+			
+			var dif = progress[taskId].lastTileDate.getTime() - progress[taskId].startDate.getTime();
+			var dif2 = new Date().getTime() - progress[taskId].lastTileDate.getTime();
+
+			//Waiting time in sec
+			progress[taskId].waitingTime = Math.round(((((100.0 - progress[taskId].percent) * dif) / progress[taskId].percent) - dif2) / 1000.0);
+
+		} else {
+			progress[taskId].waitingTime = 0;
+		}
+
+		return progress[taskId];
+	}
+
+	return null;
+}
+
+/**
+ * Calculates the count of tiles of a task.
+ * 
+ * @param {object}
+ *          options Task options
+ * @returns {Number}
+ */
+function getCountOfTiles(options) {
+
+	var countOfAllTiles = 0;
+
+	// Calculate parameters of bbox
+	var widthM = options.task.area.bbox.xmax - options.task.area.bbox.xmin;
+	var heightM = options.task.area.bbox.ymax - options.task.area.bbox.ymin;
+
+	for (var int = 0; int < options.tiles.resolutions.length; int++) {
+		var res = options.tiles.resolutions[int];
+		var widthPx = widthM / res.groundResolution;
+		var heightPx = heightM / res.groundResolution;
+
+		var tiles = {};
+		tiles.sizePx = options.tiles.maxSizePx - 2 * options.tiles.gutterPx;
+		tiles.xCount = Math.ceil(widthPx / tiles.sizePx);
+		tiles.yCount = Math.ceil(heightPx / tiles.sizePx);
+
+		countOfAllTiles += tiles.xCount * tiles.yCount;
+	}
+
+	return countOfAllTiles;
+}
+
 module.exports = {
 	init : init,
-	download : download
+	download : download,
+	getProgress : getProgress
 }
