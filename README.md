@@ -130,7 +130,7 @@ var taskOptions = {
 		"maxSizePx" : 2500,
 		"gutterPx" : 250,
 		"resolutions" : [ {
-			"id" : "id_of_resolution_10",
+			"id" : "id_of_resolution_25000",
 			"scale": 25000,
             "dpi": 72
 		} ]
