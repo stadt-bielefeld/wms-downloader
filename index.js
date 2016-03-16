@@ -678,6 +678,7 @@ function createWorldFile(x0, y0, res) {
 	return ret;
 }
 
+
 function getProgress(taskId) {
 
 	if (progress[taskId]) {
