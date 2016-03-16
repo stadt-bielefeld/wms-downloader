@@ -65,7 +65,7 @@ downloader.init(configOptions);
 // Print progress
 var progressInterval = setInterval(function() {
 	var progress = downloader.getProgress(taskOptions.task.id);
-	console.log('Progress: ' + progress.percent + '%, Waiting time: ' + progress.waitingTime + ' sec');
+	console.log('Progress: ' + progress.percent + '%, Waiting time: ' + progress.waitingTime + ' ms');
 }, 1000);
 
 // Start download
