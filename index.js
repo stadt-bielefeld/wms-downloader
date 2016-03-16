@@ -691,6 +691,10 @@ function getProgress(taskId) {
 
 			//Waiting time in sec
 			progress[taskId].waitingTime = Math.round(((((100.0 - progress[taskId].percent) * dif) / progress[taskId].percent) - dif2) / 1000.0);
+			
+			if(progress[taskId].waitingTime < 0){
+				progress[taskId].waitingTime = 0;
+			}
 
 		} else {
 			progress[taskId].waitingTime = 0;
