@@ -54,7 +54,7 @@ function init(options) {
 		var userPass = '';
 		if(config.request.proxy.http.user){
 			if(config.request.proxy.http.password){
-				userPass = encodeURI(config.request.proxy.http.user) + ':' + encodeURI(config.request.proxy.http.password) + '@';
+				userPass = encodeURIComponent(config.request.proxy.http.user) + ':' + encodeURIComponent(config.request.proxy.http.password) + '@';
 			}
 		}
 		
