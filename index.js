@@ -277,7 +277,10 @@ function handleWMS(options, ws, res, wmsIdx, callback) {
 	var wms = options.wms[wmsIdx];
 
 	// Workspace of this WMS
-	var wmsWs = ws + '/' + wms.id;
+	var wmsWs = ws;
+	if(options.wms.length > 1){
+		wmsWs += '/' + wms.id;
+	}
 
 	// Create directory of WMS workspace
 	createDir(
