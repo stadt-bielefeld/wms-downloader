@@ -49,6 +49,15 @@ function init(options) {
 
 	// If internet proxy is set
 	if (config.request.proxy) {
+		
+		//String of username and password
+		var userPass = '';
+		if(config.request.proxy.http.user){
+			if(config.request.proxy.http.password){
+				userPass = encodeURI(config.request.proxy.http.user) + ':' + encodeURI(config.request.proxy.http.password) + '@';
+			}
+		}
+		
 		// Init request object with internet proxy
 		requestProxy = request.defaults({
 			"headers" : {
@@ -56,7 +65,7 @@ function init(options) {
 			},
 			strictSSL : false,
 			timeout : config.request.timeout,
-			"proxy" : 'http://' + config.request.proxy.http.user + ':' + config.request.proxy.http.password + '@' + config.request.proxy.http.host + ':' + config.request.proxy.http.port
+			"proxy" : 'http://' + userPass + config.request.proxy.http.host + ':' + config.request.proxy.http.port
 		});
 	}
 
@@ -483,6 +492,7 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, callback) {
 	});
 
 }
+
 
 /**
  * Writes a world file.
