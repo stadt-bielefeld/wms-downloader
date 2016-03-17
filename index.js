@@ -94,14 +94,12 @@ function startDownload(options, callback) {
 	try {
 		input.checkOptions(options);
 
-		// console.log('Task ' + options.task.id + ' was started.');
 		handleTask(options, function(err) {
 			delete progress[options.task.id];
 
 			if (err) {
 				callback(err);
 			} else {
-				// console.log('Task ' + options.task.id + ' was finished.');
 				callback(null);
 			}
 		});
@@ -732,7 +730,7 @@ function getProgress(taskId) {
 
 		progress[taskId].percent = Math.round(((progress[taskId].tilesCompleted * 100.0) / progress[taskId].tiles) * 100) / 100.0;
 
-		if (progress[taskId].percent !== 0) {
+		if (progress[taskId].tilesCompleted !== 0) {
 
 			var dif = progress[taskId].lastTileDate.getTime() - progress[taskId].startDate.getTime();
 			var dif2 = new Date().getTime() - progress[taskId].lastTileDate.getTime();
@@ -762,6 +760,7 @@ function getProgress(taskId) {
  * @returns {Number}
  */
 function getCountOfTiles(options) {
+	input.checkOptions(options);
 
 	var countOfAllTiles = 0;
 
@@ -769,6 +768,7 @@ function getCountOfTiles(options) {
 	var widthM = options.task.area.bbox.xmax - options.task.area.bbox.xmin;
 	var heightM = options.task.area.bbox.ymax - options.task.area.bbox.ymin;
 
+	
 	for (var int = 0; int < options.tiles.resolutions.length; int++) {
 		var res = options.tiles.resolutions[int];
 		var widthPx = widthM / res.groundResolution;
@@ -779,9 +779,13 @@ function getCountOfTiles(options) {
 		tiles.xCount = Math.ceil(widthPx / tiles.sizePx);
 		tiles.yCount = Math.ceil(heightPx / tiles.sizePx);
 
+
+		
 		countOfAllTiles += tiles.xCount * tiles.yCount * options.wms.length;
 	}
 
+
+	
 	return countOfAllTiles;
 }
 
