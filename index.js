@@ -26,7 +26,7 @@ var requestProxy; // Request object with internet proxy
  * Inits the wms-downloader.
  * 
  * @param {string}
- *            options Config options
+ *          options Config options
  */
 function init(options) {
 	// Config options is set
@@ -54,10 +54,7 @@ function init(options) {
 		var userPass = '';
 		if (config.request.proxy.http.user) {
 			if (config.request.proxy.http.password) {
-				userPass = encodeURIComponent(config.request.proxy.http.user)
-						+ ':'
-						+ encodeURIComponent(config.request.proxy.http.password)
-						+ '@';
+				userPass = encodeURIComponent(config.request.proxy.http.user) + ':' + encodeURIComponent(config.request.proxy.http.password) + '@';
 			}
 		}
 
@@ -68,8 +65,7 @@ function init(options) {
 			},
 			strictSSL : false,
 			timeout : config.request.timeout,
-			"proxy" : 'http://' + userPass + config.request.proxy.http.host
-					+ ':' + config.request.proxy.http.port
+			"proxy" : 'http://' + userPass + config.request.proxy.http.host + ':' + config.request.proxy.http.port
 		});
 	}
 
@@ -78,11 +74,11 @@ function init(options) {
 /**
  * 
  * @param {object}
- *            options task.json
+ *          options task.json
  * @param callback
- *            function(err){}
+ *          function(err){}
  */
-function download(options, callback) {
+function startDownload(options, callback) {
 
 	progress[options.task.id] = {
 		"tiles" : getCountOfTiles(options),
@@ -90,7 +86,9 @@ function download(options, callback) {
 		"startDate" : new Date(),
 		"lastTileDate" : null,
 		"percent" : 0,
-		"waitingTime" : 0
+		"waitingTime" : 0,
+		"cancel" : false,
+		"cancelCallback" : null
 	}
 
 	try {
@@ -119,7 +117,7 @@ function download(options, callback) {
  * Returns the correct request object with the right proxy settings.
  * 
  * @param {string}
- *            url URL of tile
+ *          url URL of tile
  * @returns {object} Object from request module (var request =
  *          require('request');)
  */
@@ -142,9 +140,9 @@ function getRequestObject(url) {
 /**
  * 
  * @param {object}
- *            options
+ *          options
  * @param {function}
- *            callback function(err){}
+ *          callback function(err){}
  */
 function handleTask(options, callback) {
 
@@ -196,13 +194,13 @@ function handleTask(options, callback) {
 /**
  * 
  * @param {object}
- *            options
+ *          options
  * @param {string}
- *            ws Task workspace
+ *          ws Task workspace
  * @param {integer}
- *            resIdx Index of resolution
+ *          resIdx Index of resolution
  * @param callback
- *            function(err){}
+ *          function(err){}
  */
 function handleResolution(options, ws, resIdx, callback) {
 
@@ -261,15 +259,15 @@ function handleResolution(options, ws, resIdx, callback) {
 /**
  * 
  * @param {object}
- *            options
+ *          options
  * @param {string}
- *            ws Resolution workspace
+ *          ws Resolution workspace
  * @param {objext}
- *            res Resolution object
+ *          res Resolution object
  * @param {integer}
- *            wmsIdx Index of WMS
+ *          wmsIdx Index of WMS
  * @param {function}
- *            callback function(err){}
+ *          callback function(err){}
  */
 function handleWMS(options, ws, res, wmsIdx, callback) {
 
@@ -278,102 +276,92 @@ function handleWMS(options, ws, res, wmsIdx, callback) {
 
 	// Workspace of this WMS
 	var wmsWs = ws;
-	if(options.wms.length > 1){
+	if (options.wms.length > 1) {
 		wmsWs += '/' + wms.id;
 	}
 
 	// Create directory of WMS workspace
-	createDir(
-			wmsWs,
-			function(err) {
+	createDir(wmsWs, function(err) {
+
+		// Error
+		if (err) {
+			// Directory could not be created.
+
+			// Call callback function with error.
+			callback(err);
+		} else {
+			// No errors
+
+			// Calculate parameters of bbox
+			var bbox = {};
+			bbox.widthM = options.task.area.bbox.xmax - options.task.area.bbox.xmin;
+			bbox.heightM = options.task.area.bbox.ymax - options.task.area.bbox.ymin;
+			bbox.widthPx = bbox.widthM / res.groundResolution;
+			bbox.heightPx = bbox.heightM / res.groundResolution;
+
+			// Calculate parameters of tiles
+			var tiles = {};
+			tiles.sizePx = options.tiles.maxSizePx - 2 * options.tiles.gutterPx;
+			tiles.sizeM = tiles.sizePx * res.groundResolution;
+			tiles.xCount = Math.ceil(bbox.widthPx / tiles.sizePx);
+			tiles.yCount = Math.ceil(bbox.heightPx / tiles.sizePx);
+			tiles.xSizeOverAllPx = tiles.xCount * tiles.sizePx;
+			tiles.ySizeOverAllPx = tiles.yCount * tiles.sizePx;
+			tiles.gutterM = options.tiles.gutterPx * res.groundResolution;
+			tiles.x0 = options.task.area.bbox.xmin - (((tiles.xSizeOverAllPx - bbox.widthPx) / 2.0) * res.groundResolution);
+			tiles.y0 = options.task.area.bbox.ymax + (((tiles.ySizeOverAllPx - bbox.heightPx) / 2.0) * res.groundResolution);
+
+			// Handle all tiles
+			handleTiles(options, wms, wmsWs, tiles, 0, 0, res.groundResolution, function(err) {
 
 				// Error
 				if (err) {
-					// Directory could not be created.
+					// Could not handle tiles
 
 					// Call callback function with error.
 					callback(err);
 				} else {
 					// No errors
 
-					// Calculate parameters of bbox
-					var bbox = {};
-					bbox.widthM = options.task.area.bbox.xmax
-							- options.task.area.bbox.xmin;
-					bbox.heightM = options.task.area.bbox.ymax
-							- options.task.area.bbox.ymin;
-					bbox.widthPx = bbox.widthM / res.groundResolution;
-					bbox.heightPx = bbox.heightM / res.groundResolution;
+					// Raise wms index
+					wmsIdx++;
 
-					// Calculate parameters of tiles
-					var tiles = {};
-					tiles.sizePx = options.tiles.maxSizePx - 2
-							* options.tiles.gutterPx;
-					tiles.sizeM = tiles.sizePx * res.groundResolution;
-					tiles.xCount = Math.ceil(bbox.widthPx / tiles.sizePx);
-					tiles.yCount = Math.ceil(bbox.heightPx / tiles.sizePx);
-					tiles.xSizeOverAllPx = tiles.xCount * tiles.sizePx;
-					tiles.ySizeOverAllPx = tiles.yCount * tiles.sizePx;
-					tiles.gutterM = options.tiles.gutterPx
-							* res.groundResolution;
-					tiles.x0 = options.task.area.bbox.xmin
-							- (((tiles.xSizeOverAllPx - bbox.widthPx) / 2.0) * res.groundResolution);
-					tiles.y0 = options.task.area.bbox.ymax
-							+ (((tiles.ySizeOverAllPx - bbox.heightPx) / 2.0) * res.groundResolution);
+					// Handle next WMS
+					if (wmsIdx < options.wms.length) {
+						handleWMS(options, ws, res, wmsIdx, callback);
+					} else {
+						// All WMS were handled
 
-					// Handle all tiles
-					handleTiles(options, wms, wmsWs, tiles, 0, 0,
-							res.groundResolution, function(err) {
-
-								// Error
-								if (err) {
-									// Could not handle tiles
-
-									// Call callback function with error.
-									callback(err);
-								} else {
-									// No errors
-
-									// Raise wms index
-									wmsIdx++;
-
-									// Handle next WMS
-									if (wmsIdx < options.wms.length) {
-										handleWMS(options, ws, res, wmsIdx,
-												callback);
-									} else {
-										// All WMS were handled
-
-										// Call callback function without errors
-										callback(null);
-									}
-
-								}
-							});
+						// Call callback function without errors
+						callback(null);
+					}
 
 				}
 			});
+
+		}
+	});
 
 }
 
 /**
  * 
  * @param {object}
- *            options
+ *          options
  * @param {object}
- *            wms WMS object
+ *          wms WMS object
  * @param {string}
- *            ws WMS workspace
+ *          ws WMS workspace
  * @param {object}
- *            tiles Object with tile parameters
+ *          tiles Object with tile parameters
  * @param {integer}
- *            xIdx X-Index of tile
+ *          xIdx X-Index of tile
  * @param {integer}
- *            yIdx Y-Index of tile
+ *          yIdx Y-Index of tile
  * @param {float}
- *            res Ground resolution
+ *          res Ground resolution
  * @param {function}
- *            callback function(err){}
+ *          callback function(err){}
  */
 function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, callback) {
 
@@ -393,8 +381,7 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, callback) {
 	var tYNGutter = tY0 + tiles.gutterM;
 
 	// GetMap parameters
-	var bboxGetMap = tX0Gutter + ',' + tY0Gutter + ',' + tXNGutter + ','
-			+ tYNGutter;
+	var bboxGetMap = tX0Gutter + ',' + tY0Gutter + ',' + tXNGutter + ',' + tYNGutter;
 	var widthGetMap = options.tiles.maxSizePx;
 	var heightGetMap = options.tiles.maxSizePx;
 
@@ -414,173 +401,144 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, callback) {
 	console.log(getMap);
 
 	// Filename of gutter tile
-	var fileGutterTile = ws + '/' + idOfTile + '_gutter.'
-			+ inputFormatDetails.fileExt;
+	var fileGutterTile = ws + '/' + idOfTile + '_gutter.' + inputFormatDetails.fileExt;
 
 	// Filename of tile
 	var fileTile = ws + '/' + idOfTile + '.' + outputFormatDetails.fileExt;
 
 	// Write gutter tile
-	writeTile(
-			ws + '/' + idOfTile + '_gutter.' + inputFormatDetails.fileExt,
-			getMap,
-			getRequestObject(getMap),
-			function(err, result) {
+	writeTile(ws + '/' + idOfTile + '_gutter.' + inputFormatDetails.fileExt, getMap, getRequestObject(getMap), function(err, result) {
+
+		// Error
+		if (err) {
+			// Tile could not be downloaded.
+
+			// Call callback function with error.
+			callback(err);
+		} else {
+			// No errors
+			// Tile was downloaded
+
+			// Crop tile
+			cropTile(fileGutterTile, fileTile, tiles.sizePx, options.tiles.gutterPx, function(err) {
 
 				// Error
 				if (err) {
-					// Tile could not be downloaded.
+					// Tile could not be cropped
 
 					// Call callback function with error.
 					callback(err);
 				} else {
 					// No errors
-					// Tile was downloaded
+					// File cropped
 
-					// Crop tile
-					cropTile(
-							fileGutterTile,
-							fileTile,
-							tiles.sizePx,
-							options.tiles.gutterPx,
-							function(err) {
+					// Delete old gutter tile
+					deleteFile(fileGutterTile, function(err) {
+
+						// Error
+						if (err) {
+							// File could not be deleted
+
+							// Call callback function
+							// with error.
+							callback(err);
+						} else {
+							// No errors
+							// File was deleted
+
+							// Write world file
+							writeWorldFile(ws + '/' + idOfTile + '.' + outputFormatDetails.worldFileExt, worldFile, function(err) {
 
 								// Error
 								if (err) {
-									// Tile could not be cropped
+									// File could not be written.
 
-									// Call callback function with error.
+									// Call	callback function with error.
 									callback(err);
 								} else {
 									// No errors
-									// File cropped
+									// World
+									// file was
+									// written
 
-									// Delete old gutter tile
-									deleteFile(
-											fileGutterTile,
-											function(err) {
+									try {
+										progress[options.task.id].tilesCompleted++;
+										progress[options.task.id].lastTileDate = new Date();
 
-												// Error
-												if (err) {
-													// File could not be deleted
+										if (progress[options.task.id].cancel) {
+											progress[options.task.id].cancelCallback(null);
 
-													// Call callback function
-													// with error.
-													callback(err);
-												} else {
-													// No errors
-													// File was deleted
+											throw new Error('The task "' + options.task.id + '" has been canceled.');
+										}
 
-													// Write world file
-													writeWorldFile(
-															ws
-																	+ '/'
-																	+ idOfTile
-																	+ '.'
-																	+ outputFormatDetails.worldFileExt,
-															worldFile,
-															function(err) {
+										// NEXT
+										// TILE
+										// Raise
+										// x
+										// tile
+										// index
+										xIdx++;
+										if (xIdx < tiles.xCount) {
 
-																// Error
-																if (err) {
-																	// File
-																	// could not
-																	// be
-																	// written.
+											// Handle
+											// next
+											// tile
+											// in x
+											// direction
+											handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, callback);
+										} else {
+											// Raise
+											// y
+											// tile
+											// index
+											yIdx++;
+											if (yIdx < tiles.yCount) {
 
-																	// Call
-																	// callback
-																	// function
-																	// with
-																	// error.
-																	callback(err);
-																} else {
-																	// No errors
-																	// World
-																	// file was
-																	// written
-																	progress[options.task.id].tilesCompleted++;
-																	progress[options.task.id].lastTileDate = new Date();
+												// Set
+												// x
+												// tile
+												// index
+												// back
+												// to
+												// zero
+												xIdx = 0;
 
-																	// NEXT TILE
-																	// Raise x
-																	// tile
-																	// index
-																	xIdx++;
-																	if (xIdx < tiles.yCount) {
+												// Handle
+												// next
+												// tile
+												// in y
+												// direction
+												handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, callback);
+											} else {
+												// All
+												// tiles
+												// were
+												// written.
 
-																		// Handle
-																		// next
-																		// tile
-																		// in x
-																		// direction
-																		handleTiles(
-																				options,
-																				wms,
-																				ws,
-																				tiles,
-																				xIdx,
-																				yIdx,
-																				res,
-																				callback);
-																	} else {
-																		// Raise
-																		// y
-																		// tile
-																		// index
-																		yIdx++;
-																		if (yIdx < tiles.yCount) {
+												// Call
+												// callback
+												// function
+												// without
+												// errors
+												callback(null);
+											}
+										}
 
-																			// Set
-																			// x
-																			// tile
-																			// index
-																			// back
-																			// to
-																			// zero
-																			xIdx = 0;
-
-																			// Handle
-																			// next
-																			// tile
-																			// in y
-																			// direction
-																			handleTiles(
-																					options,
-																					wms,
-																					ws,
-																					tiles,
-																					xIdx,
-																					yIdx,
-																					res,
-																					callback);
-																		} else {
-																			// All
-																			// tiles
-																			// were
-																			// written.
-
-																			// Call
-																			// callback
-																			// function
-																			// without
-																			// errors
-																			callback(null);
-																		}
-																	}
-
-																}
-															});
-
-												}
-
-											});
-
+									} catch (err) {
+										callback(err);
+									}
 								}
 							});
 
+						}
+
+					});
+
 				}
 			});
+
+		}
+	});
 
 }
 
@@ -588,11 +546,11 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, callback) {
  * Writes a world file.
  * 
  * @param {string}
- *            file Path to world file
+ *          file Path to world file
  * @param {string}
- *            content Content of world file
+ *          content Content of world file
  * @param {function}
- *            callback function(err){}
+ *          callback function(err){}
  */
 function writeWorldFile(file, content, callback) {
 	fs.writeFile(file, content, callback);
@@ -602,14 +560,14 @@ function writeWorldFile(file, content, callback) {
  * Downloads and writes a tile.
  * 
  * @param {string}
- *            file Path where the tile is to be stored.
+ *          file Path where the tile is to be stored.
  * @param {string}
- *            url URL of tile
+ *          url URL of tile
  * @param {object}
- *            request Object from request module (var request =
- *            require('request');)
+ *          request Object from request module (var request =
+ *          require('request');)
  * @param {function}
- *            callback function(err,res){}
+ *          callback function(err,res){}
  */
 function writeTile(file, url, request, callback) {
 	// Result of request
@@ -649,49 +607,47 @@ function writeTile(file, url, request, callback) {
  * Crops the tile on the basis of gutter.
  * 
  * @param {string}
- *            oldFile File to be crop
+ *          oldFile File to be crop
  * @param {string}
- *            newFile New cropped file
+ *          newFile New cropped file
  * @param {integer}
- *            tileSizePx Size of the new file / new tile
+ *          tileSizePx Size of the new file / new tile
  * @param {integer}
- *            gutterSizePx Size of gutter in old file / old tile
+ *          gutterSizePx Size of gutter in old file / old tile
  * @param {function}
- *            callback function(err) {}
+ *          callback function(err) {}
  */
 function cropTile(oldFile, newFile, tileSizePx, gutterSizePx, callback) {
-	gm(oldFile).crop(tileSizePx, tileSizePx, gutterSizePx, gutterSizePx).write(
-			newFile, function(err) {
-				callback(err);
-			});
+	gm(oldFile).crop(tileSizePx, tileSizePx, gutterSizePx, gutterSizePx).write(newFile, function(err) {
+		callback(err);
+	});
 };
 
 /**
  * Merges/Composites two tiles.
  * 
  * @param {string}
- *            firstFile
+ *          firstFile
  * @param {string}
- *            secondFile
+ *          secondFile
  * @param {string}
- *            outputFile
+ *          outputFile
  * @param {function}
- *            callback function(err) {}
+ *          callback function(err) {}
  */
 function compositeTiles(firstFile, secondFile, outputFile, callback) {
-	gm(firstFile).composite(secondFile).geometry('+0+0').write(outputFile,
-			function(err) {
-				callback(err);
-			});
+	gm(firstFile).composite(secondFile).geometry('+0+0').write(outputFile, function(err) {
+		callback(err);
+	});
 }
 
 /**
  * Deletes a file.
  * 
  * @param {string}
- *            file File to be deleted.
+ *          file File to be deleted.
  * @param {function}
- *            callback function(err){}
+ *          callback function(err){}
  */
 function deleteFile(file, callback) {
 	fs.unlink(file, callback)
@@ -701,9 +657,9 @@ function deleteFile(file, callback) {
  * Creates a new directory, if it does not exist.
  * 
  * @param {string}
- *            path Path of new directory
+ *          path Path of new directory
  * @param {function}
- *            callback function(err){}
+ *          callback function(err){}
  */
 function createDir(path, callback) {
 	// Check if workspace exists
@@ -725,13 +681,13 @@ function createDir(path, callback) {
  * Creates a GetMap url.
  * 
  * @param {object}
- *            wms WMS object
+ *          wms WMS object
  * @param {string}
- *            bbox Comma-separated bbox
+ *          bbox Comma-separated bbox
  * @param {integer|string}
- *            width Width of bbox in pixel
+ *          width Width of bbox in pixel
  * @param {integer|string}
- *            height height of bbox in pixel
+ *          height height of bbox in pixel
  * @returns {string} GetMap url
  */
 function createGetMap(wms, bbox, width, height) {
@@ -752,11 +708,11 @@ function createGetMap(wms, bbox, width, height) {
  * Creates world file content.
  * 
  * @param {float}
- *            x0 X value of start point (top-left)
+ *          x0 X value of start point (top-left)
  * @param {float}
- *            y0 Y value of start point (top-left)
+ *          y0 Y value of start point (top-left)
  * @param {float}
- *            res Ground resolution
+ *          res Ground resolution
  * @returns {String} Content of world file
  */
 function createWorldFile(x0, y0, res) {
@@ -774,20 +730,15 @@ function getProgress(taskId) {
 
 	if (progress[taskId]) {
 
-		progress[taskId].percent = Math
-				.round(((progress[taskId].tilesCompleted * 100.0) / progress[taskId].tiles) * 100) / 100.0;
+		progress[taskId].percent = Math.round(((progress[taskId].tilesCompleted * 100.0) / progress[taskId].tiles) * 100) / 100.0;
 
 		if (progress[taskId].percent !== 0) {
 
-			var dif = progress[taskId].lastTileDate.getTime()
-					- progress[taskId].startDate.getTime();
-			var dif2 = new Date().getTime()
-					- progress[taskId].lastTileDate.getTime();
+			var dif = progress[taskId].lastTileDate.getTime() - progress[taskId].startDate.getTime();
+			var dif2 = new Date().getTime() - progress[taskId].lastTileDate.getTime();
 
 			// Waiting time in ms
-			progress[taskId].waitingTime = Math
-					.round((((100.0 - progress[taskId].percent) * dif) / progress[taskId].percent)
-							- dif2);
+			progress[taskId].waitingTime = Math.round((((100.0 - progress[taskId].percent) * dif) / progress[taskId].percent) - dif2);
 
 			if (progress[taskId].waitingTime < 0) {
 				progress[taskId].waitingTime = 0;
@@ -807,7 +758,7 @@ function getProgress(taskId) {
  * Calculates the count of tiles of a task.
  * 
  * @param {object}
- *            options Task options
+ *          options Task options
  * @returns {Number}
  */
 function getCountOfTiles(options) {
@@ -834,8 +785,30 @@ function getCountOfTiles(options) {
 	return countOfAllTiles;
 }
 
+/**
+ * Throws a cancel error in the download task.
+ * 
+ * @param {string}
+ *          id Id of task
+ * @param {function}
+ *          callback
+ */
+function cancelDownload(taskId, callback) {
+	if (progress[taskId]) {
+		progress[taskId].cancel = true;
+		progress[taskId].cancelCallback = callback;
+	} else {
+		callback({
+			name : 'TaskNotExist',
+			message : 'The task with id "' + taskId + '" does not exist.'
+		});
+	}
+
+}
+
 module.exports = {
 	init : init,
-	download : download,
+	startDownload : startDownload,
+	cancelDownload : cancelDownload,
 	getProgress : getProgress
 }

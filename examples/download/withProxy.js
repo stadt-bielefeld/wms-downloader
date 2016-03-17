@@ -69,7 +69,7 @@ var progressInterval = setInterval(function() {
 }, 1000);
 
 // Start download
-downloader.download(taskOptions, function(err) {
+downloader.startDownload(taskOptions, function(err) {
 
 	// Stop progress printing
 	clearInterval(progressInterval);
