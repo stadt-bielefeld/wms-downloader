@@ -72,6 +72,7 @@ function init(options) {
 };
 
 /**
+ * It starts the download of one or more Web Map Services.
  * 
  * @param {object}
  *          options task.json
@@ -136,6 +137,7 @@ function getRequestObject(url) {
 }
 
 /**
+ * It handles a download task of Web Map Services.
  * 
  * @param {object}
  *          options
@@ -190,6 +192,7 @@ function handleTask(options, callback) {
 };
 
 /**
+ * It handles recursive all resolutions of a task.
  * 
  * @param {object}
  *          options
@@ -255,6 +258,7 @@ function handleResolution(options, ws, resIdx, callback) {
 }
 
 /**
+ * It handles recursive all Web Map Services of a resolution.
  * 
  * @param {object}
  *          options
@@ -343,6 +347,7 @@ function handleWMS(options, ws, res, wmsIdx, callback) {
 }
 
 /**
+ * It handles recursive all tiles of a resolution of a Web Map Service.
  * 
  * @param {object}
  *          options
@@ -451,13 +456,11 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, callback) {
 								if (err) {
 									// File could not be written.
 
-									// Call	callback function with error.
+									// Call callback function with error.
 									callback(err);
 								} else {
 									// No errors
-									// World
-									// file was
-									// written
+									// World file was written
 
 									try {
 										progress[options.task.id].tilesCompleted++;
@@ -469,55 +472,25 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, callback) {
 											throw new Error('The task "' + options.task.id + '" has been canceled.');
 										}
 
-										// NEXT
-										// TILE
-										// Raise
-										// x
-										// tile
-										// index
+										// NEXT TILE Raise x tile index
 										xIdx++;
 										if (xIdx < tiles.xCount) {
 
-											// Handle
-											// next
-											// tile
-											// in x
-											// direction
+											// Handle next tile in x direction
 											handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, callback);
 										} else {
-											// Raise
-											// y
-											// tile
-											// index
+											// Raise y tile index
 											yIdx++;
 											if (yIdx < tiles.yCount) {
 
-												// Set
-												// x
-												// tile
-												// index
-												// back
-												// to
-												// zero
+												// Set x tile index back to zero
 												xIdx = 0;
 
-												// Handle
-												// next
-												// tile
-												// in y
-												// direction
+												// Handle next tile in y direction
 												handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, callback);
 											} else {
-												// All
-												// tiles
-												// were
-												// written.
-
-												// Call
-												// callback
-												// function
-												// without
-												// errors
+												// All tiles were written.
+												// Call callback function without errors
 												callback(null);
 											}
 										}
@@ -724,32 +697,54 @@ function createWorldFile(x0, y0, res) {
 	return ret;
 }
 
+/**
+ * Returns the progress of a task.
+ * 
+ * @taskId {string} ID of the task
+ * @returns {object}
+ */
 function getProgress(taskId) {
 
+	// Task exists
 	if (progress[taskId]) {
 
+		// Calculate the progress in percent
 		progress[taskId].percent = Math.round(((progress[taskId].tilesCompleted * 100.0) / progress[taskId].tiles) * 100) / 100.0;
 
+		// If completed tiles are available
 		if (progress[taskId].tilesCompleted !== 0) {
 
+			// Calculate the time difference between start of task and the last
+			// completed tile
 			var dif = progress[taskId].lastTileDate.getTime() - progress[taskId].startDate.getTime();
+
+			// Calculate the time difference between current time and time of last
+			// completed tile
 			var dif2 = new Date().getTime() - progress[taskId].lastTileDate.getTime();
 
-			// Waiting time in ms
+			// Calculate the waiting time in ms
 			progress[taskId].waitingTime = Math.round((((100.0 - progress[taskId].percent) * dif) / progress[taskId].percent) - dif2);
 
+			// Avoid negative waiting times
 			if (progress[taskId].waitingTime < 0) {
 				progress[taskId].waitingTime = 0;
 			}
 
 		} else {
+			// No completed tiles are available
+
+			// Can't calculate the waiting time.
+			// Set waiting time to 0
 			progress[taskId].waitingTime = 0;
 		}
 
+		// Return the progress object
 		return progress[taskId];
+	} else {
+		// Task do not exists
+		return null;
 	}
 
-	return null;
 }
 
 /**
@@ -760,32 +755,36 @@ function getProgress(taskId) {
  * @returns {Number}
  */
 function getCountOfTiles(options) {
+
 	input.checkOptions(options);
 
+	// Counter of all tiles
 	var countOfAllTiles = 0;
 
 	// Calculate parameters of bbox
 	var widthM = options.task.area.bbox.xmax - options.task.area.bbox.xmin;
 	var heightM = options.task.area.bbox.ymax - options.task.area.bbox.ymin;
 
-	
+	// Iterate over all resolutions
 	for (var int = 0; int < options.tiles.resolutions.length; int++) {
+
+		// Current resolution
 		var res = options.tiles.resolutions[int];
+
+		// Size of all tiles in sum
 		var widthPx = widthM / res.groundResolution;
 		var heightPx = heightM / res.groundResolution;
 
+		// Calculate tiles count of the current resolution
 		var tiles = {};
 		tiles.sizePx = options.tiles.maxSizePx - 2 * options.tiles.gutterPx;
 		tiles.xCount = Math.ceil(widthPx / tiles.sizePx);
 		tiles.yCount = Math.ceil(heightPx / tiles.sizePx);
 
-
-		
+		// Note tiles count of current resolution
 		countOfAllTiles += tiles.xCount * tiles.yCount * options.wms.length;
 	}
 
-
-	
 	return countOfAllTiles;
 }
 
