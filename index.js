@@ -212,7 +212,7 @@ function handleResolution(options, ws, resIdx, callback) {
 
 	// Workspace of this resolutions
 	var resWs;
-	console.log(options.tiles.resolutions.length);
+
 	if(options.tiles.resolutions.length == 1){
 		resWs = ws;
 	}else{
@@ -409,7 +409,7 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, callback) {
 	var outputFormatDetails = input.getFormatDetails(options.task.format);
 
 	// Print GetMap url in terminal
-	console.log(getMap);
+	//console.log(getMap);
 
 	// Filename of gutter tile
 	var fileGutterTile = ws + '/' + idOfTile + '_gutter.' + inputFormatDetails.fileExt;
