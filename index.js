@@ -14,7 +14,13 @@ var input = require(__dirname + '/input.js');
 /**
  * Config file.
  */
-var config;
+var config = {
+	"request" : {
+		"userAgent" : "wms-downloader",
+		"timeout" : 30000,
+		"proxy" : null
+	}
+};
 
 /**
  * Request object from request module.
@@ -32,11 +38,7 @@ function init(options) {
 	// Config options is set
 	if (options) {
 		config = options;
-	} else {
-		// Config file is not set.
-		// Load default config file
-		config = require(__dirname + '/defaultConfig.json');
-	}
+	} 
 
 	// Init request object
 	request = require('request').defaults({
@@ -209,8 +211,14 @@ function handleResolution(options, ws, resIdx, callback) {
 	var res = options.tiles.resolutions[resIdx];
 
 	// Workspace of this resolutions
-	var resWs = ws + '/' + res.id;
-
+	var resWs;
+	console.log(options.tiles.resolutions.length);
+	if(options.tiles.resolutions.length == 1){
+		resWs = ws;
+	}else{
+		resWs = ws + '/' + res.id;
+	}
+	
 	// Create directory of resolution workspace
 	createDir(resWs, function(err) {
 		// Error

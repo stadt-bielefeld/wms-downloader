@@ -4,8 +4,7 @@
   "description": "It allows downloading of Web Map Services (WMS).",
   "main": "index.js",
   "directories": {
-    "example": "examples",
-    "test": "tests"
+    "example": "examples"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,10 +22,10 @@
   },
   "keywords": [
     "wms",
-    "ows",
     "download",
     "downloader",
-    "tiles"
+    "tiles",
+    "ogc"
   ],
   "bugs": {
     "url": "https://github.com/stadt-bielefeld/wms-downloader/issues"
