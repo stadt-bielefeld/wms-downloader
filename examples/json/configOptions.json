@@ -1,0 +1,9 @@
+{
+	"request" : {
+		"userAgent" : "wms-downloader",
+		"timeout" : 30000,
+		"proxy": {
+			
+		}
+	}
+}

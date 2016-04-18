@@ -1,15 +1,67 @@
 var fs = require('fs');
 var gm = require('gm');
+var Validator = require('jsonschema').Validator;
+var v = new Validator();
+
+// Load task schema
+var taskSchema = require('./schemas/task.json');
+
+// Load config schema
+var configSchema = require('./schemas/config.json');
+
+const
+SUPPORTED_FORMATS = [ {
+	"title" : "PNG",
+	"fileExt" : "png",
+	"worldFileExt" : "pgw",
+	"mimeType" : "image/png"
+}, {
+	"title" : "PNG 8-Bit",
+	"fileExt" : "png",
+	"worldFileExt" : "pgw",
+	"mime_type" : "image/png; mode=8bit"
+}, {
+	"title" : "JPG",
+	"fileExt" : "jpg",
+	"worldFileExt" : "jgw",
+	"mimeType" : "image/jpeg"
+}, {
+	"title" : "GIF",
+	"fileExt" : "gif",
+	"worldFileExt" : "gfw",
+	"mimeType" : "image/gif"
+}, {
+	"title" : "TIFF",
+	"fileExt" : "tif",
+	"worldFileExt" : "tfw",
+	"mimeType" : "image/tiff"
+} ];
+
+function getFormatDetails(mimeType) {
+	var int, f;
+
+	// Iterate over all supported formats
+	for (int = 0; int < SUPPORTED_FORMATS.length; int++) {
+
+		// Format entry
+		f = SUPPORTED_FORMATS[int];
+
+		// Check mime type
+		if (f.mimeType === mimeType) {
+
+			// Return founded format
+			return f;
+		}
+	}
+
+	return null;
+}
 
 /**
  * Object with progress information of all tasks.
  */
 var progress = {};
 
-/**
- * Object to check the task.json
- */
-var input = require(__dirname + '/input.js');
 
 /**
  * Config file.
@@ -17,8 +69,7 @@ var input = require(__dirname + '/input.js');
 var config = {
 	"request" : {
 		"userAgent" : "wms-downloader",
-		"timeout" : 30000,
-		"proxy" : null
+		"timeout" : 30000
 	}
 };
 
@@ -35,10 +86,15 @@ var requestProxy; // Request object with internet proxy
  *          options Config options
  */
 function init(options) {
-	// Config options is set
-	if (options) {
+
+	var valid = isValid(options, configSchema);
+
+	if (valid == true) {
 		config = options;
-	} 
+	} else {
+		// TODO
+		console.log(valid);
+	}
 
 	// Init request object
 	request = require('request').defaults({
@@ -83,33 +139,44 @@ function init(options) {
  */
 function startDownload(options, callback) {
 
-	progress[options.task.id] = {
-		"tiles" : getCountOfTiles(options),
-		"tilesCompleted" : 0,
-		"startDate" : new Date(),
-		"lastTileDate" : null,
-		"percent" : 0,
-		"waitingTime" : 0,
-		"cancel" : false,
-		"cancelCallback" : null
-	}
+	// Validate options
+	var valid = isValid(options, taskSchema);
 
-	try {
-		input.checkOptions(options);
+	// Options are valid
+	if (valid == true) {
 
-		handleTask(options, function(err) {
+		progress[options.task.id] = {
+			"tiles" : getCountOfTiles(options),
+			"tilesCompleted" : 0,
+			"startDate" : new Date(),
+			"lastTileDate" : null,
+			"percent" : 0,
+			"waitingTime" : 0,
+			"cancel" : false,
+			"cancelCallback" : null
+		}
+
+		try {
+
+			handleTask(options, function(err) {
+				delete progress[options.task.id];
+
+				if (err) {
+					callback(err);
+				} else {
+					callback(null);
+				}
+			});
+
+		} catch (err) {
 			delete progress[options.task.id];
+			callback(err);
+		}
 
-			if (err) {
-				callback(err);
-			} else {
-				callback(null);
-			}
-		});
-
-	} catch (err) {
-		delete progress[options.task.id];
-		callback(err);
+	} else {
+		// Options are note valid
+		// TODO Error
+		console.log(valid);
 	}
 
 }
@@ -213,12 +280,12 @@ function handleResolution(options, ws, resIdx, callback) {
 	// Workspace of this resolutions
 	var resWs;
 
-	if(options.tiles.resolutions.length == 1){
+	if (options.tiles.resolutions.length == 1) {
 		resWs = ws;
-	}else{
+	} else {
 		resWs = ws + '/' + res.id;
 	}
-	
+
 	// Create directory of resolution workspace
 	createDir(resWs, function(err) {
 		// Error
@@ -403,13 +470,13 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, callback) {
 	var worldFile = createWorldFile(tX0, tY0, res);
 
 	// Input format of WMS
-	var inputFormatDetails = input.getFormatDetails(wms.getmap.FORMAT);
+	var inputFormatDetails = getFormatDetails(wms.getmap.FORMAT);
 
 	// Output format of tile
-	var outputFormatDetails = input.getFormatDetails(options.task.format);
+	var outputFormatDetails = getFormatDetails(options.task.format);
 
 	// Print GetMap url in terminal
-	//console.log(getMap);
+	// console.log(getMap);
 
 	// Filename of gutter tile
 	var fileGutterTile = ws + '/' + idOfTile + '_gutter.' + inputFormatDetails.fileExt;
@@ -471,13 +538,16 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, callback) {
 									// World file was written
 
 									try {
-										progress[options.task.id].tilesCompleted++;
-										progress[options.task.id].lastTileDate = new Date();
 
-										if (progress[options.task.id].cancel) {
-											progress[options.task.id].cancelCallback(null);
+										if (progress[options.task.id]) {
+											progress[options.task.id].tilesCompleted++;
+											progress[options.task.id].lastTileDate = new Date();
 
-											throw new Error('The task "' + options.task.id + '" has been canceled.');
+											if (progress[options.task.id].cancel) {
+												progress[options.task.id].cancelCallback(null);
+
+												throw new Error('The task "' + options.task.id + '" has been canceled.');
+											}
 										}
 
 										// NEXT TILE Raise x tile index
@@ -764,7 +834,8 @@ function getProgress(taskId) {
  */
 function getCountOfTiles(options) {
 
-	input.checkOptions(options);
+	// Determine ground resolution if scale is only set
+	determineGroundResolution(options);
 
 	// Counter of all tiles
 	var countOfAllTiles = 0;
@@ -815,6 +886,35 @@ function cancelDownload(taskId, callback) {
 		});
 	}
 
+}
+
+function isValid(options, schema) {
+	if (options) {
+		if (schema) {
+
+			// Validate
+			var err = v.validate(options, schema).errors;
+			if (err.length == 0) {
+				// All ok
+				return true;
+			} else {
+				// Errors
+				return err;
+			}
+		}
+	}
+}
+
+function determineGroundResolution(options) {
+	var res = options.tiles.resolutions;
+	for (var int = 0; int < res.length; int++) {
+		var r = res[int];
+
+		// Calculate resolution
+		if (!r.groundResolution) {
+			r.groundResolution = (0.0254 * r.scale) / r.dpi;
+		}
+	}
 }
 
 module.exports = {

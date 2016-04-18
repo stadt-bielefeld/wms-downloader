@@ -1,6 +1,6 @@
 {
   "name": "wms-downloader",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "It allows downloading of Web Map Services (WMS).",
   "main": "index.js",
   "directories": {
@@ -13,6 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "gm": "^1.21.1",
+    "jsonschema": "^1.1.0",
     "request": "^2.69.0"
   },
   "devDependencies": {},

@@ -1,4 +1,5 @@
-var downloader = require('wms-downloader');
+var downloader = require(__dirname + '/../../index.js');
+// var downloader = require('wms-downloader');
 
 var taskOptions = {
 	"task" : {
@@ -19,8 +20,13 @@ var taskOptions = {
 		"maxSizePx" : 2500,
 		"gutterPx" : 250,
 		"resolutions" : [ {
-			"id" : "id_of_resolution_10",
-			"groundResolution" : 10
+			"id" : "id_of_resolution_25000",
+			"scale" : 25000,
+			"dpi" : 72
+		}, {
+			"id" : "id_of_resolution_50000",
+			"scale" : 50000,
+			"dpi" : 72
 		} ]
 	},
 	"wms" : [ {
@@ -39,11 +45,32 @@ var taskOptions = {
 				"MAP_RESOLUTION" : 72
 			}
 		}
+	}, {
+		"id" : "id_of_wms_bplan_ue",
+		"getmap" : {
+			"url" : "http://www.bielefeld01.de/geodaten/geo_dienste/wms.php?url=bplan_wms_uebersicht_641&",
+			"kvp" : {
+				"SERVICE" : "WMS",
+				"REQUEST" : "GetMap",
+				"VERSION" : "1.3.0",
+				"LAYERS" : "bebauungsplanuebersicht_wms",
+				"STYLES" : "",
+				"CRS" : "EPSG:25832",
+				"FORMAT" : "image/png",
+				"TRANSPARENT" : "TRUE",
+				"MAP_RESOLUTION" : 72
+			}
+		}
 	} ]
 };
 
 // Init downloader
-downloader.init();
+downloader.init({
+	"request" : {
+		"userAgent" : "wms-downloader",
+		"timeout" : 30000
+	}
+});
 
 // Print progress
 var progressInterval = setInterval(function() {

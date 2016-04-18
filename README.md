@@ -34,7 +34,7 @@ npm install wms-downloader
 
 ### Example
 
-#### Without proxy
+#### Download
 ```js
 var downloader = require('wms-downloader');
 
@@ -58,7 +58,8 @@ var taskOptions = {
 		"gutterPx" : 250,
 		"resolutions" : [ {
 			"id" : "id_of_resolution_10",
-			"groundResolution" : 10
+			"scale" : 25000,
+			"dpi" : 72
 		} ]
 	},
 	"wms" : [ {
@@ -81,7 +82,12 @@ var taskOptions = {
 };
 
 // Init downloader
-downloader.init();
+downloader.init({
+	"request" : {
+		"userAgent" : "wms-downloader",
+		"timeout" : 30000
+	}
+});
 
 // Print progress
 var progressInterval = setInterval(function() {
@@ -104,7 +110,7 @@ downloader.startDownload(taskOptions, function(err) {
 });
 ```
 
-#### With proxy
+#### Download with proxy
 ```js
 var downloader = require('wms-downloader');
 

@@ -1,4 +1,5 @@
-var downloader = require('wms-downloader');
+var downloader = require(__dirname + '/../../index.js');
+//var downloader = require('wms-downloader');
 
 var configOptions = {
 	"request" : {
@@ -35,9 +36,8 @@ var taskOptions = {
 		"maxSizePx" : 2500,
 		"gutterPx" : 250,
 		"resolutions" : [ {
-			"id" : "id_of_resolution_25000",
-			"scale" : 25000,
-			"dpi" : 72
+			"id" : "id_of_resolution_10",
+			"groundResolution" : 10
 		} ]
 	},
 	"wms" : [ {
