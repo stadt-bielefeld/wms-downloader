@@ -22,11 +22,11 @@ var taskOptions = {
 		"resolutions" : [ {
 			"id" : "id_of_resolution_25000",
 			"scale" : 25000,
-			"dpi" : 72
+			"dpi" : 96
 		}, {
 			"id" : "id_of_resolution_50000",
 			"scale" : 50000,
-			"dpi" : 72
+			"dpi" : 96
 		} ]
 	},
 	"wms" : [ {

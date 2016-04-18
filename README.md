@@ -59,7 +59,7 @@ var taskOptions = {
 		"resolutions" : [ {
 			"id" : "id_of_resolution_10",
 			"scale" : 25000,
-			"dpi" : 72
+			"dpi" : 96
 		} ]
 	},
 	"wms" : [ {
@@ -151,7 +151,7 @@ var taskOptions = {
 		"resolutions" : [ {
 			"id" : "id_of_resolution_25000",
 			"scale": 25000,
-            "dpi": 72
+            "dpi": 96
 		} ]
 	},
 	"wms" : [ {
