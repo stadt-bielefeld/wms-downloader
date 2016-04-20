@@ -936,6 +936,7 @@ function determineGroundResolution(options) {
 
 module.exports = {
 	init : init,
+	getRequestObject : getRequestObject,
 	startDownload : startDownload,
 	cancelDownload : cancelDownload,
 	getProgress : getProgress
