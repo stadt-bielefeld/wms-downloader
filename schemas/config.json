@@ -98,5 +98,8 @@
         "timeout"
       ]
     }
-  }
+  },
+  "required": [
+    "request"
+  ]
 }

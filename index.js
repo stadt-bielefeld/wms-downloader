@@ -4,10 +4,10 @@ var Validator = require('jsonschema').Validator;
 var v = new Validator();
 
 // Load task schema
-var taskSchema = require('./schemas/task.json');
+var taskSchema = require(__dirname + '/schemas/task.json');
 
 // Load config schema
-var configSchema = require('./schemas/config.json');
+var configSchema = require(__dirname + '/schemas/config.json');
 
 const
 SUPPORTED_FORMATS = [ {
@@ -681,7 +681,7 @@ function cropTile(oldFile, newFile, tileSizePx, gutterSizePx, callback) {
 			callback(err);
 		});
 	} else {
-		
+
 		gm(oldFile).crop(tileSizePx, tileSizePx, gutterSizePx, gutterSizePx).write(newFile, function(err) {
 			callback(err);
 		});
