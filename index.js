@@ -934,10 +934,20 @@ function determineGroundResolution(options) {
 	}
 }
 
+/**
+ * Returns the config options of the wms-downloader.
+ * 
+ * @returns {object} Config options of the wms-downloader
+ */
+function getConfig() {
+	return config;
+}
+
 module.exports = {
 	init : init,
 	getRequestObject : getRequestObject,
 	startDownload : startDownload,
 	cancelDownload : cancelDownload,
-	getProgress : getProgress
+	getProgress : getProgress,
+	getConfig : getConfig
 }
