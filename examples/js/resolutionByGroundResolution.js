@@ -1,7 +1,7 @@
-var downloader = require(__dirname + '/../../index.js');
-//var downloader = require('wms-downloader');
+const downloader = require(__dirname + '/../../index.js');
+//const downloader = require('wms-downloader');
 
-var taskOptions = {
+let taskOptions = {
 	"task" : {
 		"id" : "id_of_my_first_download",
 		"title" : "My first WMS download.",
@@ -52,8 +52,8 @@ downloader.init({
 });
 
 // Print progress
-var progressInterval = setInterval(function() {
-	var progress = downloader.getProgress(taskOptions.task.id);
+let progressInterval = setInterval(function() {
+	let progress = downloader.getProgress(taskOptions.task.id);
 	console.log('Progress: ' + progress.percent + '%, Waiting time: ' + progress.waitingTime + ' ms');
 }, 1000);
 

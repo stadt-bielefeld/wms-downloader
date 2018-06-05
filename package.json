@@ -1,22 +1,26 @@
 {
   "name": "wms-downloader",
-  "version": "0.2.3",
+  "version": "1.0.0",
   "description": "It allows downloading of Web Map Services (WMS).",
   "main": "index.js",
   "directories": {
     "example": "examples"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-api-doc": "node_modules/.bin/documentation build src/** -f md -o docs/api/index.md --watch --config docs/api/config.yaml"
   },
-  "author": "Jens Pabel <jens.pabel@bielefeld.de>",
+  "author": "Jens Brokfeld <jens.brokfeld@bielefeld.de>",
   "license": "MIT",
   "dependencies": {
-    "gm": "^1.21.1",
-    "jsonschema": "^1.1.0",
-    "request": "^2.69.0"
+    "fs-extra": "^6.0.1",
+    "gm": "^1.23.1",
+    "jsonschema": "^1.2.4",
+    "request": "^2.85.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "documentation": "^6.3.3"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/stadt-bielefeld/wms-downloader.git"
