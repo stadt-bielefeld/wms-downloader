@@ -1,0 +1,265 @@
+{
+  "type": "object",
+  "title": "Task options",
+  "description": "Options of a WMS download task.",
+  "name": "/",
+  "properties": {
+    "task": {
+      "id": "/task",
+      "type": "object",
+      "title": "Task information",
+      "description": "Object with information about the task.",
+      "name": "task",
+      "properties": {
+        "id": {
+          "id": "/task/id",
+          "type": "string",
+          "title": "Unique identifier",
+          "description": "Unique identifier of the task.",
+          "name": "id"
+        },
+        "title": {
+          "id": "/task/title",
+          "type": "string",
+          "title": "Human readable title",
+          "description": "Human readable title of the task.",
+          "name": "title",
+          "default": "Title of the Task."
+        },
+        "format": {
+          "id": "/task/format",
+          "type": "string",
+          "title": "Output format",
+          "description": "Output format of the tiles.",
+          "name": "format",
+          "default": "image/png",
+          "enum": [
+            "image/png",
+            "image/png; mode=8bit",
+            "image/jpeg",
+            "image/gif",
+            "image/tiff"
+          ]
+        },
+        "workspace": {
+          "id": "/task/workspace",
+          "type": "string",
+          "title": "Path of download directory",
+          "description": "Path of the tiles download directory.",
+          "name": "workspace",
+          "default": "./tiles"
+        },
+        "area": {
+          "id": "/task/area",
+          "type": "object",
+          "title": "Area of downloadable tiles",
+          "description": "All tiles of that area will be downloading.",
+          "name": "area",
+          "properties": {
+            "bbox": {
+              "id": "/task/area/bbox",
+              "type": "object",
+              "title": "BBOX determines the area",
+              "description": "BBOX determines the area of downloadable tiles. The coordinate reference system (CRS) of the bbox have to be identical to the CRS of the WMS.",
+              "name": "bbox",
+              "properties": {
+                "xmin": {
+                  "id": "/task/area/bbox/xmin",
+                  "type": "number",
+                  "title": "Minimal x value",
+                  "description": "Minimal x value of the area.",
+                  "name": "xmin"
+                },
+                "ymin": {
+                  "id": "/task/area/bbox/ymin",
+                  "type": "number",
+                  "title": "Minimal y value",
+                  "description": "Minimal y value of the area.",
+                  "name": "ymin"
+                },
+                "xmax": {
+                  "id": "/task/area/bbox/xmax",
+                  "type": "number",
+                  "title": "Maximal x value",
+                  "description": "Maximal x value of the area.",
+                  "name": "xmax"
+                },
+                "ymax": {
+                  "id": "/task/area/bbox/ymax",
+                  "type": "number",
+                  "title": "Maximal y value",
+                  "description": "Maximal y value of the area.",
+                  "name": "ymax"
+                }
+              },
+              "required": [
+                "xmin",
+                "ymin",
+                "xmax",
+                "ymax"
+              ]
+            }
+          },
+          "required": [
+            "bbox"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "format",
+        "workspace",
+        "area"
+      ]
+    },
+    "tiles": {
+      "id": "/tiles",
+      "type": "object",
+      "title": "Tiles information",
+      "description": "Object with information about the tiles.",
+      "name": "tiles",
+      "properties": {
+        "maxSizePx": {
+          "id": "/tiles/maxSizePx",
+          "type": "integer",
+          "title": "Maximal size of one tile in pixels",
+          "description": "Maximal size of one tile in pixels of the WMS GetMap request. The size of the downloaded tile is a calcutation of maxSizePx and gutterPx. If gutterPx = 250 the downloaded tile has a size of 2000 x 2000 pixels (= maxSizePx - 2 * gutterPx).",
+          "name": "maxSizePx",
+          "default": 2500
+        },
+        "gutterPx": {
+          "id": "/tiles/gutterPx",
+          "type": "integer",
+          "title": "Buffer around the tile.",
+          "description": "The gutter determines a buffer in pixels around the tile. That buffer avoids cropped symbols or letterings.",
+          "name": "gutterPx",
+          "default": 250
+        },
+        "resolutions": {
+          "id": "/tiles/resolutions",
+          "type": "array",
+          "minItems": 1,
+          "title": "Array of downloadable resolutions",
+          "description": "Array of downloadable resolutions. Resolution is another word for the zoom level.",
+          "name": "resolutions",
+          "items": {
+            "id": "/tiles/resolutions/items",
+            "title": "res",
+            "description": "res",
+            "properties": {
+              "id": {
+                "id": "/tiles/resolutions/items/id",
+                "type": "string",
+                "title": "Unique identifier",
+                "description": "Unique identifier of the WMS. It will be generating a directory with that identifier as directory name, if in this task has more than one WMS.",
+                "name": "id"
+              },
+              "scale": {
+                "id": "/tiles/resolutions/items/scale",
+                "type": "number",
+                "title": "Scale",
+                "description": "Map scale of the zoom level.",
+                "name": "scale"
+              },
+              "dpi": {
+                "id": "/tiles/resolutions/items/dpi",
+                "type": "number",
+                "title": "Dpi of scale",
+                "description": "The scale based on dpi statement. Normally it will be using 72 (MapServer, Mapbender) or 96 dpi (QGIS, ArcGIS). ",
+                "name": "dpi",
+                "default": 96
+              },
+              "groundResolution": {
+                "id": "/tiles/resolutions/items/groundResolution",
+                "type": "number",
+                "title": "Ground resolution (meters per pixel)",
+                "description": "Size of one pixel in reality (meters).",
+                "name": "groundResolution"
+              }
+            },
+            "oneOf": [
+              {
+                "required": [
+                  "id",
+                  "scale",
+                  "dpi"
+                ]
+              },
+              {
+                "required": [
+                  "id",
+                  "groundResolution"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "required": [
+        "maxSizePx",
+        "gutterPx",
+        "resolutions"
+      ]
+    },
+    "wms": {
+      "id": "/wms",
+      "type": "array",
+      "minItems": 1,
+      "title": "WMS information",
+      "description": "Object with information about the downloadable WMS'.",
+      "name": "wms",
+      "items": {
+        "id": "/wms/items",
+        "type": "object",
+        "title": "WMS information about one WMS",
+        "description": "WMS information about the GetMap request of one WMS.",
+        "properties": {
+          "id": {
+            "id": "/wms/items/id",
+            "type": "string",
+            "title": "Unique identifier",
+            "description": "Unique identifier of the WMS. It will be generating a directory with that identifier as directory name, if in this task has more than one WMS.",
+            "name": "id"
+          },
+          "getmap": {
+            "id": "/wms/items/getmap",
+            "type": "object",
+            "title": "Details about the GetMap request",
+            "description": "Details about the GetMap request.",
+            "name": "getmap",
+            "properties": {
+              "url": {
+                "id": "/wms/items/getmap/url",
+                "type": "string",
+                "title": "URL of the WMS",
+                "description": "URL for the GetMap request of the WMS.",
+                "name": "url"
+              },
+              "kvp": {
+                "id": "/wms/items/getmap/kvp",
+                "type": "object",
+                "title": "Key value pairs (KVP)",
+                "description": "Key value pairs (KVP) for the GetMap request.",
+                "name": "kvp"
+              }
+            },
+            "required": [
+              "url",
+              "kvp"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "getmap"
+        ]
+      }
+    }
+  },
+  "required": [
+    "task",
+    "tiles",
+    "wms"
+  ]
+}

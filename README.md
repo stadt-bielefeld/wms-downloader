@@ -5,7 +5,7 @@
 ### 01 NodeJS and NPM
 
 Windows:
-Use the installer from [https://nodejs.org/](https://nodejs.org/)
+Use the installer from https://nodejs.org/
 
 Ubuntu / Debian:
 
@@ -16,7 +16,8 @@ sudo apt-get install nodejs npm
 ### 02 GraphicsMagick
 
 Windows:
-Use the installer from [http://www.graphicsmagick.org/](http://www.graphicsmagick.org/)
+
+Use the installer from http://www.graphicsmagick.org/
 
 Ubuntu / Debian:
 
