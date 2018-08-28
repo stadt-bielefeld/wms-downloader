@@ -9,18 +9,18 @@
  */
 function determineGroundResolution(options) {
 
-  //resolution array
-  let res = options.tiles.resolutions;
+    //resolution array
+    let res = options.tiles.resolutions;
   
-  //iterate over all resolutions
-	for (let int = 0; int < res.length; int++) {
-		let r = res[int];
+    //iterate over all resolutions
+    for (let int = 0; int < res.length; int++) {
+        let r = res[int];
 
-		//calculate the resolution if not available
-		if (!r.groundResolution) {
-			r.groundResolution = (0.0254 * r.scale) / r.dpi;
-		}
-	}
+        //calculate the resolution if not available
+        if (!r.groundResolution) {
+            r.groundResolution = (0.0254 * r.scale) / r.dpi;
+        }
+    }
 }
 
 module.exports = determineGroundResolution;

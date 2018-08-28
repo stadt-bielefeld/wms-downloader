@@ -1,5 +1,7 @@
 'use strict';
 
+const gm = require('gm');
+
 /**
  * Merges/Composites two tiles.
  * 
@@ -13,9 +15,7 @@
  *          callback function(err) {}
  */
 function compositeTiles(firstFile, secondFile, outputFile, callback) {
-	gm(firstFile).composite(secondFile).geometry('+0+0').write(outputFile, function (err) {
-		callback(err);
-	});
+    gm(firstFile).composite(secondFile).geometry('+0+0').write(outputFile, callback);
 }
 
 module.exports = compositeTiles;

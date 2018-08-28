@@ -1,7 +1,5 @@
 'use strict';
 
-const fs = require('fs-extra');
-
 // Load task schema
 const taskSchema = require(__dirname + '/src/schemas/task.json');
 
@@ -15,16 +13,16 @@ const handleTask = require(__dirname + '/src/handleTask.js');
 /**
  * Object with progress information of all tasks.
  */
-let progress = {};
+const progress = {};
 
 /**
  * Config file.
  */
 let config = {
-	"request": {
-		"userAgent": "wms-downloader",
-		"timeout": 30000
-	}
+    'request': {
+        'userAgent': 'wms-downloader',
+        'timeout': 30000
+    }
 };
 
 /**
@@ -35,16 +33,16 @@ let config = {
  */
 function init(options) {
 
-	let valid = isValid(options, configSchema);
+    let valid = isValid(options, configSchema);
 
-	if (valid) {
-		config = options;
-	} else {
-		// TODO
-		console.log(valid);
-	}
+    if (valid) {
+        config = options;
+    } else {
+        // TODO
+        console.log(valid);
+    }
 
-};
+}
 
 /**
  * It starts the download of one or more Web Map Services.
@@ -56,45 +54,45 @@ function init(options) {
  */
 function startDownload(options, callback) {
 
-	// Validate options
-	let valid = isValid(options, taskSchema);
+    // Validate options
+    let valid = isValid(options, taskSchema);
 
-	// Options are valid
-	if (valid == true) {
+    // Options are valid
+    if (valid == true) {
 
-		progress[options.task.id] = {
-			"tiles": getCountOfTiles(options),
-			"tilesCompleted": 0,
-			"startDate": new Date(),
-			"lastTileDate": null,
-			"percent": 0,
-			"waitingTime": 0,
-			"cancel": false,
-			"cancelCallback": null
-		}
+        progress[options.task.id] = {
+            'tiles': getCountOfTiles(options),
+            'tilesCompleted': 0,
+            'startDate': new Date(),
+            'lastTileDate': null,
+            'percent': 0,
+            'waitingTime': 0,
+            'cancel': false,
+            'cancelCallback': null
+        };
 
-		try {
+        try {
 
-			handleTask(options, config, progress, function (err) {
-				delete progress[options.task.id];
+            handleTask(options, config, progress, function (err) {
+                delete progress[options.task.id];
 
-				if (err) {
-					callback(err);
-				} else {
-					callback(null);
-				}
-			});
+                if (err) {
+                    callback(err);
+                } else {
+                    callback(null);
+                }
+            });
 
-		} catch (err) {
-			delete progress[options.task.id];
-			callback(err);
-		}
+        } catch (err) {
+            delete progress[options.task.id];
+            callback(err);
+        }
 
-	} else {
-		// Options are note valid
-		// TODO Error
-		console.log(valid);
-	}
+    } else {
+        // Options are note valid
+        // TODO Error
+        console.log(valid);
+    }
 
 }
 
@@ -106,45 +104,45 @@ function startDownload(options, callback) {
  */
 function getProgress(taskId) {
 
-	// Task exists
-	if (progress[taskId]) {
+    // Task exists
+    if (progress[taskId]) {
 
-		// Calculate the progress in percent
-		progress[taskId].percent = Math.round(((progress[taskId].tilesCompleted * 100.0) / progress[taskId].tiles) * 100) / 100.0;
+        // Calculate the progress in percent
+        progress[taskId].percent = Math.round(((progress[taskId].tilesCompleted * 100.0) / progress[taskId].tiles) * 100) / 100.0;
 
-		// If completed tiles are available
-		if (progress[taskId].tilesCompleted !== 0) {
+        // If completed tiles are available
+        if (progress[taskId].tilesCompleted !== 0) {
 
-			// Calculate the time difference between start of task and the last
-			// completed tile
-			let dif = progress[taskId].lastTileDate.getTime() - progress[taskId].startDate.getTime();
+            // Calculate the time difference between start of task and the last
+            // completed tile
+            let dif = progress[taskId].lastTileDate.getTime() - progress[taskId].startDate.getTime();
 
-			// Calculate the time difference between current time and time of last
-			// completed tile
-			let dif2 = new Date().getTime() - progress[taskId].lastTileDate.getTime();
+            // Calculate the time difference between current time and time of last
+            // completed tile
+            let dif2 = new Date().getTime() - progress[taskId].lastTileDate.getTime();
 
-			// Calculate the waiting time in ms
-			progress[taskId].waitingTime = Math.round((((100.0 - progress[taskId].percent) * dif) / progress[taskId].percent) - dif2);
+            // Calculate the waiting time in ms
+            progress[taskId].waitingTime = Math.round((((100.0 - progress[taskId].percent) * dif) / progress[taskId].percent) - dif2);
 
-			// Avoid negative waiting times
-			if (progress[taskId].waitingTime < 0) {
-				progress[taskId].waitingTime = 0;
-			}
+            // Avoid negative waiting times
+            if (progress[taskId].waitingTime < 0) {
+                progress[taskId].waitingTime = 0;
+            }
 
-		} else {
-			// No completed tiles are available
+        } else {
+            // No completed tiles are available
 
-			// Can't calculate the waiting time.
-			// Set waiting time to 0
-			progress[taskId].waitingTime = 0;
-		}
+            // Can't calculate the waiting time.
+            // Set waiting time to 0
+            progress[taskId].waitingTime = 0;
+        }
 
-		// Return the progress object
-		return progress[taskId];
-	} else {
-		// Task do not exists
-		return null;
-	}
+        // Return the progress object
+        return progress[taskId];
+    } else {
+        // Task do not exists
+        return null;
+    }
 
 }
 
@@ -157,15 +155,15 @@ function getProgress(taskId) {
  *          callback
  */
 function cancelDownload(taskId, callback) {
-	if (progress[taskId]) {
-		progress[taskId].cancel = true;
-		progress[taskId].cancelCallback = callback;
-	} else {
-		callback({
-			name: 'TaskNotExist',
-			message: 'The task with id "' + taskId + '" does not exist.'
-		});
-	}
+    if (progress[taskId]) {
+        progress[taskId].cancel = true;
+        progress[taskId].cancelCallback = callback;
+    } else {
+        callback({
+            name: 'TaskNotExist',
+            message: 'The task with id "' + taskId + '" does not exist.'
+        });
+    }
 
 }
 
@@ -176,14 +174,14 @@ function cancelDownload(taskId, callback) {
  * @returns {object} Config options of the wms-downloader
  */
 function getConfig() {
-	return config;
+    return config;
 }
 
 module.exports = {
-	init: init,
-	startDownload: startDownload,
-	cancelDownload: cancelDownload,
-	getRequestObject: require(__dirname + '/src/getRequestObject.js'),
-	getProgress: getProgress,
-	getConfig: getConfig
-}
+    init: init,
+    startDownload: startDownload,
+    cancelDownload: cancelDownload,
+    getRequestObject: require(__dirname + '/src/getRequestObject.js'),
+    getProgress: getProgress,
+    getConfig: getConfig
+};

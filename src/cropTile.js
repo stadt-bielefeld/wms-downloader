@@ -17,27 +17,27 @@ const gm = require('gm');
  *          callback function(err) {}
  */
 function cropTile(oldFile, newFile, tileSizePx, gutterSizePx, callback) {
-	let inExt = oldFile.substring(oldFile.length - 3, oldFile.length);
-	let outExt = newFile.substring(newFile.length - 3, newFile.length);
+    let inExt = oldFile.substring(oldFile.length - 3, oldFile.length);
+    let outExt = newFile.substring(newFile.length - 3, newFile.length);
 
-	/*
+    /*
 	 * The conversion from png to jpg and tif is wrong by default. The
 	 * transparency will convert to black. It is correct, if the transparency will
 	 * convert to white.
 	 * 
 	 * That will fixed with the following code.
 	 */
-	if ((inExt == 'png' && outExt == 'jpg') || (inExt == 'png' && outExt == 'tif')) {
-		gm(oldFile).flatten().background('white').crop(tileSizePx, tileSizePx, gutterSizePx, gutterSizePx).write(newFile, function (err) {
-			callback(err);
-		});
-	} else {
+    if ((inExt == 'png' && outExt == 'jpg') || (inExt == 'png' && outExt == 'tif')) {
+        gm(oldFile).flatten().background('white').crop(tileSizePx, tileSizePx, gutterSizePx, gutterSizePx).write(newFile, function (err) {
+            callback(err);
+        });
+    } else {
 
-		gm(oldFile).crop(tileSizePx, tileSizePx, gutterSizePx, gutterSizePx).write(newFile, function (err) {
-			callback(err);
-		});
-	}
+        gm(oldFile).crop(tileSizePx, tileSizePx, gutterSizePx, gutterSizePx).write(newFile, function (err) {
+            callback(err);
+        });
+    }
 
-};
+}
 
 module.exports = cropTile;

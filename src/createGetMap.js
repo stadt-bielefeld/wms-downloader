@@ -15,16 +15,16 @@
  */
 function createGetMap(wms, bbox, width, height) {
 
-	let getmap = wms.getmap.url;
-	for (let key in wms.getmap.kvp) {
-		getmap += key + '=' + wms.getmap.kvp[key] + '&';
-	}
+    let getmap = wms.getmap.url;
+    for (let key in wms.getmap.kvp) {
+        getmap += key + '=' + wms.getmap.kvp[key] + '&';
+    }
 
-	getmap += 'BBOX=' + bbox + '&';
-	getmap += 'WIDTH=' + width + '&';
-	getmap += 'HEIGHT=' + height + '&';
+    getmap += 'BBOX=' + bbox + '&';
+    getmap += 'WIDTH=' + width + '&';
+    getmap += 'HEIGHT=' + height + '&';
 
-	return getmap;
+    return getmap;
 }
 
 module.exports = createGetMap;

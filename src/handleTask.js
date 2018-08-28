@@ -13,49 +13,49 @@ const handleResolution = require(__dirname + '/handleResolution.js');
  */
 function handleTask(options, config, progress, callback) {
 
-	fs.ensureDir(options.task.workspace, function (err) {
-		if (err) {
-			// Call callback function with error.
-			callback(err);
-		} else {
-			// Workspace of this task
-			let ws = options.task.workspace + '/' + options.task.id;
+    fs.ensureDir(options.task.workspace, function (err) {
+        if (err) {
+            // Call callback function with error.
+            callback(err);
+        } else {
+            // Workspace of this task
+            let ws = options.task.workspace + '/' + options.task.id;
 
-			// Create directory of task workspace
-			fs.ensureDir(ws, function (err) {
+            // Create directory of task workspace
+            fs.ensureDir(ws, function (err) {
 
-				// Error
-				if (err) {
-					// Directory could not be created.
+                // Error
+                if (err) {
+                    // Directory could not be created.
 
-					// Call callback function with error.
-					callback(err);
-				} else {
-					// No errors
+                    // Call callback function with error.
+                    callback(err);
+                } else {
+                    // No errors
 
-					// Handle all resolutions
-					handleResolution(options, ws, 0, config, progress, function (err) {
+                    // Handle all resolutions
+                    handleResolution(options, ws, 0, config, progress, function (err) {
 
-						// Error
-						if (err) {
-							// It could not be handled all resolutions.
+                        // Error
+                        if (err) {
+                            // It could not be handled all resolutions.
 
-							// Call callback function with error.
-							callback(err);
-						} else {
-							// No errors
+                            // Call callback function with error.
+                            callback(err);
+                        } else {
+                            // No errors
 
-							// Call callback function without errors. Task was
-							// handled.
-							callback(null);
-						}
-					});
+                            // Call callback function without errors. Task was
+                            // handled.
+                            callback(null);
+                        }
+                    });
 
-				}
-			});
-		}
-	});
+                }
+            });
+        }
+    });
 
-};
+}
 
 module.exports = handleTask;

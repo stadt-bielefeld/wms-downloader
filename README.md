@@ -1,28 +1,32 @@
 # wms-downloader
 
+It allows you to download tiles of a Web Map Service (WMS).
+
+To reduce the tiles use [merge-tiles](https://github.com/stadt-bielefeld/merge-tiles).
+
 ## Installation
 
 ### 01 NodeJS and NPM
 
 Windows:
-Use the installer from https://nodejs.org/
+Use the installer [](https://nodejs.org/)
 
 Ubuntu / Debian:
 
 ```sh
-sudo apt-get install nodejs npm
+sudo apt install nodejs npm
 ```
 
 ### 02 GraphicsMagick
 
 Windows:
 
-Use the installer from http://www.graphicsmagick.org/
+Use the installer from [](http://www.graphicsmagick.org/)
 
 Ubuntu / Debian:
 
 ```sh
-sudo apt-get install graphicsmagick
+sudo apt install graphicsmagick
 ```
 
 ### 03 wms-downloader
@@ -30,7 +34,7 @@ sudo apt-get install graphicsmagick
 Use terminal:
 
 ```sh
-npm install wms-downloader
+npm i wms-downloader
 ```
 
 ## Get started
@@ -94,13 +98,13 @@ downloader.init({
 });
 
 // Print progress
-let progressInterval = setInterval(function() {
-  let progress = downloader.getProgress(taskOptions.task.id);
+const progressInterval = setInterval(() => {
+  const progress = downloader.getProgress(taskOptions.task.id);
   console.log('Progress: ' + progress.percent + '%, Waiting time: ' + progress.waitingTime + ' ms');
 }, 1000);
 
 // Start download
-downloader.startDownload(taskOptions, function(err) {
+downloader.startDownload(taskOptions, (err) => {
 
   // Stop progress printing
   clearInterval(progressInterval);
@@ -119,7 +123,7 @@ downloader.startDownload(taskOptions, function(err) {
 ```js
 const downloader = require('wms-downloader');
 
-let configOptions = {
+const configOptions = {
   "request" : {
     "userAgent" : "wms-downloader",
     "timeout" : 30000,
@@ -135,7 +139,7 @@ let configOptions = {
   }
 };
 
-let taskOptions = {
+const taskOptions = {
   "task" : {
     "id" : "id_of_my_first_download",
     "title" : "My first WMS download.",
@@ -183,13 +187,13 @@ downloader.init(configOptions);
 
 
 // Print progress
-let progressInterval = setInterval(function() {
-  let progress = downloader.getProgress(taskOptions.task.id);
+const progressInterval = setInterval(() => {
+  const progress = downloader.getProgress(taskOptions.task.id);
   console.log('Progress: ' + progress.percent + '%, Waiting time: ' + progress.waitingTime + ' ms');
 }, 1000);
 
 // Start download
-downloader.startDownload(taskOptions, function(err) {
+downloader.startDownload(taskOptions, (err) => {
 
   // Stop progress printing
   clearInterval(progressInterval);
@@ -212,13 +216,13 @@ downloader.startDownload(taskOptions, function(err) {
 
 ## Changlog
 
-* [v0.3.0](docs/changelog/v1.0.0.md)
+- [v1.0.0](docs/changelog/v1.0.0.md)
 
 ## Documentation
 
-* [API](docs/api/index.md)
-* [Developer](docs/dev/index.md)
-* [User](docs/user/index.md)
+- [API](http://stadt-bielefeld.github.io/wms-downloader/docs/api/index.html)
+- [Developer](docs/dev/index.md)
+- [User](docs/user/index.md)
 
 ## License
 

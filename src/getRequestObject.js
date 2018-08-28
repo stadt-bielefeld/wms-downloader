@@ -16,55 +16,55 @@ let requestProxy; // Request object with internet proxy
  */
 function getRequestObject(config, url) {
 
-  if (!request) {
+    if (!request) {
     // Init request object
-    request = require('request').defaults({
-      "headers": {
-        'User-Agent': config.request.userAgent
-      },
-      strictSSL: false,
-      timeout: config.request.timeout
-    });
-  }
+        request = require('request').defaults({
+            'headers': {
+                'User-Agent': config.request.userAgent
+            },
+            strictSSL: false,
+            timeout: config.request.timeout
+        });
+    }
 
-  if (!requestProxy) {
+    if (!requestProxy) {
     // If internet proxy is set
-    if (config.request.proxy) {
+        if (config.request.proxy) {
 
-      // String of username and password
-      let userPass = '';
-      if (config.request.proxy.http.user) {
-        if (config.request.proxy.http.password) {
-          userPass = encodeURIComponent(config.request.proxy.http.user) + ':' + encodeURIComponent(config.request.proxy.http.password) + '@';
+            // String of username and password
+            let userPass = '';
+            if (config.request.proxy.http.user) {
+                if (config.request.proxy.http.password) {
+                    userPass = encodeURIComponent(config.request.proxy.http.user) + ':' + encodeURIComponent(config.request.proxy.http.password) + '@';
+                }
+            }
+
+            // Init request object with internet proxy
+            requestProxy = request.defaults({
+                'headers': {
+                    'User-Agent': config.request.userAgent
+                },
+                strictSSL: false,
+                timeout: config.request.timeout,
+                'proxy': 'http://' + userPass + config.request.proxy.http.host + ':' + config.request.proxy.http.port
+            });
         }
-      }
 
-      // Init request object with internet proxy
-      requestProxy = request.defaults({
-        "headers": {
-          'User-Agent': config.request.userAgent
-        },
-        strictSSL: false,
-        timeout: config.request.timeout,
-        "proxy": 'http://' + userPass + config.request.proxy.http.host + ':' + config.request.proxy.http.port
-      });
     }
 
-  }
+    let ret = request;
 
-  let ret = request;
-
-  if (config.request.proxy) {
-    ret = requestProxy;
-    for (let int = 0; int < config.request.proxy.http.exclude.length; int++) {
-      if (url.includes(config.request.proxy.http.exclude[int])) {
-        ret = request;
-        break;
-      }
+    if (config.request.proxy) {
+        ret = requestProxy;
+        for (let int = 0; int < config.request.proxy.http.exclude.length; int++) {
+            if (url.includes(config.request.proxy.http.exclude[int])) {
+                ret = request;
+                break;
+            }
+        }
     }
-  }
 
-  return ret;
+    return ret;
 }
 
 module.exports = getRequestObject;

@@ -1,25 +1,25 @@
 {
   "name": "wms-downloader",
   "version": "1.0.0",
-  "description": "It allows downloading of Web Map Services (WMS).",
+  "description": "It allows you to download tiles of a Web Map Service (WMS).",
   "main": "index.js",
   "directories": {
     "example": "examples"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-api-doc": "node_modules/.bin/documentation build src/** -f md -o docs/api/index.md --watch --config docs/api/config.yaml"
+    "build-api-doc": "jsdoc -r ./src -d docs/api"
   },
   "author": "Jens Brokfeld <jens.brokfeld@bielefeld.de>",
   "license": "MIT",
   "dependencies": {
-    "fs-extra": "^6.0.1",
+    "fs-extra": "^7.0.0",
     "gm": "^1.23.1",
     "jsonschema": "^1.2.4",
-    "request": "^2.85.0"
+    "request": "^2.88.0"
   },
   "devDependencies": {
-    "documentation": "^6.3.3"
+    "jsdoc": "^3.5.5"
   },
   "repository": {
     "type": "git",
