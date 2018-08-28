@@ -220,7 +220,7 @@ downloader.startDownload(taskOptions, (err) => {
 
 ## Documentation
 
-- [API](http://stadt-bielefeld.github.io/wms-downloader/docs/api/index.html)
+- [API](https://stadt-bielefeld.github.io/wms-downloader/docs/api/index.html)
 - [Developer](docs/dev/index.md)
 - [User](docs/user/index.md)
 
