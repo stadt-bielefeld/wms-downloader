@@ -1,65 +1,2002 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <title>JSDoc: Home</title>
-
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+  <meta charset='utf-8' />
+  <title>wms-downloader 1.0.0 | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' type='text/css' rel='stylesheet' />
+  <link href='assets/style.css' type='text/css' rel='stylesheet' />
+  <link href='assets/github.css' type='text/css' rel='stylesheet' />
+  <link href='assets/split.css' type='text/css' rel='stylesheet' />
+  <meta name='description' content='It allows you to download tiles of a Web Map Service (WMS).'>
 </head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'>wms-downloader</h3>
+          <div class='mb1'><code>1.0.0</code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#classes'
+                  class="h5 bold black caps">
+                  Classes
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#wmsdownloader'
+                  class=" toggle-sibling">
+                  WMSDownloader
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#wmsdownloaderstart'
+                        class='regular pre-open'>
+                        #start
+                      </a></li>
+                      
+                      <li><a
+                        href='#wmsdownloadercancel'
+                        class='regular pre-open'>
+                        #cancel
+                      </a></li>
+                      
+                      <li><a
+                        href='#wmsdownloadergetprogress'
+                        class='regular pre-open'>
+                        #getProgress
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#helper-functions'
+                  class="h5 bold black caps">
+                  helper functions
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#creategetmap'
+                  class="">
+                  createGetMap
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#createworldfile'
+                  class="">
+                  createWorldFile
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#croptile'
+                  class="">
+                  cropTile
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#determinegroundresolution'
+                  class="">
+                  determineGroundResolution
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getcountoftiles'
+                  class="">
+                  getCountOfTiles
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getformatdetails'
+                  class="">
+                  getFormatDetails
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getrequestobject'
+                  class="">
+                  getRequestObject
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getsupportedformats'
+                  class="">
+                  getSupportedFormats
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#handleresolution'
+                  class="">
+                  handleResolution
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#handletask'
+                  class="">
+                  handleTask
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#handletiles'
+                  class="">
+                  handleTiles
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#handlewms'
+                  class="">
+                  handleWMS
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#isvalid'
+                  class="">
+                  isValid
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#writetile'
+                  class="">
+                  writeTile
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='http://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+            <div class='keyline-top-not py2'>
+  <section class='py2 clearfix'>
 
-<body>
-
-<div id="main">
-
-    <h1 class="page-title">Home</h1>
+    <h2 id='classes' class='mt0'>
+      Classes
+    </h2>
 
     
-
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
+      
 
     
+  </section>
+</div>
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='classes'>
+      Classes
+    </h3>
+    
+    
+  </div>
+  
 
+  
 
+ 
+   
+  
+  
 
+  
+  
+  
+  
+  
+  
 
+  
 
+  
 
+  
 
+  
 
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='wmsdownloader'>
+      WMSDownloader
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/WMSDownloader.js#L44-L158'>
+      <span>src/WMSDownloader.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>aa</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new WMSDownloader(options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>?)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>?)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// create a WMSDownloader instance with default options</span>
+<span class="hljs-keyword">const</span> WMSDownloader = <span class="hljs-built_in">require</span>(<span class="hljs-string">'wms-downloader'</span>);
+<span class="hljs-keyword">const</span> dl = <span class="hljs-keyword">new</span> WMSDownloader();
+
+<span class="hljs-comment">// create a WMSDownloader instance with custom options</span>
+<span class="hljs-keyword">const</span> WMSDownloader = <span class="hljs-built_in">require</span>(<span class="hljs-string">'wms-downloader'</span>);
+<span class="hljs-keyword">const</span> dl = <span class="hljs-keyword">new</span> WMSDownloader({
+ <span class="hljs-string">'request'</span>: {
+   <span class="hljs-string">'userAgent'</span>: <span class="hljs-string">'Mozilla/5.0 QGIS/2.18.3'</span>,
+   <span class="hljs-string">'timeout'</span>: <span class="hljs-number">30000</span>,
+   <span class="hljs-string">'proxy'</span>: {
+     <span class="hljs-string">'http'</span>: {
+       <span class="hljs-string">'host'</span>: <span class="hljs-string">'10.208.20.71'</span>,
+       <span class="hljs-string">'port'</span>: <span class="hljs-number">4239</span>,
+       <span class="hljs-string">'user'</span>: <span class="hljs-string">'NameOfUser'</span>,
+       <span class="hljs-string">'password'</span>: <span class="hljs-string">'PasswordOfUser'</span>,
+       <span class="hljs-string">'exclude'</span>: [<span class="hljs-string">'http://12.101.20.18/'</span>, <span class="hljs-string">'http://12.208.28.48/'</span>]
+     }
+   }
+ }
+});</pre>
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='wmsdownloaderstart'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>start(options, callback)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/WMSDownloader.js#L81-L83'>
+      <span>src/WMSDownloader.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Starts a download.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>start(options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, callback: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    Callback function like 
+<code>function(err){}</code>
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='wmsdownloadercancel'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>cancel(id, callback)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/WMSDownloader.js#L90-L92'>
+      <span>src/WMSDownloader.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Cancels a download.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>cancel(id: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, callback: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>id</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    ID of the task
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    Callback function like 
+<code>function(err){}</code>
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='wmsdownloadergetprogress'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getProgress(id)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/WMSDownloader.js#L99-L101'>
+      <span>src/WMSDownloader.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Returns the progress of a download.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>getProgress(id: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>id</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        aaa
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
 </div>
 
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="WMSDownloader.html">WMSDownloader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#compositeTiles">compositeTiles</a></li><li><a href="global.html#createGetMap">createGetMap</a></li><li><a href="global.html#createWorldFile">createWorldFile</a></li><li><a href="global.html#cropTile">cropTile</a></li><li><a href="global.html#determineGroundResolution">determineGroundResolution</a></li><li><a href="global.html#getCountOfTiles">getCountOfTiles</a></li><li><a href="global.html#getRequestObject">getRequestObject</a></li><li><a href="global.html#handleResolution">handleResolution</a></li><li><a href="global.html#handleTask">handleTask</a></li><li><a href="global.html#handleTiles">handleTiles</a></li><li><a href="global.html#handleWMS">handleWMS</a></li><li><a href="global.html#request">request</a></li><li><a href="global.html#writeTile">writeTile</a></li></ul>
-</nav>
+  
 
-<br class="clear">
+  
+</section>
 
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Aug 28 2018 15:14:34 GMT+0200 (Mitteleuropäische Sommerzeit)
-</footer>
+        
+          
+            <div class='keyline-top-not py2'>
+  <section class='py2 clearfix'>
 
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
+    <h2 id='helper-functions' class='mt0'>
+      helper functions
+    </h2>
+
+    
+      
+
+    
+  </section>
+</div>
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='helper-functions'>
+      helper functions
+    </h3>
+    
+    
+  </div>
+  
+
+  
+
+ 
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='creategetmap'>
+      createGetMap
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/helper/createGetMap.js#L36-L48'>
+      <span>src/helper/createGetMap.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Creates a full GetMap request from the following parameters.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>createGetMap(wms: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, bbox: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, width: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>), height: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>wms</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    Object with the GetMap base url and necessary key value pairs (kvp) like 
+<code>{ 'getmap': { 'url':'http://', kvp: {'key': 'value' } } }</code>
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>bbox</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    BBOX of the GetMap request
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>width</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>))</code>
+	    Width of the GetMap request
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>height</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>))</code>
+	    Height of the GetMap request
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>:
+        Complete GetMap request
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> wms = {
+  <span class="hljs-string">'getmap'</span>: {
+    <span class="hljs-string">'url'</span>: <span class="hljs-string">'http://www.bielefeld01.de/geodaten/geo_dienste/wms.php?url=gebietsgliederung_wms_stadtbezirke_641&amp;'</span>,
+    <span class="hljs-string">'kvp'</span>: {
+      <span class="hljs-string">'SERVICE'</span>: <span class="hljs-string">'WMS'</span>,
+      <span class="hljs-string">'VERSION'</span>: <span class="hljs-string">'1.3.0'</span>,
+      <span class="hljs-string">'REQUEST'</span>: <span class="hljs-string">'GetMap'</span>,
+      <span class="hljs-string">'FORMAT'</span>: <span class="hljs-string">'image/png'</span>,
+      <span class="hljs-string">'TRANSPARENT'</span>: <span class="hljs-string">'true'</span>,
+      <span class="hljs-string">'LAYERS'</span>: <span class="hljs-string">'stadtbezirke_wms'</span>,
+      <span class="hljs-string">'CRS'</span>: <span class="hljs-string">'EPSG:25832'</span>,
+      <span class="hljs-string">'STYLES'</span>: <span class="hljs-string">''</span>
+    }
+  }
+};
+
+<span class="hljs-keyword">const</span> width = <span class="hljs-number">1048</span>;
+<span class="hljs-keyword">const</span> height = <span class="hljs-number">953</span>;
+<span class="hljs-keyword">const</span> bbox = <span class="hljs-string">'458163.5475413472,5754265.480964899,478190.04895206343,5772476.602953842'</span>;
+
+<span class="hljs-keyword">let</span> getMapUrl = createGetMap(wms, bbox, width, height);
+<span class="hljs-built_in">console</span>.log(getMapUrl);
+<span class="hljs-comment">//http://www.bielefeld01.de/geodaten/geo_dienste/wms.php?url=gebietsgliederung_wms_stadtbezirke_641&amp;SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetMap&amp;FORMAT=image/png&amp;TRANSPARENT=true&amp;LAYERS=stadtbezirke_wms&amp;CRS=EPSG:25832&amp;STYLES=&amp;BBOX=458163.5475413472,5754265.480964899,478190.04895206343,5772476.602953842&amp;WIDTH=1048&amp;HEIGHT=953&amp;</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='createworldfile'>
+      createWorldFile
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/helper/createWorldFile.js#L24-L33'>
+      <span>src/helper/createWorldFile.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Creates world file content.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>createWorldFile(x0: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, y0: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, res: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>x0</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    X value of start point (top-left)
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>y0</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    Y value of start point (top-left)
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    Ground resolution
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>:
+        Content of world file
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> x0 = <span class="hljs-number">458000</span>;
+<span class="hljs-keyword">const</span> y0 = <span class="hljs-number">5754000</span>;
+<span class="hljs-keyword">const</span> res = <span class="hljs-number">1</span>;
+
+<span class="hljs-keyword">let</span> wordlFileContent = createWorldFile(x0, y0, res);
+<span class="hljs-built_in">console</span>.log(wordlFileContent);
+<span class="hljs-comment">// 1</span>
+<span class="hljs-comment">// 0.0</span>
+<span class="hljs-comment">// 0.0</span>
+<span class="hljs-comment">// -1</span>
+<span class="hljs-comment">// 458000.5</span>
+<span class="hljs-comment">// 5753999.5</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='croptile'>
+      cropTile
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/helper/cropTile.js#L20-L42'>
+      <span>src/helper/cropTile.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Crops the tile on the basis of gutter.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>cropTile(oldFile: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, newFile: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, tileSizePx: integer, gutterSizePx: integer, callback: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>oldFile</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    File to be crop
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>newFile</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    New cropped file
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>tileSizePx</span> <code class='quiet'>(integer)</code>
+	    Size of the new file / new tile
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>gutterSizePx</span> <code class='quiet'>(integer)</code>
+	    Size of gutter in old file / old tile
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    function(err) {}
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='determinegroundresolution'>
+      determineGroundResolution
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/helper/determineGroundResolution.js#L10-L24'>
+      <span>src/helper/determineGroundResolution.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Calculates the ground resolution from scale and dpi.
+This function set the variable options.tiles.resolutions[].groundResolution</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>determineGroundResolution(options: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getcountoftiles'>
+      getCountOfTiles
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/helper/getCountOfTiles.js#L12-L45'>
+      <span>src/helper/getCountOfTiles.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Calculates the count of tiles of a task.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>getCountOfTiles(options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    Task options
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></code>:
+        
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getformatdetails'>
+      getFormatDetails
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/helper/getFormatDetails.js#L9-L27'>
+      <span>src/helper/getFormatDetails.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+ 
+  
+    <div class='pre p1 fill-light mt0'>getFormatDetails(mimeType: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>mimeType</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getrequestobject'>
+      getRequestObject
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/helper/getRequestObject.js#L17-L68'>
+      <span>src/helper/getRequestObject.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Returns the correct request object with the right proxy settings.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>getRequestObject(config: any, url: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>config</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>url</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    URL of tile
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        Object from request module (let request =
+require('request');)
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getsupportedformats'>
+      getSupportedFormats
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/helper/getSupportedFormats.js#L34-L36'>
+      <span>src/helper/getSupportedFormats.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+ 
+  
+    <div class='pre p1 fill-light mt0'>getSupportedFormats()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='handleresolution'>
+      handleResolution
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/helper/handleResolution.js#L18-L76'>
+      <span>src/helper/handleResolution.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>It handles recursive all resolutions of a task.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>handleResolution(options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, ws: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, resIdx: integer, config: any, progress: any, callback: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>ws</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    Task workspace
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>resIdx</span> <code class='quiet'>(integer)</code>
+	    Index of resolution
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>config</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>progress</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    function(err){}
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='handletask'>
+      handleTask
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/helper/handleTask.js#L14-L59'>
+      <span>src/helper/handleTask.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>It handles a download task of Web Map Services.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>handleTask(options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, config: any, progress: any, callback: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>config</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>progress</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    function(err){}
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='handletiles'>
+      handleTiles
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/helper/handleTiles.js#L33-L181'>
+      <span>src/helper/handleTiles.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>It handles recursive all tiles of a resolution of a Web Map Service.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>handleTiles(options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, wms: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, ws: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, tiles: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, xIdx: integer, yIdx: integer, res: float, config: any, progress: any, callback: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>wms</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    WMS object
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>ws</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    WMS workspace
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>tiles</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    Object with tile parameters
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>xIdx</span> <code class='quiet'>(integer)</code>
+	    X-Index of tile
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>yIdx</span> <code class='quiet'>(integer)</code>
+	    Y-Index of tile
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(float)</code>
+	    Ground resolution
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>config</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>progress</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    function(err){}
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='handlewms'>
+      handleWMS
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/helper/handleWMS.js#L20-L93'>
+      <span>src/helper/handleWMS.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>It handles recursive all Web Map Services of a resolution.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>handleWMS(options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, ws: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, res: objext, wmsIdx: integer, config: any, progress: any, callback: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>ws</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    Resolution workspace
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(objext)</code>
+	    Resolution object
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>wmsIdx</span> <code class='quiet'>(integer)</code>
+	    Index of WMS
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>config</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>progress</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    function(err){}
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='isvalid'>
+      isValid
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/helper/isValid.js#L11-L27'>
+      <span>src/helper/isValid.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+ 
+  
+    <div class='pre p1 fill-light mt0'>isValid(options: any, schema: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>schema</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='writetile'>
+      writeTile
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/d93422717e1218b010e245156b9ecf45ac776d06/src/helper/writeTile.js#L18-L50'>
+      <span>src/helper/writeTile.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Downloads and writes a tile.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>writeTile(file: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, url: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, request: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, callback: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>file</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    Path where the tile is to be stored.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>url</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    URL of tile
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>request</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    Object from request module (let request =
+require('request');)
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    function(err, res){}
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
 </body>
 </html>

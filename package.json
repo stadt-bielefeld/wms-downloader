@@ -3,15 +3,10 @@
   "version": "1.0.0",
   "description": "It allows you to download tiles of a Web Map Service (WMS).",
   "main": "index.js",
-  "directories": {
-    "example": "examples"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-api-doc": "jsdoc -r ./src -d docs/api"
+    "build-api-doc": "documentation build src/** --output docs/api --config docs/api-config.yaml --format html --github"
   },
-  "author": "Jens Brokfeld <jens.brokfeld@bielefeld.de>",
-  "license": "MIT",
   "dependencies": {
     "fs-extra": "^7.0.0",
     "gm": "^1.23.1",
@@ -19,11 +14,7 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "jsdoc": "^3.5.5"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/stadt-bielefeld/wms-downloader.git"
+    "documentation": "^8.1.2"
   },
   "keywords": [
     "wms",
@@ -32,8 +23,14 @@
     "tiles",
     "ogc"
   ],
+  "homepage": "https://github.com/stadt-bielefeld/wms-downloader#readme",
   "bugs": {
     "url": "https://github.com/stadt-bielefeld/wms-downloader/issues"
   },
-  "homepage": "https://github.com/stadt-bielefeld/wms-downloader#readme"
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/stadt-bielefeld/wms-downloader.git"
+  },
+  "license": "MIT",
+  "author": "Jens Brokfeld <jens.brokfeld@bielefeld.de> (https://www.bielefeld.de/de/rv/ds_stadtverwaltung/vuk)"
 }

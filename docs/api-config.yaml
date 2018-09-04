@@ -1,0 +1,21 @@
+toc:
+  - name: Classes
+    #description: Description of classes
+  - WMSDownloader
+  - name: helper functions
+    #description: Description of helper functions
+  - createGetMap
+  - createGetMap
+  - createWorldFile
+  - cropTile
+  - determineGroundResolution
+  - getCountOfTiles
+  - getFormatDetails
+  - getRequestObject
+  - getSupportedFormats
+  - handleResolution
+  - handleTask
+  - handleTiles
+  - handleWMS
+  - isValid
+  - writeTile
