@@ -12,7 +12,7 @@ const determineGroundResolution = require(__dirname + '/determineGroundResolutio
 function getCountOfTiles(options) {
 
   // Determine ground resolution if scale is only set
-  determineGroundResolution(options);
+  determineGroundResolution(options.tiles.resolutions);
 
   // Counter of all tiles
   let countOfAllTiles = 0;
