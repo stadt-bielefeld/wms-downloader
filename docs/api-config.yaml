@@ -9,8 +9,8 @@ toc:
   - createWorldFile
   - cropTile
   - determineGroundResolution
-  - getCountOfTiles
   - getFormatDetails
+  - getNumberOfTiles
   - getRequestObject
   - getSupportedFormats
   - handleResolution

@@ -4,7 +4,7 @@
 const taskSchema = require(__dirname + '/../schemas/task.json');
 const isValid = require(__dirname + '/../helper/isValid.js');
 const handleTask = require(__dirname + '/../helper/handleTask.js');
-const getCountOfTiles = require(__dirname + '/../helper/getCountOfTiles.js');
+const getNumberOfTiles = require(__dirname + '/../helper/getNumberOfTiles.js');
 
 function start(_this, options, callback) {
 
@@ -16,7 +16,7 @@ function start(_this, options, callback) {
 
     // create progress entry for this task
     _this.progress[options.task.id] = {
-      'tiles': getCountOfTiles(options),
+      'tiles': getNumberOfTiles(options),
       'tilesCompleted': 0,
       'startDate': new Date(),
       'lastTileDate': null,
