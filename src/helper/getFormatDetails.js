@@ -1,6 +1,6 @@
 'use strict';
 
-const supportedFormats = require(__dirname + '/getSupportedFormats.js')();
+const getSupportedFormats = require(__dirname + '/getSupportedFormats.js');
 
 /**
  * Returns format details of a supported image format (for example `image/png`).
@@ -11,13 +11,14 @@ const supportedFormats = require(__dirname + '/getSupportedFormats.js')();
  * //{'title':'PNG','fileExt':'png','worldFileExt':'pgw','mimeType':'image/png'}
  */
 function getFormatDetails(mimeType) {
-  let int, f;
+
+  const supportedFormats = getSupportedFormats();
 
   // Iterate over all supported formats
-  for (int = 0; int < supportedFormats.length; int++) {
+  for (let i = 0; i < supportedFormats.length; i++) {
 
     // Format entry
-    f = supportedFormats[int];
+    const f = supportedFormats[i];
 
     // Check mime type
     if (f.mimeType === mimeType) {

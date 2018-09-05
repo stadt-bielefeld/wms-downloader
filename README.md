@@ -46,6 +46,7 @@ npm i wms-downloader
 - image/jpeg
 - image/gif
 - image/tiff
+- image/svg+xml (experimental)
 
 ## Changlog
 

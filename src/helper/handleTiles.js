@@ -57,9 +57,9 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, config, progress,
 
   // World file content
   let worldFile = createWorldFile(tX0, tY0, res);
-
+  
   // Input format of WMS
-  let inputFormatDetails = getFormatDetails(wms.getmap.FORMAT);
+  let inputFormatDetails = getFormatDetails(wms.getmap.kvp.FORMAT);
 
   // Output format of tile
   let outputFormatDetails = getFormatDetails(options.task.format);

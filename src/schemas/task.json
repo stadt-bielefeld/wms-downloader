@@ -38,7 +38,8 @@
             "image/png; mode=8bit",
             "image/jpeg",
             "image/gif",
-            "image/tiff"
+            "image/tiff",
+            "image/svg+xml"
           ]
         },
         "workspace": {
