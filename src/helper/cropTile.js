@@ -62,35 +62,29 @@ function cropTile(oldFile, newFile, tileSizePx, gutterSizePx, callback) {
 
   } else {
 
-    if (oldFile.endsWith('.svg')) {
-      // from vector to raster image
-      // TODO
-      callback(new Error('svg to raster image is not supported jet.'));
+    // raster images (and from vector to raster image as well)
+    let inExt = oldFile.substring(oldFile.length - 3, oldFile.length);
+    let outExt = newFile.substring(newFile.length - 3, newFile.length);
+
+    /*
+     * The conversion from  to jpg and tif is wrong by default. The
+     * transparency will convert to black. It is correct, if the transparency will
+     * convert to white.
+     * 
+     * That will fixed with the following code.
+     */
+    if ((inExt == '' && outExt == 'jpg') || (inExt == '' && outExt == 'tif')) {
+      gm(oldFile).flatten().background('white').crop(tileSizePx, tileSizePx, gutterSizePx, gutterSizePx).write(newFile, function (err) {
+        callback(err);
+      });
     } else {
-      // raster images
-      let inExt = oldFile.substring(oldFile.length - 3, oldFile.length);
-      let outExt = newFile.substring(newFile.length - 3, newFile.length);
 
-      /*
-       * The conversion from  to jpg and tif is wrong by default. The
-       * transparency will convert to black. It is correct, if the transparency will
-       * convert to white.
-       * 
-       * That will fixed with the following code.
-       */
-      if ((inExt == '' && outExt == 'jpg') || (inExt == '' && outExt == 'tif')) {
-        gm(oldFile).flatten().background('white').crop(tileSizePx, tileSizePx, gutterSizePx, gutterSizePx).write(newFile, function (err) {
-          callback(err);
-        });
-      } else {
-
-        gm(oldFile).crop(tileSizePx, tileSizePx, gutterSizePx, gutterSizePx).write(newFile, function (err) {
-          callback(err);
-        });
-      }
+      gm(oldFile).crop(tileSizePx, tileSizePx, gutterSizePx, gutterSizePx).write(newFile, function (err) {
+        callback(err);
+      });
     }
-
   }
+
 }
 
 module.exports = cropTile;
