@@ -5,19 +5,28 @@ const fs = require('fs-extra');
 const gm = require('gm');
 
 /**
- * Crops the tile on the basis of gutter.
+ * Crops a tile with the gutter size.
  * 
+ * @param {string} oldFile File to be crop
+ * @param {string} newFile New cropped file
+ * @param {integer} tileSizePx Size of the new tile
+ * @param {integer} gutterSizePx Size of gutter in the old tile
+ * @param {function} callback function(err) {}
+ * @example
+ * const cropTile = require(__dirname + '/../../src/helper/cropTile.js');
  * 
- * @param {string}
- *          oldFile File to be crop
- * @param {string}
- *          newFile New cropped file
- * @param {integer}
- *          tileSizePx Size of the new file / new tile
- * @param {integer}
- *          gutterSizePx Size of gutter in old file / old tile
- * @param {function}
- *          callback function(err) {}
+ * const oldFile = __dirname + '/cropTileOld.png';
+ * const newFile = __dirname + '/cropTileNew.png';
+ * const tileSizePx = 1000; // Size of the new tile
+ * const gutterSizePx = 150;
+ * 
+ * cropTile(oldFile, newFile, tileSizePx, gutterSizePx, (err)=>{
+ *   if(err){
+ *     console.error(err);
+ *   }else{
+ *     console.log('Tile cropped!');
+ *   }
+ * });
  */
 function cropTile(oldFile, newFile, tileSizePx, gutterSizePx, callback) {
 

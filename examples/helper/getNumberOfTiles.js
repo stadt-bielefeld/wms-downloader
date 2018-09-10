@@ -1,3 +1,5 @@
+'use strict';
+
 const getNumberOfTiles = require(__dirname + '/../../src/helper/getNumberOfTiles.js');
 
 // task options

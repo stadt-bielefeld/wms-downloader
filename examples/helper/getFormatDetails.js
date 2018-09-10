@@ -1,3 +1,5 @@
+'use strict';
+
 const getFormatDetails = require(__dirname + '/../../src/helper/getFormatDetails.js');
 
 console.log(getFormatDetails('image/png'));

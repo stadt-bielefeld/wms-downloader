@@ -1,3 +1,5 @@
+'use strict';
+
 const determineGroundResolution = require(__dirname + '/../../src/helper/determineGroundResolution.js');
 
 const res = [ {'dpi': 72, 'scale': 5000 },  {'dpi': 72, 'scale': 10000 } ];

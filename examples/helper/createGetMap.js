@@ -1,3 +1,5 @@
+'use strict';
+
 const createGetMap = require(__dirname + '/../../src/helper/createGetMap.js');
 
 const wms = {

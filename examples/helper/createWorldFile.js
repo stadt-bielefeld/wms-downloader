@@ -1,3 +1,5 @@
+'use strict';
+
 const createWorldFile = require(__dirname + '/../../src/helper/createWorldFile.js');
 
 const x0 = 458000;
