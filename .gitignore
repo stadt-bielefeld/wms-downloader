@@ -2,3 +2,4 @@ node_modules
 examples/tiles
 examples/svg.js
 examples/helper/cropTileNew.png
+examples/helper/cropTileVectorNew.svg

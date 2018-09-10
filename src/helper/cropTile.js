@@ -7,14 +7,12 @@ const gm = require('gm');
 /**
  * Crops a tile with the gutter size.
  * 
- * @param {string} oldFile File to be crop
- * @param {string} newFile New cropped file
- * @param {integer} tileSizePx Size of the new tile
- * @param {integer} gutterSizePx Size of gutter in the old tile
- * @param {function} callback function(err) {}
+ * @param {String} oldFile File to be crop
+ * @param {String} newFile New cropped file
+ * @param {Number} tileSizePx Size of the new tile
+ * @param {Number} gutterSizePx Size of gutter in the old tile
+ * @param {Function} callback function(err) {}
  * @example
- * const cropTile = require(__dirname + '/../../src/helper/cropTile.js');
- * 
  * const oldFile = __dirname + '/cropTileOld.png';
  * const newFile = __dirname + '/cropTileNew.png';
  * const tileSizePx = 1000; // Size of the new tile
@@ -83,12 +81,12 @@ function cropTile(oldFile, newFile, tileSizePx, gutterSizePx, callback) {
      * That will fixed with the following code.
      */
     if ((inExt == '' && outExt == 'jpg') || (inExt == '' && outExt == 'tif')) {
-      gm(oldFile).flatten().background('white').crop(tileSizePx, tileSizePx, gutterSizePx, gutterSizePx).write(newFile, function (err) {
+      gm(oldFile).flatten().background('white').crop(tileSizePx, tileSizePx, gutterSizePx, gutterSizePx).write(newFile, (err) => {
         callback(err);
       });
     } else {
 
-      gm(oldFile).crop(tileSizePx, tileSizePx, gutterSizePx, gutterSizePx).write(newFile, function (err) {
+      gm(oldFile).crop(tileSizePx, tileSizePx, gutterSizePx, gutterSizePx).write(newFile, (err) => {
         callback(err);
       });
     }

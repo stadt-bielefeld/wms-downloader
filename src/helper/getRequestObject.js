@@ -9,10 +9,8 @@ let requestProxy; // Request object with internet proxy
 /**
  * Returns the correct request object with the right proxy settings.
  * 
- * @param {string}
- *          url URL of tile
- * @returns {object} Object from request module (let request =
- *          require('request');)
+ * @param {String} url URL of tile
+ * @returns {Object} Object from request module (let request = require('request');)
  */
 function getRequestObject(config, url) {
 
