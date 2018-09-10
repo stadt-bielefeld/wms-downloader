@@ -17,7 +17,7 @@ const defaultOptions = {
 };
 
 /**
- * aa
+ * Main class of this module.
  * @example
  * // create a WMSDownloader instance with default options
  * const WMSDownloader = require('wms-downloader');
@@ -61,7 +61,7 @@ class WMSDownloader {
       } else {
 
         // options are not valid, throw an error
-        let msg = 'ValidationError:\n';
+        let msg = '\n';
         valid.forEach((error)=>{
           msg += error.stack + '\n';
         });
@@ -126,7 +126,7 @@ class WMSDownloader {
       } else {
 
         // options are not valid, throw an error
-        let msg = 'ValidationError:\n';
+        let msg = '';
         valid.forEach((error)=>{
           msg += error.stack + '\n';
         });

@@ -48,7 +48,12 @@ function start(_this, options, callback) {
     }
 
   } else {
-    callback(new Error('Task options are not valid.'));
+    // options are not valid, throw an error
+    let msg = '';
+    valid.forEach((error) => {
+      msg += error.stack + '\n';
+    });
+    callback(new Error(msg));
   }
 
 }

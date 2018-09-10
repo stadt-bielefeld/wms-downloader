@@ -13,22 +13,16 @@ const writeTile = require(__dirname + '/writeTile.js');
 /**
  * It handles recursive all tiles of a resolution of a Web Map Service.
  * 
- * @param {object}
- *          options
- * @param {object}
- *          wms WMS object
- * @param {string}
- *          ws WMS workspace
- * @param {object}
- *          tiles Object with tile parameters
- * @param {integer}
- *          xIdx X-Index of tile
- * @param {integer}
- *          yIdx Y-Index of tile
- * @param {float}
- *          res Ground resolution
- * @param {function}
- *          callback function(err){}
+ * @param {Object} options
+ * @param {Object} wms WMS object
+ * @param {String} ws WMS workspace
+ * @param {Object} tiles Object with tile parameters
+ * @param {Number} xIdx X-Index of tile
+ * @param {Number} yIdx Y-Index of tile
+ * @param {Number} res Ground resolution
+ * @param {Object} config See options of the {@link WMSDownloader|WMSDownloader constructor} 
+ * @param {Array} progress Array of the progress of all WMSDownloader tasks.
+ * @param {Function} callback function(err){}
  */
 function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, config, progress, callback) {
 
@@ -74,7 +68,7 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, config, progress,
   let fileTile = ws + '/' + idOfTile + '.' + outputFormatDetails.fileExt;
 
   // Write gutter tile
-  writeTile(ws + '/' + idOfTile + '_gutter.' + inputFormatDetails.fileExt, getMap, getRequestObject(config, getMap), function (err, result) {
+  writeTile(ws + '/' + idOfTile + '_gutter.' + inputFormatDetails.fileExt, getMap, getRequestObject(config, getMap), (err, result) => {
 
     // Error
     if (err) {
@@ -87,7 +81,7 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, config, progress,
       // Tile was downloaded
 
       // Crop tile
-      cropTile(fileGutterTile, fileTile, tiles.sizePx, options.tiles.gutterPx, function (err) {
+      cropTile(fileGutterTile, fileTile, tiles.sizePx, options.tiles.gutterPx, (err) => {
 
         // Error
         if (err) {
@@ -100,7 +94,7 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, config, progress,
           // File cropped
 
           // Delete old gutter tile
-          fs.remove(fileGutterTile, function (err) {
+          fs.remove(fileGutterTile, (err) => {
 
             // Error
             if (err) {
@@ -114,7 +108,7 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, config, progress,
               // File was deleted
 
               // Write world file
-              fs.writeFile(ws + '/' + idOfTile + '.' + outputFormatDetails.worldFileExt, worldFile, function (err) {
+              fs.writeFile(ws + '/' + idOfTile + '.' + outputFormatDetails.worldFileExt, worldFile, (err) => {
 
                 // Error
                 if (err) {

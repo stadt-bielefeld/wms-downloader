@@ -6,16 +6,13 @@ const handleTiles = require(__dirname + '/handleTiles.js');
 /**
  * It handles recursive all Web Map Services of a resolution.
  * 
- * @param {object}
- *          options
- * @param {string}
- *          ws Resolution workspace
- * @param {objext}
- *          res Resolution object
- * @param {integer}
- *          wmsIdx Index of WMS
- * @param {function}
- *          callback function(err){}
+ * @param {Object} options
+ * @param {String} ws Resolution workspace
+ * @param {Object} res Resolution object
+ * @param {Number} wmsIdx Index of WMS
+ * @param {Object} config See options of the {@link WMSDownloader|WMSDownloader constructor} 
+ * @param {Array} progress Array of the progress of all WMSDownloader tasks.
+ * @param {Function} callback function(err){}
  */
 function handleWMS(options, ws, res, wmsIdx, config, progress, callback) {
 

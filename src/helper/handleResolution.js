@@ -6,14 +6,12 @@ const handleWMS = require(__dirname + '/handleWMS.js');
 /**
  * It handles recursive all resolutions of a task.
  * 
- * @param {object}
- *          options
- * @param {string}
- *          ws Task workspace
- * @param {integer}
- *          resIdx Index of resolution
- * @param callback
- *          function(err){}
+ * @param {Object} options
+ * @param {String} ws Task workspace
+ * @param {Number} resIdx Index of resolution
+ * @param {Object} config See options of the {@link WMSDownloader|WMSDownloader constructor} 
+ * @param {Array} progress Array of the progress of all WMSDownloader tasks.
+ * @param {Function} callback function(err){}
  */
 function handleResolution(options, ws, resIdx, config, progress, callback) {
 
@@ -30,7 +28,7 @@ function handleResolution(options, ws, resIdx, config, progress, callback) {
   }
 
   // Create directory of resolution workspace
-  fs.ensureDir(resWs, function (err) {
+  fs.ensureDir(resWs, (err) => {
     // Error
     if (err) {
       // Directory could not be created.
@@ -41,7 +39,7 @@ function handleResolution(options, ws, resIdx, config, progress, callback) {
       // No errors
 
       // Handle all wms
-      handleWMS(options, resWs, res, 0, config, progress, function (err) {
+      handleWMS(options, resWs, res, 0, config, progress, (err) => {
 
         // Error
         if (err) {

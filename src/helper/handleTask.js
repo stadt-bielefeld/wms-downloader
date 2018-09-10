@@ -6,14 +6,14 @@ const handleResolution = require(__dirname + '/handleResolution.js');
 /**
  * It handles a download task of Web Map Services.
  * 
- * @param {object}
- *          options
- * @param {function}
- *          callback function(err){}
+ * @param {Object} options
+ * @param {Object} config See options of the {@link WMSDownloader|WMSDownloader constructor} 
+ * @param {Array} progress Array of the progress of all WMSDownloader tasks.
+ * @param {Function} callback function(err){}
  */
 function handleTask(options, config, progress, callback) {
 
-  fs.ensureDir(options.task.workspace, function (err) {
+  fs.ensureDir(options.task.workspace, (err) => {
     if (err) {
       // Call callback function with error.
       callback(err);
@@ -22,7 +22,7 @@ function handleTask(options, config, progress, callback) {
       let ws = options.task.workspace + '/' + options.task.id;
 
       // Create directory of task workspace
-      fs.ensureDir(ws, function (err) {
+      fs.ensureDir(ws, (err) => {
 
         // Error
         if (err) {
@@ -34,7 +34,7 @@ function handleTask(options, config, progress, callback) {
           // No errors
 
           // Handle all resolutions
-          handleResolution(options, ws, 0, config, progress, function (err) {
+          handleResolution(options, ws, 0, config, progress, (err) => {
 
             // Error
             if (err) {
