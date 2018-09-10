@@ -56,12 +56,17 @@ class WMSDownloader {
       const valid = isValid(options, configSchema);
 
       // options are valid
-      if (valid) {
+      if (valid === true) {
         this.options = Object.assign(defaultOptions, options);
       } else {
 
         // options are not valid, throw an error
-        throw new Error('Options are not valid');
+        let msg = 'ValidationError:\n';
+        valid.forEach((error)=>{
+          msg += error.stack + '\n';
+        });
+        throw new Error(msg);
+
       }
 
     } else {
@@ -116,12 +121,17 @@ class WMSDownloader {
       const valid = isValid(options, configSchema);
 
       // options are valid
-      if (valid) {
+      if (valid === true) {
         this.options = Object.assign(defaultOptions, options);
       } else {
 
         // options are not valid, throw an error
-        throw new Error('Options are not valid');
+        let msg = 'ValidationError:\n';
+        valid.forEach((error)=>{
+          msg += error.stack + '\n';
+        });
+        throw new Error(msg);
+        
       }
 
     } else {
