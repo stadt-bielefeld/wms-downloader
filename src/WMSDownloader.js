@@ -38,7 +38,7 @@ const defaultOptions = {
  *        'exclude': ['http://12.101.20.18/', 'http://12.208.28.48/']
  *      }
  *    }
- *  }
+ *  }js
  * });
  */
 class WMSDownloader {
@@ -62,7 +62,7 @@ class WMSDownloader {
 
         // options are not valid, throw an error
         let msg = '\n';
-        valid.forEach((error)=>{
+        valid.forEach((error) => {
           msg += error.stack + '\n';
         });
         throw new Error(msg);
@@ -79,18 +79,138 @@ class WMSDownloader {
   }
 
   /**
-  * Starts a download.
-  * @param {object} options
+  * Starts a download task. Every download task runs always asynchronously.
+  * @param {object} options Options of the task. See examples {@link https://github.com/stadt-bielefeld/wms-downloader/tree/master/examples|examples} and {@link https://github.com/stadt-bielefeld/wms-downloader/blob/master/src/schemas/task.json|json schema}.
   * @param {function} callback Callback function like `function(err){}`
+  * @example
+  * const WMSDownloader = require('wms-downloader');
+  * 
+  * const dl = new WMSDownloader();
+  * 
+  * const taskOptions = {
+  *   'task': {
+  *     'id': 'id_of_my_first_download',
+  *     'title': 'My first WMS download.',
+  *     'format': 'image/png',
+  *     'workspace': __dirname + '/tiles',
+  *     'area': {
+  *       'bbox': {
+  *         'xmin': 455000,
+  *         'ymin': 5750000,
+  *         'xmax': 479000,
+  *         'ymax': 5774000
+  *       }
+  *     }
+  *   },
+  *   'tiles': {
+  *     'maxSizePx': 2500,
+  *     'gutterPx': 250,
+  *     'resolutions': [{
+  *       'id': 'id_of_resolution_10',
+  *       'groundResolution': 10
+  *     }]
+  *   },
+  *   'wms': [{
+  *     'id': 'id_of_wms_stadtbezirke',
+  *     'getmap': {
+  *       'url': 'http://www.bielefeld01.de/geodaten/geo_dienste/wms.php?url=gebietsgliederung_wms_stadtbezirke_641&',
+  *       'kvp': {
+  *         'SERVICE': 'WMS',
+  *         'REQUEST': 'GetMap',
+  *         'VERSION': '1.3.0',
+  *         'LAYERS': 'stadtbezirke_wms',
+  *         'STYLES': '',
+  *         'CRS': 'EPSG:25832',
+  *         'FORMAT': 'image/png',
+  *         'TRANSPARENT': 'TRUE',
+  *         'MAP_RESOLUTION': 72
+  *       }
+  *     }
+  *   }]
+  * };
+  *
+  * dl.start(taskOptions, (err) => {
+  *   if (err) {
+  *     console.log(err);
+  *   } else {
+  *     console.log('Finished');
+  *   }
+  * });
   */
   start(options, callback) {
     start(this, options, callback);
   }
 
   /**
-  * Cancels a download.
-  * @param {string} id ID of the task
-  * @param {function} callback Callback function like `function(err){}`
+  * Cancels a download task.
+  * @param {string} id Id of the task
+  * @param {function} callback Callback function like `function(err, id){}`
+  * @example
+  * const WMSDownloader = require('wms-downloader');
+  * 
+  * const dl = new WMSDownloader();
+  * 
+  * const taskOptions = {
+  *   'task': {
+  *     'id': 'id_of_my_first_download',
+  *     'title': 'My first WMS download.',
+  *     'format': 'image/png',
+  *     'workspace': __dirname + '/tiles',
+  *     'area': {
+  *       'bbox': {
+  *         'xmin': 455000,
+  *         'ymin': 5750000,
+  *         'xmax': 479000,
+  *         'ymax': 5774000
+  *       }
+  *     }
+  *   },
+  *   'tiles': {
+  *     'maxSizePx': 2500,
+  *     'gutterPx': 250,
+  *     'resolutions': [{
+  *       'id': 'id_of_resolution_10',
+  *       'groundResolution': 1
+  *     }]
+  *   },
+  *   'wms': [{
+  *     'id': 'id_of_wms_stadtbezirke',
+  *     'getmap': {
+  *       'url': 'http://www.bielefeld01.de/geodaten/geo_dienste/wms.php?url=gebietsgliederung_wms_stadtbezirke_641&',
+  *       'kvp': {
+  *         'SERVICE': 'WMS',
+  *         'REQUEST': 'GetMap',
+  *         'VERSION': '1.3.0',
+  *         'LAYERS': 'stadtbezirke_wms',
+  *         'STYLES': '',
+  *         'CRS': 'EPSG:25832',
+  *         'FORMAT': 'image/png',
+  *         'TRANSPARENT': 'TRUE',
+  *         'MAP_RESOLUTION': 72
+  *       }
+  *     }
+  *   }]
+  * };
+  * 
+  * // start download
+  * dl.start(taskOptions, (err) => {
+  *   if (err) {
+  *     console.log(err);
+  *   } else {
+  *     console.log('Download was finished.');
+  *   }
+  * });
+  * 
+  * // cancel download after 10 seconds
+  * setTimeout(() => {
+  *   dl.cancel('id_of_my_first_download',(err, id)=>{
+  *     if(err){
+  *       console.error(err);
+  *     }else{
+  *       console.log('Download "' + id + '" was canceled.');
+  *     }
+  *   });
+  * }, 10000);
   */
   cancel(id, callback) {
     cancel(this, id, callback);
@@ -127,11 +247,11 @@ class WMSDownloader {
 
         // options are not valid, throw an error
         let msg = '';
-        valid.forEach((error)=>{
+        valid.forEach((error) => {
           msg += error.stack + '\n';
         });
         throw new Error(msg);
-        
+
       }
 
     } else {

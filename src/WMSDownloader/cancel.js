@@ -1,14 +1,11 @@
 'use strict';
 
-function cancel(_this, taskId, callback){
-  if (_this.progress[taskId]) {
-    _this.progress[taskId].cancel = true;
-    _this.progress[taskId].cancelCallback = callback;
+function cancel(_this, id, callback){
+  if (_this.progress[id]) {
+    _this.progress[id].cancel = true;
+    _this.progress[id].cancelCallback = callback;
   } else {
-    callback({
-      name: 'TaskNotExist',
-      message: 'The task with id "' + taskId + '" does not exist.'
-    });
+    callback(new Error('The download task with id "' + id + '" does not exist.'), id);
   }
 }
 

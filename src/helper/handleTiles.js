@@ -51,7 +51,7 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, config, progress,
 
   // World file content
   let worldFile = createWorldFile(tX0, tY0, res);
-  
+
   // Input format of WMS
   let inputFormatDetails = getFormatDetails(wms.getmap.kvp.FORMAT);
 
@@ -127,9 +127,9 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, config, progress,
                       progress[options.task.id].lastTileDate = new Date();
 
                       if (progress[options.task.id].cancel) {
-                        progress[options.task.id].cancelCallback(null);
-
-                        throw new Error('The task "' + options.task.id + '" has been canceled.');
+                        progress[options.task.id].cancelCallback(null, options.task.id);
+                        callback(new Error('The download task "' + options.task.id + '" was canceled.'));
+                        return;
                       }
                     }
 
@@ -138,7 +138,7 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, config, progress,
                     if (xIdx < tiles.xCount) {
 
                       // Handle next tile in x direction
-                      handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, config , progress, callback);
+                      handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, config, progress, callback);
                     } else {
                       // Raise y tile index
                       yIdx++;
@@ -148,7 +148,7 @@ function handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, config, progress,
                         xIdx = 0;
 
                         // Handle next tile in y direction
-                        handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, config , progress,  callback);
+                        handleTiles(options, wms, ws, tiles, xIdx, yIdx, res, config, progress, callback);
                       } else {
                         // All tiles were written.
                         // Call callback function without errors

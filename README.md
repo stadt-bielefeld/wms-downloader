@@ -56,7 +56,17 @@ npm i wms-downloader
 
 - [API documentation](https://stadt-bielefeld.github.io/wms-downloader/docs/api/index.html)
 
-Build api documentation:
+## Developer
+
+**Clone repository:**
+
+```bash
+git clone https://github.com/stadt-bielefeld/wms-downloader
+cd wms-downloader
+npm install
+```
+
+**Build api documentation:**
 
 ```bash
 npm run build-api-doc
