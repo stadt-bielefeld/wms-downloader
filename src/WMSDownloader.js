@@ -17,7 +17,8 @@ const defaultOptions = {
 };
 
 /**
- * Main class of this module.
+ * This is the main class of this module.
+ * It allows you to download tiles of a Web Map Service (WMS).
  * @example
  * // create a WMSDownloader instance with default options
  * const WMSDownloader = require('wms-downloader');

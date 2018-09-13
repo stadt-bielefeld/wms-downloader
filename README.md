@@ -36,7 +36,7 @@ sudo apt install graphicsmagick
 npm i wms-downloader
 ```
 
-## Get started
+## Getting started
 
 [Show examples](examples)
 
@@ -55,16 +55,6 @@ npm i wms-downloader
 ## Documentation
 
 - [API documentation](https://stadt-bielefeld.github.io/wms-downloader/docs/api/index.html)
-
-## Developer
-
-**Clone repository:**
-
-```bash
-git clone https://github.com/stadt-bielefeld/wms-downloader
-cd wms-downloader
-npm install
-```
 
 **Build api documentation:**
 
