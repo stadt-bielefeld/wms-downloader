@@ -304,7 +304,7 @@
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/WMSDownloader.js#L44-L288'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/WMSDownloader.js#L44-L366'>
       <span>src/WMSDownloader.js</span>
       </a>
     
@@ -334,7 +334,12 @@
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>?)</code>
-	    
+	    Config options of the WMSDownloader instance. See examples 
+<a href="https://github.com/stadt-bielefeld/wms-downloader/tree/master/examples">examples</a>
+ and 
+<a href="https://github.com/stadt-bielefeld/wms-downloader/blob/master/src/schemas/config.json">json schema</a>
+.
+
           </div>
           
         </div>
@@ -396,7 +401,7 @@
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/WMSDownloader.js#L140-L142'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/WMSDownloader.js#L139-L141'>
       <span>src/WMSDownloader.js</span>
       </a>
     
@@ -539,7 +544,7 @@ dl.start(taskOptions, (err) =&gt; {
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/WMSDownloader.js#L215-L217'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/WMSDownloader.js#L214-L216'>
       <span>src/WMSDownloader.js</span>
       </a>
     
@@ -690,14 +695,14 @@ setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/WMSDownloader.js#L224-L226'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/WMSDownloader.js#L302-L304'>
       <span>src/WMSDownloader.js</span>
       </a>
     
   </div>
   
 
-  <p>Returns the progress of a download.</p>
+  <p>Returns the progress of a download task.</p>
 
  
   
@@ -720,7 +725,8 @@ setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>id</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    
+	    Id of the task
+
           </div>
           
         </div>
@@ -734,7 +740,9 @@ setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
-        aaa
+        See the 
+<code>progress object</code>
+ in the example.
 
       
     
@@ -742,6 +750,88 @@ setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;
 
   
 
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> WMSDownloader = <span class="hljs-built_in">require</span>(<span class="hljs-string">'wms-downloader'</span>);
+
+<span class="hljs-keyword">const</span> dl = <span class="hljs-keyword">new</span> WMSDownloader();
+
+<span class="hljs-keyword">const</span> taskOptions = {
+  <span class="hljs-string">'task'</span>: {
+    <span class="hljs-string">'id'</span>: <span class="hljs-string">'id_of_my_first_download'</span>,
+    <span class="hljs-string">'title'</span>: <span class="hljs-string">'My first WMS download.'</span>,
+    <span class="hljs-string">'format'</span>: <span class="hljs-string">'image/png'</span>,
+    <span class="hljs-string">'workspace'</span>: __dirname + <span class="hljs-string">'/tiles'</span>,
+    <span class="hljs-string">'area'</span>: {
+      <span class="hljs-string">'bbox'</span>: {
+        <span class="hljs-string">'xmin'</span>: <span class="hljs-number">455000</span>,
+        <span class="hljs-string">'ymin'</span>: <span class="hljs-number">5750000</span>,
+        <span class="hljs-string">'xmax'</span>: <span class="hljs-number">479000</span>,
+        <span class="hljs-string">'ymax'</span>: <span class="hljs-number">5774000</span>
+      }
+    }
+  },
+  <span class="hljs-string">'tiles'</span>: {
+    <span class="hljs-string">'maxSizePx'</span>: <span class="hljs-number">2500</span>,
+    <span class="hljs-string">'gutterPx'</span>: <span class="hljs-number">250</span>,
+    <span class="hljs-string">'resolutions'</span>: [{
+      <span class="hljs-string">'id'</span>: <span class="hljs-string">'id_of_resolution_10'</span>,
+      <span class="hljs-string">'groundResolution'</span>: <span class="hljs-number">1</span>
+    }]
+  },
+  <span class="hljs-string">'wms'</span>: [{
+    <span class="hljs-string">'id'</span>: <span class="hljs-string">'id_of_wms_stadtbezirke'</span>,
+    <span class="hljs-string">'getmap'</span>: {
+      <span class="hljs-string">'url'</span>: <span class="hljs-string">'http://www.bielefeld01.de/geodaten/geo_dienste/wms.php?url=gebietsgliederung_wms_stadtbezirke_641&amp;'</span>,
+      <span class="hljs-string">'kvp'</span>: {
+        <span class="hljs-string">'SERVICE'</span>: <span class="hljs-string">'WMS'</span>,
+        <span class="hljs-string">'REQUEST'</span>: <span class="hljs-string">'GetMap'</span>,
+        <span class="hljs-string">'VERSION'</span>: <span class="hljs-string">'1.3.0'</span>,
+        <span class="hljs-string">'LAYERS'</span>: <span class="hljs-string">'stadtbezirke_wms'</span>,
+        <span class="hljs-string">'STYLES'</span>: <span class="hljs-string">''</span>,
+        <span class="hljs-string">'CRS'</span>: <span class="hljs-string">'EPSG:25832'</span>,
+        <span class="hljs-string">'FORMAT'</span>: <span class="hljs-string">'image/png'</span>,
+        <span class="hljs-string">'TRANSPARENT'</span>: <span class="hljs-string">'TRUE'</span>,
+        <span class="hljs-string">'MAP_RESOLUTION'</span>: <span class="hljs-number">72</span>
+      }
+    }
+  }]
+};
+
+<span class="hljs-comment">// print progress</span>
+<span class="hljs-keyword">const</span> progressInterval = setInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+
+  <span class="hljs-comment">// progress object</span>
+  <span class="hljs-keyword">const</span> progress = dl.getProgress(taskOptions.task.id);
+  <span class="hljs-comment">// {</span>
+  <span class="hljs-comment">//   'tiles': 144, // complete number of tiles</span>
+  <span class="hljs-comment">//   'tilesCompleted': 4, // number of completed tiles</span>
+  <span class="hljs-comment">//   'startDate': '2018-09-13T10:44:56.011Z', // start date (new Date())</span>
+  <span class="hljs-comment">//   'lastTileDate': '2018-09-13T10:45:05.691Z', // completion date (new Date()) of the last tile</span>
+  <span class="hljs-comment">//   'percent': 2.78, // progress in percent</span>
+  <span class="hljs-comment">//   'waitingTime': 337196 // waiting time in ms</span>
+  <span class="hljs-comment">// }</span>
+
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Progress: '</span> + progress.percent + <span class="hljs-string">'%, Waiting time: '</span> + progress.waitingTime + <span class="hljs-string">' ms'</span>);
+
+}, <span class="hljs-number">1000</span>);
+
+
+<span class="hljs-comment">// start download</span>
+dl.start(taskOptions, (err) =&gt; {
+
+  <span class="hljs-comment">// stop progress printing</span>
+  clearInterval(progressInterval);
+  
+  <span class="hljs-keyword">if</span> (err) {
+    <span class="hljs-built_in">console</span>.log(err);
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Download was finished.'</span>);
+  }
+});</pre>
+    
   
 
   
@@ -833,7 +923,7 @@ setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/helper/createGetMap.js#L36-L48'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/helper/createGetMap.js#L36-L48'>
       <span>src/helper/createGetMap.js</span>
       </a>
     
@@ -963,7 +1053,7 @@ setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/helper/createWorldFile.js#L24-L33'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/helper/createWorldFile.js#L24-L33'>
       <span>src/helper/createWorldFile.js</span>
       </a>
     
@@ -1072,7 +1162,7 @@ setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/helper/cropTile.js#L29-L95'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/helper/cropTile.js#L29-L95'>
       <span>src/helper/cropTile.js</span>
       </a>
     
@@ -1191,7 +1281,7 @@ cropTile(oldFile, newFile, tileSizePx, gutterSizePx, (err)=&gt;{
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/helper/determineGroundResolution.js#L16-L28'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/helper/determineGroundResolution.js#L16-L28'>
       <span>src/helper/determineGroundResolution.js</span>
       </a>
     
@@ -1270,7 +1360,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/helper/getFormatDetails.js#L13-L32'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/helper/getFormatDetails.js#L13-L32'>
       <span>src/helper/getFormatDetails.js</span>
       </a>
     
@@ -1352,7 +1442,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/helper/getNumberOfTiles.js#L49-L82'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/helper/getNumberOfTiles.js#L49-L82'>
       <span>src/helper/getNumberOfTiles.js</span>
       </a>
     
@@ -1468,7 +1558,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/helper/getRequestObject.js#L15-L66'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/helper/getRequestObject.js#L15-L66'>
       <span>src/helper/getRequestObject.js</span>
       </a>
     
@@ -1550,7 +1640,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/helper/getSupportedFormats.js#L67-L69'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/helper/getSupportedFormats.js#L67-L69'>
       <span>src/helper/getSupportedFormats.js</span>
       </a>
     
@@ -1641,7 +1731,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/helper/handleResolution.js#L16-L74'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/helper/handleResolution.js#L16-L74'>
       <span>src/helper/handleResolution.js</span>
       </a>
     
@@ -1752,7 +1842,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/helper/handleTask.js#L14-L59'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/helper/handleTask.js#L14-L59'>
       <span>src/helper/handleTask.js</span>
       </a>
     
@@ -1845,7 +1935,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/helper/handleTiles.js#L27-L175'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/helper/handleTiles.js#L27-L175'>
       <span>src/helper/handleTiles.js</span>
       </a>
     
@@ -1992,7 +2082,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/helper/handleWMS.js#L17-L90'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/helper/handleWMS.js#L17-L90'>
       <span>src/helper/handleWMS.js</span>
       </a>
     
@@ -2112,7 +2202,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/helper/isValid.js#L47-L64'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/helper/isValid.js#L47-L64'>
       <span>src/helper/isValid.js</span>
       </a>
     
@@ -2234,7 +2324,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/8eefeeaf45e9db4fbf6f0c4fd568592bf746f22a/src/helper/writeTile.js#L13-L45'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/ed1db4fb2d196eea4123d8f17e9d3a1d89689079/src/helper/writeTile.js#L13-L45'>
       <span>src/helper/writeTile.js</span>
       </a>
     

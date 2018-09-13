@@ -44,8 +44,7 @@ const defaultOptions = {
 class WMSDownloader {
 
   /**
-   * 
-   * @param {object} [options]
+   * @param {object} [options] Config options of the WMSDownloader instance. See examples {@link https://github.com/stadt-bielefeld/wms-downloader/tree/master/examples|examples} and {@link https://github.com/stadt-bielefeld/wms-downloader/blob/master/src/schemas/config.json|json schema}.
    */
   constructor(options) {
 
@@ -217,9 +216,88 @@ class WMSDownloader {
   }
 
   /**
-  * Returns the progress of a download.
-  * @param {string} id 
-  * @returns {object} aaa
+  * Returns the progress of a download task.
+  * @param {string} id Id of the task
+  * @returns {object} See the `progress object` in the example.
+  * @example
+  * const WMSDownloader = require('wms-downloader');
+  * 
+  * const dl = new WMSDownloader();
+  * 
+  * const taskOptions = {
+  *   'task': {
+  *     'id': 'id_of_my_first_download',
+  *     'title': 'My first WMS download.',
+  *     'format': 'image/png',
+  *     'workspace': __dirname + '/tiles',
+  *     'area': {
+  *       'bbox': {
+  *         'xmin': 455000,
+  *         'ymin': 5750000,
+  *         'xmax': 479000,
+  *         'ymax': 5774000
+  *       }
+  *     }
+  *   },
+  *   'tiles': {
+  *     'maxSizePx': 2500,
+  *     'gutterPx': 250,
+  *     'resolutions': [{
+  *       'id': 'id_of_resolution_10',
+  *       'groundResolution': 1
+  *     }]
+  *   },
+  *   'wms': [{
+  *     'id': 'id_of_wms_stadtbezirke',
+  *     'getmap': {
+  *       'url': 'http://www.bielefeld01.de/geodaten/geo_dienste/wms.php?url=gebietsgliederung_wms_stadtbezirke_641&',
+  *       'kvp': {
+  *         'SERVICE': 'WMS',
+  *         'REQUEST': 'GetMap',
+  *         'VERSION': '1.3.0',
+  *         'LAYERS': 'stadtbezirke_wms',
+  *         'STYLES': '',
+  *         'CRS': 'EPSG:25832',
+  *         'FORMAT': 'image/png',
+  *         'TRANSPARENT': 'TRUE',
+  *         'MAP_RESOLUTION': 72
+  *       }
+  *     }
+  *   }]
+  * };
+  * 
+  * // print progress
+  * const progressInterval = setInterval(() => {
+  * 
+  *   // progress object
+  *   const progress = dl.getProgress(taskOptions.task.id);
+  *   // {
+  *   //   'tiles': 144, // complete number of tiles
+  *   //   'tilesCompleted': 4, // number of completed tiles
+  *   //   'startDate': '2018-09-13T10:44:56.011Z', // start date (new Date())
+  *   //   'lastTileDate': '2018-09-13T10:45:05.691Z', // completion date (new Date()) of the last tile
+  *   //   'percent': 2.78, // progress in percent
+  *   //   'waitingTime': 337196 // waiting time in ms
+  *   // }
+  * 
+  *   console.log('Progress: ' + progress.percent + '%, Waiting time: ' + progress.waitingTime + ' ms');
+  * 
+  * }, 1000);
+  * 
+  * 
+  * // start download
+  * dl.start(taskOptions, (err) => {
+  * 
+  *   // stop progress printing
+  *   clearInterval(progressInterval);
+  *   
+  *   if (err) {
+  *     console.log(err);
+  *   } else {
+  *     console.log('Download was finished.');
+  *   }
+  * });
+  * 
   */
   getProgress(id) {
     return getProgress(this, id);
