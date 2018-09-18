@@ -48,7 +48,7 @@ npm i wms-downloader
 - image/tiff
 - image/svg+xml (experimental)
 
-## Changlog
+## Changelog
 
 - [v1.0.0](docs/changelog/v1.0.0.md)
 
