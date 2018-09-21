@@ -48,14 +48,10 @@ npm i wms-downloader
 - image/tiff
 - image/svg+xml (experimental)
 
-## Changelog
-
-- [v1.1.0](docs/changelog/v1.1.0.md)
-- [v1.0.0](docs/changelog/v1.0.0.md)
-
 ## Documentation
 
 - [API documentation](https://stadt-bielefeld.github.io/wms-downloader/docs/api/index.html)
+- [Changelog](docs/changelog/index.md)
 
 **Build api documentation:**
 
