@@ -48,6 +48,8 @@ class WMSDownloader {
   /**
    * Returns all supported formats.
    * @example
+   * const WMSDownloader = require('wms-downloader');
+   * 
    * console.log(WMSDownloader.SUPPORTED_FORMATS);
    * //[ { title: 'PNG',
    * //    fileExt: 'png',
