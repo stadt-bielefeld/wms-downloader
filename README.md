@@ -50,6 +50,7 @@ npm i wms-downloader
 
 ## Changlog
 
+- [v1.1.0](docs/changelog/v1.1.0.md)
 - [v1.0.0](docs/changelog/v1.0.0.md)
 
 ## Documentation

@@ -6,6 +6,7 @@ const start = require(__dirname + '/WMSDownloader/start.js');
 const cancel = require(__dirname + '/WMSDownloader/cancel.js');
 const getProgress = require(__dirname + '/WMSDownloader/getProgress.js');
 const isValid = require(__dirname + '/helper/isValid.js');
+const getSupportedFormats = require(__dirname + '/helper/getSupportedFormats.js');
 const configSchema = require(__dirname + '/schemas/config.json');
 
 
@@ -43,6 +44,39 @@ const defaultOptions = {
  * });
  */
 class WMSDownloader {
+
+  /**
+   * Returns all supported formats.
+   * @example
+   * console.log(WMSDownloader.SUPPORTED_FORMATS);
+   * //[ { title: 'PNG',
+   * //    fileExt: 'png',
+   * //    worldFileExt: 'pgw',
+   * //    mimeType: 'image/png' },
+   * //  { title: 'PNG 8-Bit',
+   * //    fileExt: 'png',
+   * //    worldFileExt: 'pgw',
+   * //    mime_type: 'image/png; mode=8bit' },
+   * //  { title: 'JPG',
+   * //    fileExt: 'jpg',
+   * //    worldFileExt: 'jgw',
+   * //    mimeType: 'image/jpeg' },
+   * //  { title: 'GIF',
+   * //    fileExt: 'gif',
+   * //    worldFileExt: 'gfw',
+   * //    mimeType: 'image/gif' },
+   * //  { title: 'TIFF',
+   * //    fileExt: 'tif',
+   * //    worldFileExt: 'tfw',
+   * //    mimeType: 'image/tiff' },
+   * //  { title: 'SVG',
+   * //    fileExt: 'svg',
+   * //    worldFileExt: 'sgw',
+   * //    mimeType: 'image/svg+xml' } ]
+   */
+  static get SUPPORTED_FORMATS() {
+    return getSupportedFormats();
+  }
 
   /**
    * @param {object} [options] Config options of the WMSDownloader instance. See examples {@link https://github.com/stadt-bielefeld/wms-downloader/tree/master/examples|examples} and {@link https://github.com/stadt-bielefeld/wms-downloader/blob/master/src/schemas/config.json|json schema}.
