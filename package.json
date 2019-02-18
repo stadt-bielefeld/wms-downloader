@@ -8,14 +8,14 @@
     "build-api-doc": "documentation build src/** --output docs/api --config docs/api-config.yaml --format html --github"
   },
   "dependencies": {
-    "fs-extra": "^7.0.0",
+    "fs-extra": "^7.0.1",
     "gm": "^1.23.1",
     "jsonschema": "^1.2.4",
     "request": "^2.88.0",
     "xml2js": "^0.4.19"
   },
   "devDependencies": {
-    "documentation": "^8.1.2"
+    "documentation": "^9.1.1"
   },
   "keywords": [
     "wms",
