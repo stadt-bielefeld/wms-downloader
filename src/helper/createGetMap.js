@@ -11,14 +11,14 @@
  * @example
  * const wms = {
  *   'getmap': {
- *     'url': 'http://www.bielefeld01.de/geodaten/geo_dienste/wms.php?url=gebietsgliederung_wms_stadtbezirke_641&',
+ *     'url': 'http://www.bielefeld01.de/md/WMS/statistische_gebietsgliederung/02?',
  *     'kvp': {
  *       'SERVICE': 'WMS',
  *       'VERSION': '1.3.0',
  *       'REQUEST': 'GetMap',
  *       'FORMAT': 'image/png',
  *       'TRANSPARENT': 'true',
- *       'LAYERS': 'stadtbezirke_wms',
+ *       'LAYERS': 'stadtbezirke_pl',
  *       'CRS': 'EPSG:25832',
  *       'STYLES': ''
  *     }
@@ -31,7 +31,7 @@
  * 
  * let getMapUrl = createGetMap(wms, bbox, width, height);
  * console.log(getMapUrl);
- * //http://www.bielefeld01.de/geodaten/geo_dienste/wms.php?url=gebietsgliederung_wms_stadtbezirke_641&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=stadtbezirke_wms&CRS=EPSG:25832&STYLES=&BBOX=458163.5475413472,5754265.480964899,478190.04895206343,5772476.602953842&WIDTH=1048&HEIGHT=953&
+ * //http://www.bielefeld01.de/md/WMS/statistische_gebietsgliederung/02?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=stadtbezirke_pl&CRS=EPSG:25832&STYLES=&BBOX=458163.5475413472,5754265.480964899,478190.04895206343,5772476.602953842&WIDTH=1048&HEIGHT=953&
  */
 function createGetMap(wms, bbox, width, height) {
 
