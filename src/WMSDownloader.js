@@ -121,7 +121,7 @@ class WMSDownloader {
    * @returns {object} object of the request module.
    */
   getRequestObject(url){
-    return getRequestObject(this.options.request, url);
+    return getRequestObject(this.options, url);
   }
 
   /**
