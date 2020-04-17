@@ -7,6 +7,7 @@ const cancel = require(__dirname + '/WMSDownloader/cancel.js');
 const getProgress = require(__dirname + '/WMSDownloader/getProgress.js');
 const isValid = require(__dirname + '/helper/isValid.js');
 const getSupportedFormats = require(__dirname + '/helper/getSupportedFormats.js');
+const getRequestObject = require(__dirname + '/helper/getRequestObject.js');
 const configSchema = require(__dirname + '/schemas/config.json');
 
 
@@ -112,6 +113,15 @@ class WMSDownloader {
 
     // set a empty progress object for all new tasks
     this.progress = {};
+  }
+
+  /**
+   * Returns the object of the request module.
+   * @param {string} url Url for request
+   * @returns {object} object of the request module.
+   */
+  getRequestObject(url){
+    return getRequestObject(this.options.request, url);
   }
 
   /**
