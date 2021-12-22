@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset='utf-8'>
-  <title>wms-downloader 1.1.7 | Documentation</title>
+  <title>wms-downloader 1.1.8 | Documentation</title>
   <meta name='description' content='It allows you to download tiles of a Web Map Service (WMS).'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet'>
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>wms-downloader</h3>
-          <div class='mb1'><code>1.1.7</code></div>
+          <div class='mb1'><code>1.1.8</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -262,7 +262,6 @@
 
   
     
-
   
 </section></div>
           
@@ -278,7 +277,7 @@
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/WMSDownloader.js#L47-L413'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/WMSDownloader.js#L47-L413'>
       <span>src/WMSDownloader.js</span>
       </a>
     
@@ -332,22 +331,22 @@ It allows you to download tiles of a Web Map Service (WMS).</p>
     
       
       <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// create a WMSDownloader instance with default options</span>
-<span class="hljs-keyword">const</span> WMSDownloader = <span class="hljs-built_in">require</span>(<span class="hljs-string">'wms-downloader'</span>);
+<span class="hljs-keyword">const</span> WMSDownloader = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;wms-downloader&#x27;</span>);
 <span class="hljs-keyword">const</span> dl = <span class="hljs-keyword">new</span> WMSDownloader();
 
 <span class="hljs-comment">// create a WMSDownloader instance with custom options</span>
-<span class="hljs-keyword">const</span> WMSDownloader = <span class="hljs-built_in">require</span>(<span class="hljs-string">'wms-downloader'</span>);
+<span class="hljs-keyword">const</span> WMSDownloader = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;wms-downloader&#x27;</span>);
 <span class="hljs-keyword">const</span> dl = <span class="hljs-keyword">new</span> WMSDownloader({
- <span class="hljs-string">'request'</span>: {
-   <span class="hljs-string">'userAgent'</span>: <span class="hljs-string">'Mozilla/5.0 QGIS/2.18.3'</span>,
-   <span class="hljs-string">'timeout'</span>: <span class="hljs-number">30000</span>,
-   <span class="hljs-string">'proxy'</span>: {
-     <span class="hljs-string">'http'</span>: {
-       <span class="hljs-string">'host'</span>: <span class="hljs-string">'10.208.20.71'</span>,
-       <span class="hljs-string">'port'</span>: <span class="hljs-number">4239</span>,
-       <span class="hljs-string">'user'</span>: <span class="hljs-string">'NameOfUser'</span>,
-       <span class="hljs-string">'password'</span>: <span class="hljs-string">'PasswordOfUser'</span>,
-       <span class="hljs-string">'exclude'</span>: [<span class="hljs-string">'http://12.101.20.18/'</span>, <span class="hljs-string">'http://12.208.28.48/'</span>]
+ <span class="hljs-string">&#x27;request&#x27;</span>: {
+   <span class="hljs-string">&#x27;userAgent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 QGIS/2.18.3&#x27;</span>,
+   <span class="hljs-string">&#x27;timeout&#x27;</span>: <span class="hljs-number">30000</span>,
+   <span class="hljs-string">&#x27;proxy&#x27;</span>: {
+     <span class="hljs-string">&#x27;http&#x27;</span>: {
+       <span class="hljs-string">&#x27;host&#x27;</span>: <span class="hljs-string">&#x27;10.208.20.71&#x27;</span>,
+       <span class="hljs-string">&#x27;port&#x27;</span>: <span class="hljs-number">4239</span>,
+       <span class="hljs-string">&#x27;user&#x27;</span>: <span class="hljs-string">&#x27;NameOfUser&#x27;</span>,
+       <span class="hljs-string">&#x27;password&#x27;</span>: <span class="hljs-string">&#x27;PasswordOfUser&#x27;</span>,
+       <span class="hljs-string">&#x27;exclude&#x27;</span>: [<span class="hljs-string">&#x27;http://12.101.20.18/&#x27;</span>, <span class="hljs-string">&#x27;http://12.208.28.48/&#x27;</span>]
      }
    }
  }js
@@ -373,7 +372,7 @@ It allows you to download tiles of a Web Map Service (WMS).</p>
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/WMSDownloader.js#L80-L82'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/WMSDownloader.js#L80-L82'>
       <span>src/WMSDownloader.js</span>
       </a>
     
@@ -407,33 +406,33 @@ It allows you to download tiles of a Web Map Service (WMS).</p>
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> WMSDownloader = <span class="hljs-built_in">require</span>(<span class="hljs-string">'wms-downloader'</span>);
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> WMSDownloader = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;wms-downloader&#x27;</span>);
 
 <span class="hljs-built_in">console</span>.log(WMSDownloader.SUPPORTED_FORMATS);
-<span class="hljs-comment">//[ { title: 'PNG',</span>
-<span class="hljs-comment">//    fileExt: 'png',</span>
-<span class="hljs-comment">//    worldFileExt: 'pgw',</span>
-<span class="hljs-comment">//    mimeType: 'image/png' },</span>
-<span class="hljs-comment">//  { title: 'PNG 8-Bit',</span>
-<span class="hljs-comment">//    fileExt: 'png',</span>
-<span class="hljs-comment">//    worldFileExt: 'pgw',</span>
-<span class="hljs-comment">//    mime_type: 'image/png; mode=8bit' },</span>
-<span class="hljs-comment">//  { title: 'JPG',</span>
-<span class="hljs-comment">//    fileExt: 'jpg',</span>
-<span class="hljs-comment">//    worldFileExt: 'jgw',</span>
-<span class="hljs-comment">//    mimeType: 'image/jpeg' },</span>
-<span class="hljs-comment">//  { title: 'GIF',</span>
-<span class="hljs-comment">//    fileExt: 'gif',</span>
-<span class="hljs-comment">//    worldFileExt: 'gfw',</span>
-<span class="hljs-comment">//    mimeType: 'image/gif' },</span>
-<span class="hljs-comment">//  { title: 'TIFF',</span>
-<span class="hljs-comment">//    fileExt: 'tif',</span>
-<span class="hljs-comment">//    worldFileExt: 'tfw',</span>
-<span class="hljs-comment">//    mimeType: 'image/tiff' },</span>
-<span class="hljs-comment">//  { title: 'SVG',</span>
-<span class="hljs-comment">//    fileExt: 'svg',</span>
-<span class="hljs-comment">//    worldFileExt: 'sgw',</span>
-<span class="hljs-comment">//    mimeType: 'image/svg+xml' } ]</span></pre>
+<span class="hljs-comment">//[ { title: &#x27;PNG&#x27;,</span>
+<span class="hljs-comment">//    fileExt: &#x27;png&#x27;,</span>
+<span class="hljs-comment">//    worldFileExt: &#x27;pgw&#x27;,</span>
+<span class="hljs-comment">//    mimeType: &#x27;image/png&#x27; },</span>
+<span class="hljs-comment">//  { title: &#x27;PNG 8-Bit&#x27;,</span>
+<span class="hljs-comment">//    fileExt: &#x27;png&#x27;,</span>
+<span class="hljs-comment">//    worldFileExt: &#x27;pgw&#x27;,</span>
+<span class="hljs-comment">//    mime_type: &#x27;image/png; mode=8bit&#x27; },</span>
+<span class="hljs-comment">//  { title: &#x27;JPG&#x27;,</span>
+<span class="hljs-comment">//    fileExt: &#x27;jpg&#x27;,</span>
+<span class="hljs-comment">//    worldFileExt: &#x27;jgw&#x27;,</span>
+<span class="hljs-comment">//    mimeType: &#x27;image/jpeg&#x27; },</span>
+<span class="hljs-comment">//  { title: &#x27;GIF&#x27;,</span>
+<span class="hljs-comment">//    fileExt: &#x27;gif&#x27;,</span>
+<span class="hljs-comment">//    worldFileExt: &#x27;gfw&#x27;,</span>
+<span class="hljs-comment">//    mimeType: &#x27;image/gif&#x27; },</span>
+<span class="hljs-comment">//  { title: &#x27;TIFF&#x27;,</span>
+<span class="hljs-comment">//    fileExt: &#x27;tif&#x27;,</span>
+<span class="hljs-comment">//    worldFileExt: &#x27;tfw&#x27;,</span>
+<span class="hljs-comment">//    mimeType: &#x27;image/tiff&#x27; },</span>
+<span class="hljs-comment">//  { title: &#x27;SVG&#x27;,</span>
+<span class="hljs-comment">//    fileExt: &#x27;svg&#x27;,</span>
+<span class="hljs-comment">//    worldFileExt: &#x27;sgw&#x27;,</span>
+<span class="hljs-comment">//    mimeType: &#x27;image/svg+xml&#x27; } ]</span></pre>
     
   
 
@@ -471,7 +470,7 @@ It allows you to download tiles of a Web Map Service (WMS).</p>
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/WMSDownloader.js#L123-L125'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/WMSDownloader.js#L123-L125'>
       <span>src/WMSDownloader.js</span>
       </a>
     
@@ -551,7 +550,7 @@ It allows you to download tiles of a Web Map Service (WMS).</p>
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/WMSDownloader.js#L186-L188'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/WMSDownloader.js#L186-L188'>
       <span>src/WMSDownloader.js</span>
       </a>
     
@@ -613,57 +612,57 @@ It allows you to download tiles of a Web Map Service (WMS).</p>
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> WMSDownloader = <span class="hljs-built_in">require</span>(<span class="hljs-string">'wms-downloader'</span>);
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> WMSDownloader = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;wms-downloader&#x27;</span>);
 
 <span class="hljs-keyword">const</span> dl = <span class="hljs-keyword">new</span> WMSDownloader();
 
 <span class="hljs-keyword">const</span> taskOptions = {
-  <span class="hljs-string">'task'</span>: {
-    <span class="hljs-string">'id'</span>: <span class="hljs-string">'id_of_my_first_download'</span>,
-    <span class="hljs-string">'title'</span>: <span class="hljs-string">'My first WMS download.'</span>,
-    <span class="hljs-string">'format'</span>: <span class="hljs-string">'image/png'</span>,
-    <span class="hljs-string">'workspace'</span>: __dirname + <span class="hljs-string">'/tiles'</span>,
-    <span class="hljs-string">'area'</span>: {
-      <span class="hljs-string">'bbox'</span>: {
-        <span class="hljs-string">'xmin'</span>: <span class="hljs-number">455000</span>,
-        <span class="hljs-string">'ymin'</span>: <span class="hljs-number">5750000</span>,
-        <span class="hljs-string">'xmax'</span>: <span class="hljs-number">479000</span>,
-        <span class="hljs-string">'ymax'</span>: <span class="hljs-number">5774000</span>
+  <span class="hljs-string">&#x27;task&#x27;</span>: {
+    <span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;id_of_my_first_download&#x27;</span>,
+    <span class="hljs-string">&#x27;title&#x27;</span>: <span class="hljs-string">&#x27;My first WMS download.&#x27;</span>,
+    <span class="hljs-string">&#x27;format&#x27;</span>: <span class="hljs-string">&#x27;image/png&#x27;</span>,
+    <span class="hljs-string">&#x27;workspace&#x27;</span>: __dirname + <span class="hljs-string">&#x27;/tiles&#x27;</span>,
+    <span class="hljs-string">&#x27;area&#x27;</span>: {
+      <span class="hljs-string">&#x27;bbox&#x27;</span>: {
+        <span class="hljs-string">&#x27;xmin&#x27;</span>: <span class="hljs-number">455000</span>,
+        <span class="hljs-string">&#x27;ymin&#x27;</span>: <span class="hljs-number">5750000</span>,
+        <span class="hljs-string">&#x27;xmax&#x27;</span>: <span class="hljs-number">479000</span>,
+        <span class="hljs-string">&#x27;ymax&#x27;</span>: <span class="hljs-number">5774000</span>
       }
     }
   },
-  <span class="hljs-string">'tiles'</span>: {
-    <span class="hljs-string">'maxSizePx'</span>: <span class="hljs-number">2500</span>,
-    <span class="hljs-string">'gutterPx'</span>: <span class="hljs-number">250</span>,
-    <span class="hljs-string">'resolutions'</span>: [{
-      <span class="hljs-string">'id'</span>: <span class="hljs-string">'id_of_resolution_10'</span>,
-      <span class="hljs-string">'groundResolution'</span>: <span class="hljs-number">10</span>
+  <span class="hljs-string">&#x27;tiles&#x27;</span>: {
+    <span class="hljs-string">&#x27;maxSizePx&#x27;</span>: <span class="hljs-number">2500</span>,
+    <span class="hljs-string">&#x27;gutterPx&#x27;</span>: <span class="hljs-number">250</span>,
+    <span class="hljs-string">&#x27;resolutions&#x27;</span>: [{
+      <span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;id_of_resolution_10&#x27;</span>,
+      <span class="hljs-string">&#x27;groundResolution&#x27;</span>: <span class="hljs-number">10</span>
     }]
   },
-  <span class="hljs-string">'wms'</span>: [{
-    <span class="hljs-string">'id'</span>: <span class="hljs-string">'id_of_wms_stadtbezirke'</span>,
-    <span class="hljs-string">'getmap'</span>: {
-      <span class="hljs-string">'url'</span>: <span class="hljs-string">'http://www.bielefeld01.de/md/WMS/statistische_gebietsgliederung/02?'</span>,
-      <span class="hljs-string">'kvp'</span>: {
-        <span class="hljs-string">'SERVICE'</span>: <span class="hljs-string">'WMS'</span>,
-        <span class="hljs-string">'REQUEST'</span>: <span class="hljs-string">'GetMap'</span>,
-        <span class="hljs-string">'VERSION'</span>: <span class="hljs-string">'1.3.0'</span>,
-        <span class="hljs-string">'LAYERS'</span>: <span class="hljs-string">'stadtbezirke_pl'</span>,
-        <span class="hljs-string">'STYLES'</span>: <span class="hljs-string">''</span>,
-        <span class="hljs-string">'CRS'</span>: <span class="hljs-string">'EPSG:25832'</span>,
-        <span class="hljs-string">'FORMAT'</span>: <span class="hljs-string">'image/png'</span>,
-        <span class="hljs-string">'TRANSPARENT'</span>: <span class="hljs-string">'TRUE'</span>,
-        <span class="hljs-string">'MAP_RESOLUTION'</span>: <span class="hljs-number">72</span>
+  <span class="hljs-string">&#x27;wms&#x27;</span>: [{
+    <span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;id_of_wms_stadtbezirke&#x27;</span>,
+    <span class="hljs-string">&#x27;getmap&#x27;</span>: {
+      <span class="hljs-string">&#x27;url&#x27;</span>: <span class="hljs-string">&#x27;http://www.bielefeld01.de/md/WMS/statistische_gebietsgliederung/02?&#x27;</span>,
+      <span class="hljs-string">&#x27;kvp&#x27;</span>: {
+        <span class="hljs-string">&#x27;SERVICE&#x27;</span>: <span class="hljs-string">&#x27;WMS&#x27;</span>,
+        <span class="hljs-string">&#x27;REQUEST&#x27;</span>: <span class="hljs-string">&#x27;GetMap&#x27;</span>,
+        <span class="hljs-string">&#x27;VERSION&#x27;</span>: <span class="hljs-string">&#x27;1.3.0&#x27;</span>,
+        <span class="hljs-string">&#x27;LAYERS&#x27;</span>: <span class="hljs-string">&#x27;stadtbezirke_pl&#x27;</span>,
+        <span class="hljs-string">&#x27;STYLES&#x27;</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-string">&#x27;CRS&#x27;</span>: <span class="hljs-string">&#x27;EPSG:25832&#x27;</span>,
+        <span class="hljs-string">&#x27;FORMAT&#x27;</span>: <span class="hljs-string">&#x27;image/png&#x27;</span>,
+        <span class="hljs-string">&#x27;TRANSPARENT&#x27;</span>: <span class="hljs-string">&#x27;TRUE&#x27;</span>,
+        <span class="hljs-string">&#x27;MAP_RESOLUTION&#x27;</span>: <span class="hljs-number">72</span>
       }
     }
   }]
 };
 
-dl.start(taskOptions, (err) =&gt; {
+dl.start(taskOptions, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
   <span class="hljs-keyword">if</span> (err) {
     <span class="hljs-built_in">console</span>.log(err);
   } <span class="hljs-keyword">else</span> {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Finished'</span>);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Finished&#x27;</span>);
   }
 });</pre>
     
@@ -695,7 +694,7 @@ dl.start(taskOptions, (err) =&gt; {
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/WMSDownloader.js#L261-L263'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/WMSDownloader.js#L261-L263'>
       <span>src/WMSDownloader.js</span>
       </a>
     
@@ -753,68 +752,68 @@ dl.start(taskOptions, (err) =&gt; {
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> WMSDownloader = <span class="hljs-built_in">require</span>(<span class="hljs-string">'wms-downloader'</span>);
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> WMSDownloader = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;wms-downloader&#x27;</span>);
 
 <span class="hljs-keyword">const</span> dl = <span class="hljs-keyword">new</span> WMSDownloader();
 
 <span class="hljs-keyword">const</span> taskOptions = {
-  <span class="hljs-string">'task'</span>: {
-    <span class="hljs-string">'id'</span>: <span class="hljs-string">'id_of_my_first_download'</span>,
-    <span class="hljs-string">'title'</span>: <span class="hljs-string">'My first WMS download.'</span>,
-    <span class="hljs-string">'format'</span>: <span class="hljs-string">'image/png'</span>,
-    <span class="hljs-string">'workspace'</span>: __dirname + <span class="hljs-string">'/tiles'</span>,
-    <span class="hljs-string">'area'</span>: {
-      <span class="hljs-string">'bbox'</span>: {
-        <span class="hljs-string">'xmin'</span>: <span class="hljs-number">455000</span>,
-        <span class="hljs-string">'ymin'</span>: <span class="hljs-number">5750000</span>,
-        <span class="hljs-string">'xmax'</span>: <span class="hljs-number">479000</span>,
-        <span class="hljs-string">'ymax'</span>: <span class="hljs-number">5774000</span>
+  <span class="hljs-string">&#x27;task&#x27;</span>: {
+    <span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;id_of_my_first_download&#x27;</span>,
+    <span class="hljs-string">&#x27;title&#x27;</span>: <span class="hljs-string">&#x27;My first WMS download.&#x27;</span>,
+    <span class="hljs-string">&#x27;format&#x27;</span>: <span class="hljs-string">&#x27;image/png&#x27;</span>,
+    <span class="hljs-string">&#x27;workspace&#x27;</span>: __dirname + <span class="hljs-string">&#x27;/tiles&#x27;</span>,
+    <span class="hljs-string">&#x27;area&#x27;</span>: {
+      <span class="hljs-string">&#x27;bbox&#x27;</span>: {
+        <span class="hljs-string">&#x27;xmin&#x27;</span>: <span class="hljs-number">455000</span>,
+        <span class="hljs-string">&#x27;ymin&#x27;</span>: <span class="hljs-number">5750000</span>,
+        <span class="hljs-string">&#x27;xmax&#x27;</span>: <span class="hljs-number">479000</span>,
+        <span class="hljs-string">&#x27;ymax&#x27;</span>: <span class="hljs-number">5774000</span>
       }
     }
   },
-  <span class="hljs-string">'tiles'</span>: {
-    <span class="hljs-string">'maxSizePx'</span>: <span class="hljs-number">2500</span>,
-    <span class="hljs-string">'gutterPx'</span>: <span class="hljs-number">250</span>,
-    <span class="hljs-string">'resolutions'</span>: [{
-      <span class="hljs-string">'id'</span>: <span class="hljs-string">'id_of_resolution_10'</span>,
-      <span class="hljs-string">'groundResolution'</span>: <span class="hljs-number">1</span>
+  <span class="hljs-string">&#x27;tiles&#x27;</span>: {
+    <span class="hljs-string">&#x27;maxSizePx&#x27;</span>: <span class="hljs-number">2500</span>,
+    <span class="hljs-string">&#x27;gutterPx&#x27;</span>: <span class="hljs-number">250</span>,
+    <span class="hljs-string">&#x27;resolutions&#x27;</span>: [{
+      <span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;id_of_resolution_10&#x27;</span>,
+      <span class="hljs-string">&#x27;groundResolution&#x27;</span>: <span class="hljs-number">1</span>
     }]
   },
-  <span class="hljs-string">'wms'</span>: [{
-    <span class="hljs-string">'id'</span>: <span class="hljs-string">'id_of_wms_stadtbezirke'</span>,
-    <span class="hljs-string">'getmap'</span>: {
-      <span class="hljs-string">'url'</span>: <span class="hljs-string">'http://www.bielefeld01.de/md/WMS/statistische_gebietsgliederung/02?'</span>,
-      <span class="hljs-string">'kvp'</span>: {
-        <span class="hljs-string">'SERVICE'</span>: <span class="hljs-string">'WMS'</span>,
-        <span class="hljs-string">'REQUEST'</span>: <span class="hljs-string">'GetMap'</span>,
-        <span class="hljs-string">'VERSION'</span>: <span class="hljs-string">'1.3.0'</span>,
-        <span class="hljs-string">'LAYERS'</span>: <span class="hljs-string">'stadtbezirke_pl'</span>,
-        <span class="hljs-string">'STYLES'</span>: <span class="hljs-string">''</span>,
-        <span class="hljs-string">'CRS'</span>: <span class="hljs-string">'EPSG:25832'</span>,
-        <span class="hljs-string">'FORMAT'</span>: <span class="hljs-string">'image/png'</span>,
-        <span class="hljs-string">'TRANSPARENT'</span>: <span class="hljs-string">'TRUE'</span>,
-        <span class="hljs-string">'MAP_RESOLUTION'</span>: <span class="hljs-number">72</span>
+  <span class="hljs-string">&#x27;wms&#x27;</span>: [{
+    <span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;id_of_wms_stadtbezirke&#x27;</span>,
+    <span class="hljs-string">&#x27;getmap&#x27;</span>: {
+      <span class="hljs-string">&#x27;url&#x27;</span>: <span class="hljs-string">&#x27;http://www.bielefeld01.de/md/WMS/statistische_gebietsgliederung/02?&#x27;</span>,
+      <span class="hljs-string">&#x27;kvp&#x27;</span>: {
+        <span class="hljs-string">&#x27;SERVICE&#x27;</span>: <span class="hljs-string">&#x27;WMS&#x27;</span>,
+        <span class="hljs-string">&#x27;REQUEST&#x27;</span>: <span class="hljs-string">&#x27;GetMap&#x27;</span>,
+        <span class="hljs-string">&#x27;VERSION&#x27;</span>: <span class="hljs-string">&#x27;1.3.0&#x27;</span>,
+        <span class="hljs-string">&#x27;LAYERS&#x27;</span>: <span class="hljs-string">&#x27;stadtbezirke_pl&#x27;</span>,
+        <span class="hljs-string">&#x27;STYLES&#x27;</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-string">&#x27;CRS&#x27;</span>: <span class="hljs-string">&#x27;EPSG:25832&#x27;</span>,
+        <span class="hljs-string">&#x27;FORMAT&#x27;</span>: <span class="hljs-string">&#x27;image/png&#x27;</span>,
+        <span class="hljs-string">&#x27;TRANSPARENT&#x27;</span>: <span class="hljs-string">&#x27;TRUE&#x27;</span>,
+        <span class="hljs-string">&#x27;MAP_RESOLUTION&#x27;</span>: <span class="hljs-number">72</span>
       }
     }
   }]
 };
 
 <span class="hljs-comment">// start download</span>
-dl.start(taskOptions, (err) =&gt; {
+dl.start(taskOptions, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
   <span class="hljs-keyword">if</span> (err) {
     <span class="hljs-built_in">console</span>.log(err);
   } <span class="hljs-keyword">else</span> {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Download was finished.'</span>);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Download was finished.&#x27;</span>);
   }
 });
 
 <span class="hljs-comment">// cancel download after 10 seconds</span>
-setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-  dl.cancel(<span class="hljs-string">'id_of_my_first_download'</span>,(err, id)=&gt;{
+<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+  dl.cancel(<span class="hljs-string">&#x27;id_of_my_first_download&#x27;</span>,<span class="hljs-function">(<span class="hljs-params">err, id</span>)=&gt;</span>{
     <span class="hljs-keyword">if</span>(err){
       <span class="hljs-built_in">console</span>.error(err);
     }<span class="hljs-keyword">else</span>{
-      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Download "'</span> + id + <span class="hljs-string">'" was canceled.'</span>);
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Download &quot;&#x27;</span> + id + <span class="hljs-string">&#x27;&quot; was canceled.&#x27;</span>);
     }
   });
 }, <span class="hljs-number">10000</span>);</pre>
@@ -847,7 +846,7 @@ setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/WMSDownloader.js#L349-L351'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/WMSDownloader.js#L349-L351'>
       <span>src/WMSDownloader.js</span>
       </a>
     
@@ -905,81 +904,81 @@ setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> WMSDownloader = <span class="hljs-built_in">require</span>(<span class="hljs-string">'wms-downloader'</span>);
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> WMSDownloader = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;wms-downloader&#x27;</span>);
 
 <span class="hljs-keyword">const</span> dl = <span class="hljs-keyword">new</span> WMSDownloader();
 
 <span class="hljs-keyword">const</span> taskOptions = {
-  <span class="hljs-string">'task'</span>: {
-    <span class="hljs-string">'id'</span>: <span class="hljs-string">'id_of_my_first_download'</span>,
-    <span class="hljs-string">'title'</span>: <span class="hljs-string">'My first WMS download.'</span>,
-    <span class="hljs-string">'format'</span>: <span class="hljs-string">'image/png'</span>,
-    <span class="hljs-string">'workspace'</span>: __dirname + <span class="hljs-string">'/tiles'</span>,
-    <span class="hljs-string">'area'</span>: {
-      <span class="hljs-string">'bbox'</span>: {
-        <span class="hljs-string">'xmin'</span>: <span class="hljs-number">455000</span>,
-        <span class="hljs-string">'ymin'</span>: <span class="hljs-number">5750000</span>,
-        <span class="hljs-string">'xmax'</span>: <span class="hljs-number">479000</span>,
-        <span class="hljs-string">'ymax'</span>: <span class="hljs-number">5774000</span>
+  <span class="hljs-string">&#x27;task&#x27;</span>: {
+    <span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;id_of_my_first_download&#x27;</span>,
+    <span class="hljs-string">&#x27;title&#x27;</span>: <span class="hljs-string">&#x27;My first WMS download.&#x27;</span>,
+    <span class="hljs-string">&#x27;format&#x27;</span>: <span class="hljs-string">&#x27;image/png&#x27;</span>,
+    <span class="hljs-string">&#x27;workspace&#x27;</span>: __dirname + <span class="hljs-string">&#x27;/tiles&#x27;</span>,
+    <span class="hljs-string">&#x27;area&#x27;</span>: {
+      <span class="hljs-string">&#x27;bbox&#x27;</span>: {
+        <span class="hljs-string">&#x27;xmin&#x27;</span>: <span class="hljs-number">455000</span>,
+        <span class="hljs-string">&#x27;ymin&#x27;</span>: <span class="hljs-number">5750000</span>,
+        <span class="hljs-string">&#x27;xmax&#x27;</span>: <span class="hljs-number">479000</span>,
+        <span class="hljs-string">&#x27;ymax&#x27;</span>: <span class="hljs-number">5774000</span>
       }
     }
   },
-  <span class="hljs-string">'tiles'</span>: {
-    <span class="hljs-string">'maxSizePx'</span>: <span class="hljs-number">2500</span>,
-    <span class="hljs-string">'gutterPx'</span>: <span class="hljs-number">250</span>,
-    <span class="hljs-string">'resolutions'</span>: [{
-      <span class="hljs-string">'id'</span>: <span class="hljs-string">'id_of_resolution_10'</span>,
-      <span class="hljs-string">'groundResolution'</span>: <span class="hljs-number">1</span>
+  <span class="hljs-string">&#x27;tiles&#x27;</span>: {
+    <span class="hljs-string">&#x27;maxSizePx&#x27;</span>: <span class="hljs-number">2500</span>,
+    <span class="hljs-string">&#x27;gutterPx&#x27;</span>: <span class="hljs-number">250</span>,
+    <span class="hljs-string">&#x27;resolutions&#x27;</span>: [{
+      <span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;id_of_resolution_10&#x27;</span>,
+      <span class="hljs-string">&#x27;groundResolution&#x27;</span>: <span class="hljs-number">1</span>
     }]
   },
-  <span class="hljs-string">'wms'</span>: [{
-    <span class="hljs-string">'id'</span>: <span class="hljs-string">'id_of_wms_stadtbezirke'</span>,
-    <span class="hljs-string">'getmap'</span>: {
-      <span class="hljs-string">'url'</span>: <span class="hljs-string">'http://www.bielefeld01.de/md/WMS/statistische_gebietsgliederung/02?'</span>,
-      <span class="hljs-string">'kvp'</span>: {
-        <span class="hljs-string">'SERVICE'</span>: <span class="hljs-string">'WMS'</span>,
-        <span class="hljs-string">'REQUEST'</span>: <span class="hljs-string">'GetMap'</span>,
-        <span class="hljs-string">'VERSION'</span>: <span class="hljs-string">'1.3.0'</span>,
-        <span class="hljs-string">'LAYERS'</span>: <span class="hljs-string">'stadtbezirke_pl'</span>,
-        <span class="hljs-string">'STYLES'</span>: <span class="hljs-string">''</span>,
-        <span class="hljs-string">'CRS'</span>: <span class="hljs-string">'EPSG:25832'</span>,
-        <span class="hljs-string">'FORMAT'</span>: <span class="hljs-string">'image/png'</span>,
-        <span class="hljs-string">'TRANSPARENT'</span>: <span class="hljs-string">'TRUE'</span>,
-        <span class="hljs-string">'MAP_RESOLUTION'</span>: <span class="hljs-number">72</span>
+  <span class="hljs-string">&#x27;wms&#x27;</span>: [{
+    <span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;id_of_wms_stadtbezirke&#x27;</span>,
+    <span class="hljs-string">&#x27;getmap&#x27;</span>: {
+      <span class="hljs-string">&#x27;url&#x27;</span>: <span class="hljs-string">&#x27;http://www.bielefeld01.de/md/WMS/statistische_gebietsgliederung/02?&#x27;</span>,
+      <span class="hljs-string">&#x27;kvp&#x27;</span>: {
+        <span class="hljs-string">&#x27;SERVICE&#x27;</span>: <span class="hljs-string">&#x27;WMS&#x27;</span>,
+        <span class="hljs-string">&#x27;REQUEST&#x27;</span>: <span class="hljs-string">&#x27;GetMap&#x27;</span>,
+        <span class="hljs-string">&#x27;VERSION&#x27;</span>: <span class="hljs-string">&#x27;1.3.0&#x27;</span>,
+        <span class="hljs-string">&#x27;LAYERS&#x27;</span>: <span class="hljs-string">&#x27;stadtbezirke_pl&#x27;</span>,
+        <span class="hljs-string">&#x27;STYLES&#x27;</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-string">&#x27;CRS&#x27;</span>: <span class="hljs-string">&#x27;EPSG:25832&#x27;</span>,
+        <span class="hljs-string">&#x27;FORMAT&#x27;</span>: <span class="hljs-string">&#x27;image/png&#x27;</span>,
+        <span class="hljs-string">&#x27;TRANSPARENT&#x27;</span>: <span class="hljs-string">&#x27;TRUE&#x27;</span>,
+        <span class="hljs-string">&#x27;MAP_RESOLUTION&#x27;</span>: <span class="hljs-number">72</span>
       }
     }
   }]
 };
 
 <span class="hljs-comment">// print progress</span>
-<span class="hljs-keyword">const</span> progressInterval = setInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+<span class="hljs-keyword">const</span> progressInterval = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> {
 
   <span class="hljs-comment">// progress object</span>
   <span class="hljs-keyword">const</span> progress = dl.getProgress(taskOptions.task.id);
   <span class="hljs-comment">// {</span>
-  <span class="hljs-comment">//   'tiles': 144, // complete number of tiles</span>
-  <span class="hljs-comment">//   'tilesCompleted': 4, // number of completed tiles</span>
-  <span class="hljs-comment">//   'startDate': '2018-09-13T10:44:56.011Z', // start date (new Date())</span>
-  <span class="hljs-comment">//   'lastTileDate': '2018-09-13T10:45:05.691Z', // completion date (new Date()) of the last tile</span>
-  <span class="hljs-comment">//   'percent': 2.78, // progress in percent</span>
-  <span class="hljs-comment">//   'waitingTime': 337196 // waiting time in ms</span>
+  <span class="hljs-comment">//   &#x27;tiles&#x27;: 144, // complete number of tiles</span>
+  <span class="hljs-comment">//   &#x27;tilesCompleted&#x27;: 4, // number of completed tiles</span>
+  <span class="hljs-comment">//   &#x27;startDate&#x27;: &#x27;2018-09-13T10:44:56.011Z&#x27;, // start date (new Date())</span>
+  <span class="hljs-comment">//   &#x27;lastTileDate&#x27;: &#x27;2018-09-13T10:45:05.691Z&#x27;, // completion date (new Date()) of the last tile</span>
+  <span class="hljs-comment">//   &#x27;percent&#x27;: 2.78, // progress in percent</span>
+  <span class="hljs-comment">//   &#x27;waitingTime&#x27;: 337196 // waiting time in ms</span>
   <span class="hljs-comment">// }</span>
 
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Progress: '</span> + progress.percent + <span class="hljs-string">'%, Waiting time: '</span> + progress.waitingTime + <span class="hljs-string">' ms'</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Progress: &#x27;</span> + progress.percent + <span class="hljs-string">&#x27;%, Waiting time: &#x27;</span> + progress.waitingTime + <span class="hljs-string">&#x27; ms&#x27;</span>);
 
 }, <span class="hljs-number">1000</span>);
 
 
 <span class="hljs-comment">// start download</span>
-dl.start(taskOptions, (err) =&gt; {
+dl.start(taskOptions, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
 
   <span class="hljs-comment">// stop progress printing</span>
-  clearInterval(progressInterval);
+  <span class="hljs-built_in">clearInterval</span>(progressInterval);
   
   <span class="hljs-keyword">if</span> (err) {
     <span class="hljs-built_in">console</span>.log(err);
   } <span class="hljs-keyword">else</span> {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Download was finished.'</span>);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Download was finished.&#x27;</span>);
   }
 });</pre>
     
@@ -1017,7 +1016,6 @@ dl.start(taskOptions, (err) =&gt; {
 
   
     
-
   
 </section></div>
           
@@ -1033,7 +1031,7 @@ dl.start(taskOptions, (err) =&gt; {
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/helper/createGetMap.js#L36-L48'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/helper/createGetMap.js#L36-L48'>
       <span>src/helper/createGetMap.js</span>
       </a>
     
@@ -1118,24 +1116,24 @@ dl.start(taskOptions, (err) =&gt; {
     
       
       <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> wms = {
-  <span class="hljs-string">'getmap'</span>: {
-    <span class="hljs-string">'url'</span>: <span class="hljs-string">'http://www.bielefeld01.de/md/WMS/statistische_gebietsgliederung/02?'</span>,
-    <span class="hljs-string">'kvp'</span>: {
-      <span class="hljs-string">'SERVICE'</span>: <span class="hljs-string">'WMS'</span>,
-      <span class="hljs-string">'VERSION'</span>: <span class="hljs-string">'1.3.0'</span>,
-      <span class="hljs-string">'REQUEST'</span>: <span class="hljs-string">'GetMap'</span>,
-      <span class="hljs-string">'FORMAT'</span>: <span class="hljs-string">'image/png'</span>,
-      <span class="hljs-string">'TRANSPARENT'</span>: <span class="hljs-string">'true'</span>,
-      <span class="hljs-string">'LAYERS'</span>: <span class="hljs-string">'stadtbezirke_pl'</span>,
-      <span class="hljs-string">'CRS'</span>: <span class="hljs-string">'EPSG:25832'</span>,
-      <span class="hljs-string">'STYLES'</span>: <span class="hljs-string">''</span>
+  <span class="hljs-string">&#x27;getmap&#x27;</span>: {
+    <span class="hljs-string">&#x27;url&#x27;</span>: <span class="hljs-string">&#x27;http://www.bielefeld01.de/md/WMS/statistische_gebietsgliederung/02?&#x27;</span>,
+    <span class="hljs-string">&#x27;kvp&#x27;</span>: {
+      <span class="hljs-string">&#x27;SERVICE&#x27;</span>: <span class="hljs-string">&#x27;WMS&#x27;</span>,
+      <span class="hljs-string">&#x27;VERSION&#x27;</span>: <span class="hljs-string">&#x27;1.3.0&#x27;</span>,
+      <span class="hljs-string">&#x27;REQUEST&#x27;</span>: <span class="hljs-string">&#x27;GetMap&#x27;</span>,
+      <span class="hljs-string">&#x27;FORMAT&#x27;</span>: <span class="hljs-string">&#x27;image/png&#x27;</span>,
+      <span class="hljs-string">&#x27;TRANSPARENT&#x27;</span>: <span class="hljs-string">&#x27;true&#x27;</span>,
+      <span class="hljs-string">&#x27;LAYERS&#x27;</span>: <span class="hljs-string">&#x27;stadtbezirke_pl&#x27;</span>,
+      <span class="hljs-string">&#x27;CRS&#x27;</span>: <span class="hljs-string">&#x27;EPSG:25832&#x27;</span>,
+      <span class="hljs-string">&#x27;STYLES&#x27;</span>: <span class="hljs-string">&#x27;&#x27;</span>
     }
   }
 };
 
 <span class="hljs-keyword">const</span> width = <span class="hljs-number">1048</span>;
 <span class="hljs-keyword">const</span> height = <span class="hljs-number">953</span>;
-<span class="hljs-keyword">const</span> bbox = <span class="hljs-string">'458163.5475413472,5754265.480964899,478190.04895206343,5772476.602953842'</span>;
+<span class="hljs-keyword">const</span> bbox = <span class="hljs-string">&#x27;458163.5475413472,5754265.480964899,478190.04895206343,5772476.602953842&#x27;</span>;
 
 <span class="hljs-keyword">let</span> getMapUrl = createGetMap(wms, bbox, width, height);
 <span class="hljs-built_in">console</span>.log(getMapUrl);
@@ -1165,7 +1163,7 @@ dl.start(taskOptions, (err) =&gt; {
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/helper/createWorldFile.js#L24-L33'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/helper/createWorldFile.js#L24-L33'>
       <span>src/helper/createWorldFile.js</span>
       </a>
     
@@ -1276,7 +1274,7 @@ dl.start(taskOptions, (err) =&gt; {
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/helper/cropTile.js#L29-L95'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/helper/cropTile.js#L29-L95'>
       <span>src/helper/cropTile.js</span>
       </a>
     
@@ -1360,16 +1358,16 @@ dl.start(taskOptions, (err) =&gt; {
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> oldFile = __dirname + <span class="hljs-string">'/cropTileOld.png'</span>;
-<span class="hljs-keyword">const</span> newFile = __dirname + <span class="hljs-string">'/cropTileNew.png'</span>;
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> oldFile = __dirname + <span class="hljs-string">&#x27;/cropTileOld.png&#x27;</span>;
+<span class="hljs-keyword">const</span> newFile = __dirname + <span class="hljs-string">&#x27;/cropTileNew.png&#x27;</span>;
 <span class="hljs-keyword">const</span> tileSizePx = <span class="hljs-number">1000</span>; <span class="hljs-comment">// Size of the new tile</span>
 <span class="hljs-keyword">const</span> gutterSizePx = <span class="hljs-number">150</span>;
 
-cropTile(oldFile, newFile, tileSizePx, gutterSizePx, (err)=&gt;{
+cropTile(oldFile, newFile, tileSizePx, gutterSizePx, <span class="hljs-function">(<span class="hljs-params">err</span>)=&gt;</span>{
   <span class="hljs-keyword">if</span>(err){
     <span class="hljs-built_in">console</span>.error(err);
   }<span class="hljs-keyword">else</span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Tile cropped!'</span>);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Tile cropped!&#x27;</span>);
   }
 });</pre>
     
@@ -1397,7 +1395,7 @@ cropTile(oldFile, newFile, tileSizePx, gutterSizePx, (err)=&gt;{
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/helper/determineGroundResolution.js#L16-L28'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/helper/determineGroundResolution.js#L16-L28'>
       <span>src/helper/determineGroundResolution.js</span>
       </a>
     
@@ -1426,7 +1424,7 @@ If <code>groundResolution</code> is not set, it will be calculated and set into 
           <div>
             <span class='code bold'>res</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>>)</code>
 	    Resolutions defined with scales like 
-<code>[ {'dpi': 72, 'scale': 5000 }, {'dpi': 72, 'scale': 10000 } ]</code>
+<code>[ {'dpi': 72, 'scale': 5000 },  {'dpi': 72, 'scale': 10000 } ]</code>
 
           </div>
           
@@ -1447,7 +1445,7 @@ If <code>groundResolution</code> is not set, it will be calculated and set into 
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> res = [ {<span class="hljs-string">'dpi'</span>: <span class="hljs-number">72</span>, <span class="hljs-string">'scale'</span>: <span class="hljs-number">5000</span> },  {<span class="hljs-string">'dpi'</span>: <span class="hljs-number">72</span>, <span class="hljs-string">'scale'</span>: <span class="hljs-number">10000</span> } ];
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> res = [ {<span class="hljs-string">&#x27;dpi&#x27;</span>: <span class="hljs-number">72</span>, <span class="hljs-string">&#x27;scale&#x27;</span>: <span class="hljs-number">5000</span> },  {<span class="hljs-string">&#x27;dpi&#x27;</span>: <span class="hljs-number">72</span>, <span class="hljs-string">&#x27;scale&#x27;</span>: <span class="hljs-number">10000</span> } ];
 
 determineGroundResolution(res);
 <span class="hljs-built_in">console</span>.log(res);
@@ -1478,7 +1476,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/helper/getFormatDetails.js#L13-L32'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/helper/getFormatDetails.js#L13-L32'>
       <span>src/helper/getFormatDetails.js</span>
       </a>
     
@@ -1535,8 +1533,8 @@ determineGroundResolution(res);
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-built_in">console</span>.log(getFormatDetails(<span class="hljs-string">'image/png'</span>));
-<span class="hljs-comment">//{'title':'PNG','fileExt':'png','worldFileExt':'pgw','mimeType':'image/png'}</span></pre>
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-built_in">console</span>.log(getFormatDetails(<span class="hljs-string">&#x27;image/png&#x27;</span>));
+<span class="hljs-comment">//{&#x27;title&#x27;:&#x27;PNG&#x27;,&#x27;fileExt&#x27;:&#x27;png&#x27;,&#x27;worldFileExt&#x27;:&#x27;pgw&#x27;,&#x27;mimeType&#x27;:&#x27;image/png&#x27;}</span></pre>
     
   
 
@@ -1562,7 +1560,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/helper/getNumberOfTiles.js#L49-L82'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/helper/getNumberOfTiles.js#L49-L82'>
       <span>src/helper/getNumberOfTiles.js</span>
       </a>
     
@@ -1620,34 +1618,34 @@ determineGroundResolution(res);
       
       <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// task options</span>
 <span class="hljs-keyword">const</span> task = {
-  <span class="hljs-string">'task'</span>: {
-    <span class="hljs-string">'area'</span>: {
-      <span class="hljs-string">'bbox'</span>: {
-        <span class="hljs-string">'xmin'</span>: <span class="hljs-number">455000</span>,
-        <span class="hljs-string">'ymin'</span>: <span class="hljs-number">5750000</span>,
-        <span class="hljs-string">'xmax'</span>: <span class="hljs-number">479000</span>,
-        <span class="hljs-string">'ymax'</span>: <span class="hljs-number">5774000</span>
+  <span class="hljs-string">&#x27;task&#x27;</span>: {
+    <span class="hljs-string">&#x27;area&#x27;</span>: {
+      <span class="hljs-string">&#x27;bbox&#x27;</span>: {
+        <span class="hljs-string">&#x27;xmin&#x27;</span>: <span class="hljs-number">455000</span>,
+        <span class="hljs-string">&#x27;ymin&#x27;</span>: <span class="hljs-number">5750000</span>,
+        <span class="hljs-string">&#x27;xmax&#x27;</span>: <span class="hljs-number">479000</span>,
+        <span class="hljs-string">&#x27;ymax&#x27;</span>: <span class="hljs-number">5774000</span>
       }
     }
   },
-  <span class="hljs-string">'tiles'</span>: {
-    <span class="hljs-string">'maxSizePx'</span>: <span class="hljs-number">2500</span>,
-    <span class="hljs-string">'gutterPx'</span>: <span class="hljs-number">250</span>,
-    <span class="hljs-string">'resolutions'</span>: [
+  <span class="hljs-string">&#x27;tiles&#x27;</span>: {
+    <span class="hljs-string">&#x27;maxSizePx&#x27;</span>: <span class="hljs-number">2500</span>,
+    <span class="hljs-string">&#x27;gutterPx&#x27;</span>: <span class="hljs-number">250</span>,
+    <span class="hljs-string">&#x27;resolutions&#x27;</span>: [
       {
-        <span class="hljs-string">'id'</span>: <span class="hljs-string">'id_of_groundResolution_10'</span>,
-        <span class="hljs-string">'groundResolution'</span>: <span class="hljs-number">10</span>
+        <span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;id_of_groundResolution_10&#x27;</span>,
+        <span class="hljs-string">&#x27;groundResolution&#x27;</span>: <span class="hljs-number">10</span>
       },
       {
-        <span class="hljs-string">'id'</span>: <span class="hljs-string">'id_of_resolution_25000'</span>,
-        <span class="hljs-string">'scale'</span>: <span class="hljs-number">25000</span>,
-        <span class="hljs-string">'dpi'</span>: <span class="hljs-number">72</span>
+        <span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;id_of_resolution_25000&#x27;</span>,
+        <span class="hljs-string">&#x27;scale&#x27;</span>: <span class="hljs-number">25000</span>,
+        <span class="hljs-string">&#x27;dpi&#x27;</span>: <span class="hljs-number">72</span>
       }
     ]
   },
-  <span class="hljs-string">'wms'</span>: [
+  <span class="hljs-string">&#x27;wms&#x27;</span>: [
     {
-      <span class="hljs-string">'id'</span>: <span class="hljs-string">'id_of_wms_stadtbezirke'</span>
+      <span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;id_of_wms_stadtbezirke&#x27;</span>
     }
   ]
 };
@@ -1680,7 +1678,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/helper/getRequestObject.js#L15-L66'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/helper/getRequestObject.js#L15-L66'>
       <span>src/helper/getRequestObject.js</span>
       </a>
     
@@ -1764,7 +1762,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/helper/getSupportedFormats.js#L67-L69'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/helper/getSupportedFormats.js#L67-L69'>
       <span>src/helper/getSupportedFormats.js</span>
       </a>
     
@@ -1808,30 +1806,30 @@ determineGroundResolution(res);
     
       
       <pre class='p1 overflow-auto round fill-light'><span class="hljs-built_in">console</span>.log(getSupportedFormats());
-<span class="hljs-comment">//[ { title: 'PNG',</span>
-<span class="hljs-comment">//    fileExt: 'png',</span>
-<span class="hljs-comment">//    worldFileExt: 'pgw',</span>
-<span class="hljs-comment">//    mimeType: 'image/png' },</span>
-<span class="hljs-comment">//  { title: 'PNG 8-Bit',</span>
-<span class="hljs-comment">//    fileExt: 'png',</span>
-<span class="hljs-comment">//    worldFileExt: 'pgw',</span>
-<span class="hljs-comment">//    mime_type: 'image/png; mode=8bit' },</span>
-<span class="hljs-comment">//  { title: 'JPG',</span>
-<span class="hljs-comment">//    fileExt: 'jpg',</span>
-<span class="hljs-comment">//    worldFileExt: 'jgw',</span>
-<span class="hljs-comment">//    mimeType: 'image/jpeg' },</span>
-<span class="hljs-comment">//  { title: 'GIF',</span>
-<span class="hljs-comment">//    fileExt: 'gif',</span>
-<span class="hljs-comment">//    worldFileExt: 'gfw',</span>
-<span class="hljs-comment">//    mimeType: 'image/gif' },</span>
-<span class="hljs-comment">//  { title: 'TIFF',</span>
-<span class="hljs-comment">//    fileExt: 'tif',</span>
-<span class="hljs-comment">//    worldFileExt: 'tfw',</span>
-<span class="hljs-comment">//    mimeType: 'image/tiff' },</span>
-<span class="hljs-comment">//  { title: 'SVG',</span>
-<span class="hljs-comment">//    fileExt: 'svg',</span>
-<span class="hljs-comment">//    worldFileExt: 'sgw',</span>
-<span class="hljs-comment">//    mimeType: 'image/svg+xml' } ]</span></pre>
+<span class="hljs-comment">//[ { title: &#x27;PNG&#x27;,</span>
+<span class="hljs-comment">//    fileExt: &#x27;png&#x27;,</span>
+<span class="hljs-comment">//    worldFileExt: &#x27;pgw&#x27;,</span>
+<span class="hljs-comment">//    mimeType: &#x27;image/png&#x27; },</span>
+<span class="hljs-comment">//  { title: &#x27;PNG 8-Bit&#x27;,</span>
+<span class="hljs-comment">//    fileExt: &#x27;png&#x27;,</span>
+<span class="hljs-comment">//    worldFileExt: &#x27;pgw&#x27;,</span>
+<span class="hljs-comment">//    mime_type: &#x27;image/png; mode=8bit&#x27; },</span>
+<span class="hljs-comment">//  { title: &#x27;JPG&#x27;,</span>
+<span class="hljs-comment">//    fileExt: &#x27;jpg&#x27;,</span>
+<span class="hljs-comment">//    worldFileExt: &#x27;jgw&#x27;,</span>
+<span class="hljs-comment">//    mimeType: &#x27;image/jpeg&#x27; },</span>
+<span class="hljs-comment">//  { title: &#x27;GIF&#x27;,</span>
+<span class="hljs-comment">//    fileExt: &#x27;gif&#x27;,</span>
+<span class="hljs-comment">//    worldFileExt: &#x27;gfw&#x27;,</span>
+<span class="hljs-comment">//    mimeType: &#x27;image/gif&#x27; },</span>
+<span class="hljs-comment">//  { title: &#x27;TIFF&#x27;,</span>
+<span class="hljs-comment">//    fileExt: &#x27;tif&#x27;,</span>
+<span class="hljs-comment">//    worldFileExt: &#x27;tfw&#x27;,</span>
+<span class="hljs-comment">//    mimeType: &#x27;image/tiff&#x27; },</span>
+<span class="hljs-comment">//  { title: &#x27;SVG&#x27;,</span>
+<span class="hljs-comment">//    fileExt: &#x27;svg&#x27;,</span>
+<span class="hljs-comment">//    worldFileExt: &#x27;sgw&#x27;,</span>
+<span class="hljs-comment">//    mimeType: &#x27;image/svg+xml&#x27; } ]</span></pre>
     
   
 
@@ -1857,7 +1855,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/helper/handleResolution.js#L16-L74'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/helper/handleResolution.js#L16-L74'>
       <span>src/helper/handleResolution.js</span>
       </a>
     
@@ -1970,7 +1968,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/helper/handleTask.js#L14-L59'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/helper/handleTask.js#L14-L59'>
       <span>src/helper/handleTask.js</span>
       </a>
     
@@ -2065,7 +2063,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/helper/handleTiles.js#L27-L175'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/helper/handleTiles.js#L27-L175'>
       <span>src/helper/handleTiles.js</span>
       </a>
     
@@ -2214,7 +2212,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/helper/handleWMS.js#L17-L90'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/helper/handleWMS.js#L17-L90'>
       <span>src/helper/handleWMS.js</span>
       </a>
     
@@ -2336,7 +2334,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/helper/isValid.js#L47-L64'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/helper/isValid.js#L47-L64'>
       <span>src/helper/isValid.js</span>
       </a>
     
@@ -2401,38 +2399,38 @@ determineGroundResolution(res);
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> json1 = { <span class="hljs-attr">name</span>: <span class="hljs-string">'VW Golf'</span>, <span class="hljs-attr">price</span>: <span class="hljs-number">10000</span> }; <span class="hljs-comment">// valid</span>
-<span class="hljs-keyword">const</span> json2 = { <span class="hljs-attr">name</span>: <span class="hljs-string">'VW Passat'</span>, <span class="hljs-attr">price</span>: <span class="hljs-string">'20000 EUR'</span>}; <span class="hljs-comment">// invalid</span>
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> json1 = { <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;VW Golf&#x27;</span>, <span class="hljs-attr">price</span>: <span class="hljs-number">10000</span> }; <span class="hljs-comment">// valid</span>
+<span class="hljs-keyword">const</span> json2 = { <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;VW Passat&#x27;</span>, <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;20000 EUR&#x27;</span>}; <span class="hljs-comment">// invalid</span>
 
 <span class="hljs-keyword">const</span> schema = {
-  <span class="hljs-string">'type'</span>: <span class="hljs-string">'object'</span>,
-  <span class="hljs-string">'properties'</span>: {
-    <span class="hljs-string">'name'</span>: {
-      <span class="hljs-string">'type'</span>: <span class="hljs-string">'string'</span>
+  <span class="hljs-string">&#x27;type&#x27;</span>: <span class="hljs-string">&#x27;object&#x27;</span>,
+  <span class="hljs-string">&#x27;properties&#x27;</span>: {
+    <span class="hljs-string">&#x27;name&#x27;</span>: {
+      <span class="hljs-string">&#x27;type&#x27;</span>: <span class="hljs-string">&#x27;string&#x27;</span>
     },
-    <span class="hljs-string">'price'</span>: {
-      <span class="hljs-string">'type'</span>: <span class="hljs-string">'number'</span>
+    <span class="hljs-string">&#x27;price&#x27;</span>: {
+      <span class="hljs-string">&#x27;type&#x27;</span>: <span class="hljs-string">&#x27;number&#x27;</span>
     }
   },
-  <span class="hljs-string">'required'</span>: [
-    <span class="hljs-string">'name'</span>,
-    <span class="hljs-string">'price'</span>
+  <span class="hljs-string">&#x27;required&#x27;</span>: [
+    <span class="hljs-string">&#x27;name&#x27;</span>,
+    <span class="hljs-string">&#x27;price&#x27;</span>
   ]
 };
 
 <span class="hljs-keyword">const</span> validationJson1 = isValid(json1, schema);
 <span class="hljs-keyword">if</span> (validationJson1 === <span class="hljs-literal">true</span>) {
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'json1 is valid.'</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;json1 is valid.&#x27;</span>);
 } <span class="hljs-keyword">else</span> {
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'json1 is invalid.'</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;json1 is invalid.&#x27;</span>);
 }
 
 <span class="hljs-keyword">const</span> validationJson2 = isValid(json2, schema);
 
 <span class="hljs-keyword">if</span> (validationJson2 === <span class="hljs-literal">true</span>) {
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'json2 is valid.'</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;json2 is valid.&#x27;</span>);
 } <span class="hljs-keyword">else</span> {
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'json2 is invalid.'</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;json2 is invalid.&#x27;</span>);
   <span class="hljs-built_in">console</span>.log(validationJson2);
 }</pre>
     
@@ -2460,7 +2458,7 @@ determineGroundResolution(res);
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/0146bce1ad85519d21a73836f548f4049cc0fe4d/src/helper/writeTile.js#L13-L45'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/stadt-bielefeld/wms-downloader/blob/f8d6ad45940ce69008e18c96c0f8646f3f5dc459/src/helper/writeTile.js#L13-L45'>
       <span>src/helper/writeTile.js</span>
       </a>
     
